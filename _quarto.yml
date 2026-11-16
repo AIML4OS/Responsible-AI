@@ -5,10 +5,6 @@ website:
   title: "Responsible AI for Official Statistics"
   description: "Training materials"
 
-  navbar:
-    left:
-      - text: "Home"
-        href: index.qmd
 
   sidebar:
     logo: resources/profile/main3.png

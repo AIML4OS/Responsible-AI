@@ -69,7 +69,7 @@ format:
     toc-depth: 3
     number-sections: true
     code-copy: true
-    code-tools: true
+    code-tools: false
     smooth-scroll: true
 
 lang: en

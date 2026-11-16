@@ -6,12 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Public Statistician 1">
-<meta name="author" content="Public Statistician 2">
-<meta name="dcterms.date" content="2025-05-16">
-<meta name="description" content="This template is a fast starting pack for AIML4OS projects that use R. For Python projects, see this Github repository.">
 
-<title>Template for WP6 training material – Introduction to ggplot2</title>
+<title>Responsible AI for Official Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -30,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -40,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapters/chapter1.html" rel="next">
+<link href="./chapters/R01.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -50,15 +81,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2aa33e8751edae3f9b77d048c1294c38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -80,21 +109,44 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Responsible AI for Official Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -104,15 +156,9 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./resources/profile/main3.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./resources/profile/main3.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
-      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -123,15 +169,115 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Training Materials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plot with ggplot2</span></a>
+  <a href="./chapters/R01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Introduction</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Fundamentals of AI and Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Data Confidentiality and Security</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. Bias and Fairness</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Transparency and Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Oversight and Accountability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. AI in the GSBPM Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. Generative AI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Validation and Monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/R10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Organisational Governance</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Additional Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/studia-przypadkow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case Studies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/listy-kontrolne.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Checklists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/slownik.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -142,53 +288,40 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-this-template" id="toc-what-is-this-template" class="nav-link active" data-scroll-target="#what-is-this-template">What is this template?</a></li>
-  <li><a href="#how-to-use-it" id="toc-how-to-use-it" class="nav-link" data-scroll-target="#how-to-use-it">How to use it?</a></li>
+  <li><a href="#about-the-training" id="toc-about-the-training" class="nav-link active" data-scroll-target="#about-the-training"><span class="header-section-number">1</span> About the Training</a></li>
+  <li><a href="#training-programme" id="toc-training-programme" class="nav-link" data-scroll-target="#training-programme"><span class="header-section-number">2</span> Training Programme</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-the-responsible-use-of-ai" id="toc-introduction-to-the-responsible-use-of-ai" class="nav-link" data-scroll-target="#introduction-to-the-responsible-use-of-ai"><span class="header-section-number">2.1</span> 1. Introduction to the Responsible Use of AI</a></li>
+  <li><a href="#fundamentals-of-ai-and-machine-learning" id="toc-fundamentals-of-ai-and-machine-learning" class="nav-link" data-scroll-target="#fundamentals-of-ai-and-machine-learning"><span class="header-section-number">2.2</span> 2. Fundamentals of AI and Machine Learning</a></li>
+  <li><a href="#data-confidentiality-and-security" id="toc-data-confidentiality-and-security" class="nav-link" data-scroll-target="#data-confidentiality-and-security"><span class="header-section-number">2.3</span> 3. Data Confidentiality and Security</a></li>
+  <li><a href="#algorithmic-bias-and-fairness" id="toc-algorithmic-bias-and-fairness" class="nav-link" data-scroll-target="#algorithmic-bias-and-fairness"><span class="header-section-number">2.4</span> 4. Algorithmic Bias and Fairness</a></li>
+  <li><a href="#transparency-and-documentation" id="toc-transparency-and-documentation" class="nav-link" data-scroll-target="#transparency-and-documentation"><span class="header-section-number">2.5</span> 5. Transparency and Documentation</a></li>
+  <li><a href="#oversight-and-accountability" id="toc-oversight-and-accountability" class="nav-link" data-scroll-target="#oversight-and-accountability"><span class="header-section-number">2.6</span> 6. Oversight and Accountability</a></li>
+  <li><a href="#ai-in-the-gsbpm-statistical-process" id="toc-ai-in-the-gsbpm-statistical-process" class="nav-link" data-scroll-target="#ai-in-the-gsbpm-statistical-process"><span class="header-section-number">2.7</span> 7. AI in the GSBPM Statistical Process</a></li>
+  <li><a href="#generative-ai-in-official-statistics" id="toc-generative-ai-in-official-statistics" class="nav-link" data-scroll-target="#generative-ai-in-official-statistics"><span class="header-section-number">2.8</span> 8. Generative AI in Official Statistics</a></li>
+  <li><a href="#validation-and-monitoring-of-ai-systems" id="toc-validation-and-monitoring-of-ai-systems" class="nav-link" data-scroll-target="#validation-and-monitoring-of-ai-systems"><span class="header-section-number">2.9</span> 9. Validation and Monitoring of AI Systems</a></li>
+  <li><a href="#ai-governance-in-organisations" id="toc-ai-governance-in-organisations" class="nav-link" data-scroll-target="#ai-governance-in-organisations"><span class="header-section-number">2.10</span> 10. AI Governance in Organisations</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3</span> Summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/AIML4OS/AIML4OS-template-quarto-r/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AIML4OS/AIML4OS-template-quarto-r/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/AIML4OS/AIML4OS-template-quarto-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<img src="resources/cover/main2.png" style="max-width:900px;width:100%">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Template for WP6 training material</h1>
+<div class="quarto-title-block"><div><h1 class="title">Responsible AI for Official Statistics</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">The Responsible Use of Artificial Intelligence in Official Statistics</p>
 </div>
 
-<div>
-  <div class="description">
-    <p>This template is a fast starting pack for AIML4OS projects that use <code>R</code>. For <code>Python</code> projects, see <a href="https://github.com/InseeFrLab/AIML4OS-template-quarto-python">this <code>Github</code> repository</a>.</p>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p><a href="https://github.com/publicstatistician1">Public Statistician 1</a> <a href="mailto:Public.Statistician1@statistics.org" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-             <p><a href="https://github.com/publicstatistician2">Public Statistician 2</a> <a href="mailto:Public.Statistician2@statistics.org" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 16, 2025</p>
-    </div>
-  </div>
   
     
-    <div>
-    <div class="quarto-title-meta-heading">Doi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="doi">
-        <a href="https://doi.org/10.1000/182">10.1000/182</a>
-      </p>
-    </div>
-  </div>
   </div>
   
 
@@ -196,18 +329,76 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="what-is-this-template" class="level1">
-<h1>What is this template?</h1>
-<p>This template is a Quarto Website customized for the AIML4OS project, designed to be used with <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
+<section id="about-the-training" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="about-the-training"><span class="header-section-number">1</span> About the Training</h2>
+<p>The aim of this training is to present the principles of responsible use of artificial intelligence (AI) in official statistics.</p>
+<p>The materials cover ethical, methodological, technological and organisational aspects of using AI at different stages of the statistical process.</p>
+<p>The training demonstrates how to make use of the opportunities offered by artificial intelligence while taking into account the limitations of AI models, data protection, the quality of results and accountability for decisions made.</p>
 </section>
-<section id="how-to-use-it" class="level1">
-<h1>How to use it?</h1>
-<p>See <a href="https://aiml4os.github.io/training-material-starting-pack/">this tutorial</a>.</p>
+<section id="training-programme" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="training-programme"><span class="header-section-number">2</span> Training Programme</h2>
+<section id="introduction-to-the-responsible-use-of-ai" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="introduction-to-the-responsible-use-of-ai"><span class="header-section-number">2.1</span> 1. Introduction to the Responsible Use of AI</h3>
+<p>An introduction to the concept of responsible artificial intelligence, its importance in official statistics, and the fundamental principles of safe and reliable use of AI.</p>
+<p><a href="./chapters/R01.html">Go to chapter</a></p>
+</section>
+<section id="fundamentals-of-ai-and-machine-learning" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="fundamentals-of-ai-and-machine-learning"><span class="header-section-number">2.2</span> 2. Fundamentals of AI and Machine Learning</h3>
+<p>Key concepts related to artificial intelligence, machine learning and generative models. An overview of common applications of AI in statistical data analysis and the limitations of different methods.</p>
+<p><a href="./chapters/R02.html">Go to chapter</a></p>
+</section>
+<section id="data-confidentiality-and-security" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="data-confidentiality-and-security"><span class="header-section-number">2.3</span> 3. Data Confidentiality and Security</h3>
+<p>Principles of safe data use in AI systems, protection of confidential information, data minimisation, and risks associated with using external tools.</p>
+<p><a href="./chapters/R03.html">Go to chapter</a></p>
+</section>
+<section id="algorithmic-bias-and-fairness" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="algorithmic-bias-and-fairness"><span class="header-section-number">2.4</span> 4. Algorithmic Bias and Fairness</h3>
+<p>Sources of bias in data and models, the risk of unequal performance across different groups, and methods for assessing and mitigating undesirable differences in AI model performance.</p>
+<p><a href="./chapters/R04.html">Go to chapter</a></p>
+</section>
+<section id="transparency-and-documentation" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="transparency-and-documentation"><span class="header-section-number">2.5</span> 5. Transparency and Documentation</h3>
+<p>Documentation of data, methods, models, validation results and limitations. Explainability of AI outputs and ensuring that the solutions used can be reproduced and verified.</p>
+<p><a href="./chapters/R05.html">Go to chapter</a></p>
+</section>
+<section id="oversight-and-accountability" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="oversight-and-accountability"><span class="header-section-number">2.6</span> 6. Oversight and Accountability</h3>
+<p>Roles and responsibilities in AI projects, human oversight of model outputs, and principles for intervention, approval and withdrawal of AI solutions.</p>
+<p><a href="./chapters/R06.html">Go to chapter</a></p>
+</section>
+<section id="ai-in-the-gsbpm-statistical-process" class="level3" data-number="2.7">
+<h3 data-number="2.7" class="anchored" data-anchor-id="ai-in-the-gsbpm-statistical-process"><span class="header-section-number">2.7</span> 7. AI in the GSBPM Statistical Process</h3>
+<p>Opportunities for using AI at different stages of the statistical process — from identifying needs and designing surveys to data processing, analysis, dissemination of results and evaluation.</p>
+<p><a href="./chapters/R07.html">Go to chapter</a></p>
+</section>
+<section id="generative-ai-in-official-statistics" class="level3" data-number="2.8">
+<h3 data-number="2.8" class="anchored" data-anchor-id="generative-ai-in-official-statistics"><span class="header-section-number">2.8</span> 8. Generative AI in Official Statistics</h3>
+<p>Practical applications of generative models and large language models (LLMs), prompt engineering, the use of Retrieval-Augmented Generation (RAG), and verification of AI-generated content and code.</p>
+<p><a href="./chapters/R08.html">Go to chapter</a></p>
+</section>
+<section id="validation-and-monitoring-of-ai-systems" class="level3" data-number="2.9">
+<h3 data-number="2.9" class="anchored" data-anchor-id="validation-and-monitoring-of-ai-systems"><span class="header-section-number">2.9</span> 9. Validation and Monitoring of AI Systems</h3>
+<p>Assessment of model quality before and after deployment, selection of evaluation metrics, comparison with baseline methods, detection of changes in data, and principles of revalidation.</p>
+<p><a href="./chapters/R09.html">Go to chapter</a></p>
+</section>
+<section id="ai-governance-in-organisations" class="level3" data-number="2.10">
+<h3 data-number="2.10" class="anchored" data-anchor-id="ai-governance-in-organisations"><span class="header-section-number">2.10</span> 10. AI Governance in Organisations</h3>
+<p>Principles for managing AI applications within an organisation, AI system registers, risk assessment, procedures for deploying and withdrawing systems, and developing employees’ skills and competencies.</p>
+<p><a href="./chapters/R10.html">Go to chapter</a></p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="summary"><span class="header-section-number">3</span> Summary</h2>
+<p>The responsible use of AI in official statistics requires combining statistical and technological expertise with appropriate oversight, data protection, transparency and systematic quality assessment.</p>
+<p>The goal is not simply to implement new technologies, but to use them consciously wherever they can improve the quality, efficiency and reliability of the statistical process.</p>
 
+
+<!-- -->
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY 4.0</div></div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -279,9 +470,60 @@ ul.task-list li input[type="checkbox"] {
       });
       clipboardModal.on('success', onCopySuccess);
     }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/AIML4OS\.github\.io\/AIML4OS-template-quarto-r");
+        var filterRegex = new RegExp("https:\/\/AIML4OS\.github\.io\/Responsible-AI\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -612,14 +854,96 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapters/chapter1.html" class="pagination-link" aria-label="Plot with ggplot2">
-        <span class="nav-page-text">Plot with ggplot2</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapters/R01.html" class="pagination-link" aria-label="01. Introduction">
+        <span class="nav-page-text">01. Introduction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Responsible AI for Official Statistics"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "The Responsible Use of Artificial Intelligence in Official Statistics"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## About the Training</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>The aim of this training is to present the principles of responsible use of artificial intelligence (AI) in official statistics.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>The materials cover ethical, methodological, technological and organisational aspects of using AI at different stages of the statistical process.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>The training demonstrates how to make use of the opportunities offered by artificial intelligence while taking into account the limitations of AI models, data protection, the quality of results and accountability for decisions made.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Training Programme</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Introduction to the Responsible Use of AI</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>An introduction to the concept of responsible artificial intelligence, its importance in official statistics, and the fundamental principles of safe and reliable use of AI.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R01.qmd)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Fundamentals of AI and Machine Learning</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Key concepts related to artificial intelligence, machine learning and generative models. An overview of common applications of AI in statistical data analysis and the limitations of different methods.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R02.qmd)</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Data Confidentiality and Security</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Principles of safe data use in AI systems, protection of confidential information, data minimisation, and risks associated with using external tools.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R03.qmd)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Algorithmic Bias and Fairness</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Sources of bias in data and models, the risk of unequal performance across different groups, and methods for assessing and mitigating undesirable differences in AI model performance.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R04.qmd)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5. Transparency and Documentation</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>Documentation of data, methods, models, validation results and limitations. Explainability of AI outputs and ensuring that the solutions used can be reproduced and verified.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R05.qmd)</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6. Oversight and Accountability</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>Roles and responsibilities in AI projects, human oversight of model outputs, and principles for intervention, approval and withdrawal of AI solutions.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R06.qmd)</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">### 7. AI in the GSBPM Statistical Process</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>Opportunities for using AI at different stages of the statistical process — from identifying needs and designing surveys to data processing, analysis, dissemination of results and evaluation.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R07.qmd)</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### 8. Generative AI in Official Statistics</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>Practical applications of generative models and large language models (LLMs), prompt engineering, the use of Retrieval-Augmented Generation (RAG), and verification of AI-generated content and code.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R08.qmd)</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### 9. Validation and Monitoring of AI Systems</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Assessment of model quality before and after deployment, selection of evaluation metrics, comparison with baseline methods, detection of changes in data, and principles of revalidation.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R09.qmd)</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10. AI Governance in Organisations</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>Principles for managing AI applications within an organisation, AI system registers, risk assessment, procedures for deploying and withdrawing systems, and developing employees' skills and competencies.</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Go to chapter</span><span class="co">](chapters/R10.qmd)</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>The responsible use of AI in official statistics requires combining statistical and technological expertise with appropriate oversight, data protection, transparency and systematic quality assessment.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>The goal is not simply to implement new technologies, but to use them consciously wherever they can improve the quality, efficiency and reliability of the statistical process.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/AIML4OS/AIML4OS-template-quarto-r/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/AIML4OS/AIML4OS-template-quarto-r/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/AIML4OS/AIML4OS-template-quarto-r/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

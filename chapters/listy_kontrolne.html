@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Checklists – Responsible AI for Official Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2aa33e8751edae3f9b77d048c1294c38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Responsible AI for Official Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Checklists</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Training Materials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Fundamentals of AI and Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Data Confidentiality and Security</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. Bias and Fairness</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Transparency and Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Oversight and Accountability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. AI in the GSBPM Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. Generative AI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Validation and Monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Organisational Governance</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Additional Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/studia-przypadkow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case Studies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/listy-kontrolne.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Checklists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/slownik.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-the-checklists" id="toc-how-to-use-the-checklists" class="nav-link active" data-scroll-target="#how-to-use-the-checklists"><span class="header-section-number">1</span> How to use the checklists</a></li>
+  <li><a href="#list-1.-purpose-and-justification-for-using-ai" id="toc-list-1.-purpose-and-justification-for-using-ai" class="nav-link" data-scroll-target="#list-1.-purpose-and-justification-for-using-ai"><span class="header-section-number">2</span> List 1. Purpose and justification for using AI</a></li>
+  <li><a href="#list-2.-data-confidentiality-and-security" id="toc-list-2.-data-confidentiality-and-security" class="nav-link" data-scroll-target="#list-2.-data-confidentiality-and-security"><span class="header-section-number">3</span> List 2. Data, confidentiality and security</a></li>
+  <li><a href="#list-3.-model-validation-and-quality" id="toc-list-3.-model-validation-and-quality" class="nav-link" data-scroll-target="#list-3.-model-validation-and-quality"><span class="header-section-number">4</span> List 3. Model validation and quality</a></li>
+  <li><a href="#list-4.-bias-and-fairness" id="toc-list-4.-bias-and-fairness" class="nav-link" data-scroll-target="#list-4.-bias-and-fairness"><span class="header-section-number">5</span> List 4. Bias and fairness</a></li>
+  <li><a href="#list-5.-transparency-and-documentation" id="toc-list-5.-transparency-and-documentation" class="nav-link" data-scroll-target="#list-5.-transparency-and-documentation"><span class="header-section-number">6</span> List 5. Transparency and documentation</a></li>
+  <li><a href="#list-6.-human-oversight" id="toc-list-6.-human-oversight" class="nav-link" data-scroll-target="#list-6.-human-oversight"><span class="header-section-number">7</span> List 6. Human oversight</a></li>
+  <li><a href="#list-7.-deployment-and-monitoring" id="toc-list-7.-deployment-and-monitoring" class="nav-link" data-scroll-target="#list-7.-deployment-and-monitoring"><span class="header-section-number">8</span> List 7. Deployment and monitoring</a></li>
+  <li><a href="#list-8.-generative-ai" id="toc-list-8.-generative-ai" class="nav-link" data-scroll-target="#list-8.-generative-ai"><span class="header-section-number">9</span> List 8. Generative AI</a></li>
+  <li><a href="#review-summary" id="toc-review-summary" class="nav-link" data-scroll-target="#review-summary"><span class="header-section-number">10</span> Review summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Checklists</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">A practical assessment of responsible AI use</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="how-to-use-the-checklists" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> How to use the checklists</h1>
+<p>Checklists help verify whether the most important issues have been taken into account in an AI project. They do not replace a formal risk assessment, consultation with the data protection officer, or the procedures in force in the organisation.</p>
+<p>The checklists are arranged in an order similar to the successive stages of a project: from defining the objective, through data and the model, to deployment and monitoring. List 8 concerns generative AI tools and should be taken into account whenever such tools are used. The checklists are best completed as a team, with the involvement of those responsible for the project, the data and the methodology. For each “Yes” answer, it is worth noting where the supporting evidence can be found, e.g.&nbsp;in the documentation, a validation report or the outcomes of a meeting.</p>
+<p>Answers:</p>
+<ul>
+<li><strong>Yes</strong> — the requirement has been met and evidence can be provided.</li>
+<li><strong>No</strong> — the requirement has not been met.</li>
+<li><strong>Not applicable</strong> — the requirement does not apply; it is worth briefly explaining why.</li>
+</ul>
+<p>“No” answers should be analysed before moving on to the next stage of the project.</p>
+</section>
+<section id="list-1.-purpose-and-justification-for-using-ai" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> List 1. Purpose and justification for using AI</h1>
+<p>This list is used to check whether, at the start of the project, it has been clearly defined what problem the system is meant to solve and why AI is a suitable tool for it. It also helps establish who will use the results, what the success criteria are and who is responsible for the project. It is worth completing first, before work on the data and the model begins.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The problem that the system is meant to solve has been defined.</label></li>
+<li><label><input type="checkbox">It has been justified why AI is an appropriate solution.</label></li>
+<li><label><input type="checkbox">Simpler alternatives have been considered, e.g.&nbsp;rules, classical statistical methods or automation.</label></li>
+<li><label><input type="checkbox">The users and the recipients of the results have been identified.</label></li>
+<li><label><input type="checkbox">It has been determined how the results will be used.</label></li>
+<li><label><input type="checkbox">Success criteria and acceptable error have been defined.</label></li>
+<li><label><input type="checkbox">The consequences of an incorrect result have been identified.</label></li>
+<li><label><input type="checkbox">The person responsible for the project and the person approving the results have been named.</label></li>
+</ul>
+<p><strong>Review outcome:</strong> the project’s purpose and the justification for using AI are documented.</p>
+</section>
+<section id="list-2.-data-confidentiality-and-security" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> List 2. Data, confidentiality and security</h1>
+<p>This list concerns the data used in the project: its origin, quality, the permissions to use it, and its protection. It pays particular attention to personal and confidential data, including individual-level data covered by statistical confidentiality. It is completed before data processing begins and updated whenever the sources or scope of the data change.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The sources, scope and origin of the data have been determined.</label></li>
+<li><label><input type="checkbox">The permissions to use the data for the given purpose have been checked.</label></li>
+<li><label><input type="checkbox">Personal data, confidential data and other protected information have been identified.</label></li>
+<li><label><input type="checkbox">The risk of identifying persons or units has been assessed.</label></li>
+<li><label><input type="checkbox">The scope of the processed data has been limited to the necessary minimum.</label></li>
+<li><label><input type="checkbox">The quality, completeness and timeliness of the data have been verified.</label></li>
+<li><label><input type="checkbox">The representativeness of the data for the intended use has been checked.</label></li>
+<li><label><input type="checkbox">Rules for data access, storage and deletion have been established.</label></li>
+<li><label><input type="checkbox">It has been verified whether the use of external tools is permitted.</label></li>
+<li><label><input type="checkbox">The procedure to follow in the event of an incident has been defined.</label></li>
+</ul>
+<p><strong>Review outcome:</strong> the manner in which the data is obtained and processed complies with the requirements applicable to the project.</p>
+</section>
+<section id="list-3.-model-validation-and-quality" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> List 3. Model validation and quality</h1>
+<p>This list makes it possible to assess whether the model has been properly tested and whether its quality is sufficient for the intended use. It covers the data split, the choice of validation method and quality measures, comparison with a baseline method, and a description of the model’s limitations. It also includes additional questions for projects that use time series, e.g.&nbsp;forecasts. It is completed once the model has been built, before a decision is made to use it.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">A method for splitting the data into training, validation and test sets has been defined.</label></li>
+<li><label><input type="checkbox">The risk of information leakage between the sets has been eliminated.</label></li>
+<li><label><input type="checkbox">A validation method appropriate to the purpose and the data structure has been applied.</label></li>
+<li><label><input type="checkbox">The model has been compared with a baseline method.</label></li>
+<li><label><input type="checkbox">Quality measures appropriate to the intended use have been selected.</label></li>
+<li><label><input type="checkbox">Errors have been analysed for relevant groups and areas.</label></li>
+<li><label><input type="checkbox">The behaviour of the model in atypical situations has been checked.</label></li>
+<li><label><input type="checkbox">The stability of the results has been assessed.</label></li>
+<li><label><input type="checkbox">Limitations and known weaknesses have been documented.</label></li>
+<li><label><input type="checkbox">The conditions for approving the model for use have been defined.</label></li>
+</ul>
+<p><strong>Additional questions for time series:</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Does the model use only information available at the time the forecast is made?</label></li>
+<li><label><input type="checkbox">Does the test take into account the actual chronological order?</label></li>
+<li><label><input type="checkbox">Have errors been checked in different periods, including atypical ones?</label></li>
+</ul>
+</section>
+<section id="list-4.-bias-and-fairness" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> List 4. Bias and fairness</h1>
+<p>This list helps check whether the model performs similarly for different groups, e.g.&nbsp;regions, age groups or types of units, and whether it leads to unjustified differences in results. It draws attention to group sizes, data quality and the consequences of errors for individual recipients. It is best completed in parallel with the assessment of model quality.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Groups for which the model may perform differently have been identified.</label></li>
+<li><label><input type="checkbox">The number of observations in these groups has been checked.</label></li>
+<li><label><input type="checkbox">The quality of results has been compared across groups.</label></li>
+<li><label><input type="checkbox">The impact of missing data and of the method used to impute it has been analysed.</label></li>
+<li><label><input type="checkbox">It has been checked whether input features lead to unjustified differentiation of results.</label></li>
+<li><label><input type="checkbox">The consequences of errors for individual users or areas have been assessed.</label></li>
+<li><label><input type="checkbox">The limitations identified and the remedial actions have been documented.</label></li>
+</ul>
+<p>Not every difference between groups indicates bias. Such a difference does, however, require analysis in the context of the model’s purpose, the quality of the data and the consequences of its use.</p>
+</section>
+<section id="list-5.-transparency-and-documentation" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> List 5. Transparency and documentation</h1>
+<p>This list concerns whether the solution is described in a way that allows other people to understand it, reproduce it and use it appropriately. It covers documentation of the purpose, data, method, code and model versions, test results, and information for recipients. It is worth updating on an ongoing basis during the project, rather than only at its end.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The purpose, scope and limitations of the model have been documented.</label></li>
+<li><label><input type="checkbox">The data sources and their preparation have been described.</label></li>
+<li><label><input type="checkbox">The method used and the justification for choosing it have been recorded.</label></li>
+<li><label><input type="checkbox">The version of the code, the model and the significant dependencies have been recorded.</label></li>
+<li><label><input type="checkbox">The validation method and the test results have been documented.</label></li>
+<li><label><input type="checkbox">Known limitations and cases in which the model should not be used have been defined.</label></li>
+<li><label><input type="checkbox">Information on how to interpret the results has been prepared.</label></li>
+<li><label><input type="checkbox">A way of informing recipients about the use of AI has been established, if required or appropriate.</label></li>
+</ul>
+</section>
+<section id="list-6.-human-oversight" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> List 6. Human oversight</h1>
+<p>This list is used to check whether the model’s results remain under human control and whether it is clear who verifies them, and in what situations. It concerns, among other things, procedures for handling atypical results, the possibility of challenging a result, and the reporting of errors. It is completed before deployment, and revisited whenever the way the model is used changes.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">A person responsible for oversight has been designated.</label></li>
+<li><label><input type="checkbox">It has been determined which results require human verification.</label></li>
+<li><label><input type="checkbox">A procedure for handling atypical results has been established.</label></li>
+<li><label><input type="checkbox">The people using the model are aware of its limitations.</label></li>
+<li><label><input type="checkbox">It is possible to challenge or reject the model’s result.</label></li>
+<li><label><input type="checkbox">Decisions with significant consequences are not taken without the required review.</label></li>
+<li><label><input type="checkbox">A way of reporting errors and incidents has been defined.</label></li>
+</ul>
+</section>
+<section id="list-7.-deployment-and-monitoring" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> List 7. Deployment and monitoring</h1>
+<p>This list concerns preparing for the launch of the solution and its subsequent maintenance. It helps establish the conditions for deployment, the way quality will be monitored, the rules for updating and re-validation, and a plan for withdrawing the model if necessary. It is completed before deployment and repeated during periodic reviews.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The deployment conditions and acceptance criteria have been defined.</label></li>
+<li><label><input type="checkbox">Indicators for monitoring quality have been established.</label></li>
+<li><label><input type="checkbox">The frequency of reviews has been determined.</label></li>
+<li><label><input type="checkbox">Warning thresholds and the actions to take when they are exceeded have been defined.</label></li>
+<li><label><input type="checkbox">Changes in data distributions and in the quality of input data are monitored.</label></li>
+<li><label><input type="checkbox">The reproducibility of results has been ensured.</label></li>
+<li><label><input type="checkbox">Rules for updating and re-validating the model have been defined.</label></li>
+<li><label><input type="checkbox">The possibility of withdrawing the model or reverting to the baseline method has been planned.</label></li>
+<li><label><input type="checkbox">Responsibility for maintaining the solution has been assigned.</label></li>
+</ul>
+</section>
+<section id="list-8.-generative-ai" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> List 8. Generative AI</h1>
+<p>This list concerns the responsible use of generative AI tools, e.g.&nbsp;for creating texts, code or summaries. It draws attention to whether the tool is approved for use, the protection of the data entered into it, and the obligation for a human to check and approve the generated content. It is worth applying whenever such tools are used in work, including outside large projects.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The tool is approved for the intended use.</label></li>
+<li><label><input type="checkbox">No prohibited data is entered into the tool.</label></li>
+<li><label><input type="checkbox">Generated code is reviewed and tested.</label></li>
+<li><label><input type="checkbox">Generated content is verified for substantive accuracy.</label></li>
+<li><label><input type="checkbox">Figures, sources, quotations and references are checked.</label></li>
+<li><label><input type="checkbox">Verified content is distinguished from suggestions generated by the model.</label></li>
+<li><label><input type="checkbox">The use of AI is documented where necessary.</label></li>
+<li><label><input type="checkbox">Responsibility for approved results is not attributed to the model.</label></li>
+</ul>
+</section>
+<section id="review-summary" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Review summary</h1>
+<p>Once the lists have been completed, a short note should be prepared covering:</p>
+<ul>
+<li>the name and purpose of the solution;</li>
+<li>the date of the review;</li>
+<li>the persons taking part in the assessment;</li>
+<li>requirements that have not been met or that need improvement;</li>
+<li>corrective actions, the persons responsible and deadlines;</li>
+<li>the decision on whether to approve the solution for the next stage.</li>
+</ul>
+<p>A checklist supports the risk management process; it is not an automatic certificate of compliance.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/AIML4OS\.github\.io\/Responsible-AI\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Checklists"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "A practical assessment of responsible AI use"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># How to use the checklists</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Checklists help verify whether the most important issues have been taken into account in an AI project. They do not replace a formal risk assessment, consultation with the data protection officer, or the procedures in force in the organisation.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>The checklists are arranged in an order similar to the successive stages of a project: from defining the objective, through data and the model, to deployment and monitoring. List 8 concerns generative AI tools and should be taken into account whenever such tools are used. The checklists are best completed as a team, with the involvement of those responsible for the project, the data and the methodology. For each “Yes” answer, it is worth noting where the supporting evidence can be found, e.g. in the documentation, a validation report or the outcomes of a meeting.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Answers:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Yes** — the requirement has been met and evidence can be provided.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**No** — the requirement has not been met.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Not applicable** — the requirement does not apply; it is worth briefly explaining why.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>“No” answers should be analysed before moving on to the next stage of the project.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 1. Purpose and justification for using AI</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>This list is used to check whether, at the start of the project, it has been clearly defined what problem the system is meant to solve and why AI is a suitable tool for it. It also helps establish who will use the results, what the success criteria are and who is responsible for the project. It is worth completing first, before work on the data and the model begins.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The problem that the system is meant to solve has been defined.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> It has been justified why AI is an appropriate solution.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Simpler alternatives have been considered, e.g. rules, classical statistical methods or automation.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The users and the recipients of the results have been identified.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> It has been determined how the results will be used.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Success criteria and acceptable error have been defined.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The consequences of an incorrect result have been identified.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The person responsible for the project and the person approving the results have been named.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**Review outcome:** the project's purpose and the justification for using AI are documented.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 2. Data, confidentiality and security</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>This list concerns the data used in the project: its origin, quality, the permissions to use it, and its protection. It pays particular attention to personal and confidential data, including individual-level data covered by statistical confidentiality. It is completed before data processing begins and updated whenever the sources or scope of the data change.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The sources, scope and origin of the data have been determined.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The permissions to use the data for the given purpose have been checked.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Personal data, confidential data and other protected information have been identified.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The risk of identifying persons or units has been assessed.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The scope of the processed data has been limited to the necessary minimum.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The quality, completeness and timeliness of the data have been verified.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The representativeness of the data for the intended use has been checked.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Rules for data access, storage and deletion have been established.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> It has been verified whether the use of external tools is permitted.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The procedure to follow in the event of an incident has been defined.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**Review outcome:** the manner in which the data is obtained and processed complies with the requirements applicable to the project.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 3. Model validation and quality</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>This list makes it possible to assess whether the model has been properly tested and whether its quality is sufficient for the intended use. It covers the data split, the choice of validation method and quality measures, comparison with a baseline method, and a description of the model's limitations. It also includes additional questions for projects that use time series, e.g. forecasts. It is completed once the model has been built, before a decision is made to use it.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> A method for splitting the data into training, validation and test sets has been defined.</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The risk of information leakage between the sets has been eliminated.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> A validation method appropriate to the purpose and the data structure has been applied.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The model has been compared with a baseline method.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Quality measures appropriate to the intended use have been selected.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Errors have been analysed for relevant groups and areas.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The behaviour of the model in atypical situations has been checked.</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The stability of the results has been assessed.</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Limitations and known weaknesses have been documented.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The conditions for approving the model for use have been defined.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>**Additional questions for time series:**</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Does the model use only information available at the time the forecast is made?</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Does the test take into account the actual chronological order?</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Have errors been checked in different periods, including atypical ones?</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 4. Bias and fairness</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>This list helps check whether the model performs similarly for different groups, e.g. regions, age groups or types of units, and whether it leads to unjustified differences in results. It draws attention to group sizes, data quality and the consequences of errors for individual recipients. It is best completed in parallel with the assessment of model quality.</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Groups for which the model may perform differently have been identified.</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The number of observations in these groups has been checked.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The quality of results has been compared across groups.</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The impact of missing data and of the method used to impute it has been analysed.</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> It has been checked whether input features lead to unjustified differentiation of results.</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The consequences of errors for individual users or areas have been assessed.</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The limitations identified and the remedial actions have been documented.</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>Not every difference between groups indicates bias. Such a difference does, however, require analysis in the context of the model's purpose, the quality of the data and the consequences of its use.</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 5. Transparency and documentation</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>This list concerns whether the solution is described in a way that allows other people to understand it, reproduce it and use it appropriately. It covers documentation of the purpose, data, method, code and model versions, test results, and information for recipients. It is worth updating on an ongoing basis during the project, rather than only at its end.</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The purpose, scope and limitations of the model have been documented.</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The data sources and their preparation have been described.</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The method used and the justification for choosing it have been recorded.</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The version of the code, the model and the significant dependencies have been recorded.</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The validation method and the test results have been documented.</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Known limitations and cases in which the model should not be used have been defined.</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Information on how to interpret the results has been prepared.</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> A way of informing recipients about the use of AI has been established, if required or appropriate.</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 6. Human oversight</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>This list is used to check whether the model's results remain under human control and whether it is clear who verifies them, and in what situations. It concerns, among other things, procedures for handling atypical results, the possibility of challenging a result, and the reporting of errors. It is completed before deployment, and revisited whenever the way the model is used changes.</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> A person responsible for oversight has been designated.</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> It has been determined which results require human verification.</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> A procedure for handling atypical results has been established.</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The people using the model are aware of its limitations.</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> It is possible to challenge or reject the model's result.</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Decisions with significant consequences are not taken without the required review.</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> A way of reporting errors and incidents has been defined.</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 7. Deployment and monitoring</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>This list concerns preparing for the launch of the solution and its subsequent maintenance. It helps establish the conditions for deployment, the way quality will be monitored, the rules for updating and re-validation, and a plan for withdrawing the model if necessary. It is completed before deployment and repeated during periodic reviews.</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The deployment conditions and acceptance criteria have been defined.</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Indicators for monitoring quality have been established.</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The frequency of reviews has been determined.</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Warning thresholds and the actions to take when they are exceeded have been defined.</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Changes in data distributions and in the quality of input data are monitored.</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The reproducibility of results has been ensured.</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Rules for updating and re-validating the model have been defined.</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The possibility of withdrawing the model or reverting to the baseline method has been planned.</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Responsibility for maintaining the solution has been assigned.</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="fu"># List 8. Generative AI</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>This list concerns the responsible use of generative AI tools, e.g. for creating texts, code or summaries. It draws attention to whether the tool is approved for use, the protection of the data entered into it, and the obligation for a human to check and approve the generated content. It is worth applying whenever such tools are used in work, including outside large projects.</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The tool is approved for the intended use.</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> No prohibited data is entered into the tool.</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Generated code is reviewed and tested.</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Generated content is verified for substantive accuracy.</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Figures, sources, quotations and references are checked.</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Verified content is distinguished from suggestions generated by the model.</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> The use of AI is documented where necessary.</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Responsibility for approved results is not attributed to the model.</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="fu"># Review summary</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>Once the lists have been completed, a short note should be prepared covering:</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the name and purpose of the solution;</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the date of the review;</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the persons taking part in the assessment;</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>requirements that have not been met or that need improvement;</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>corrective actions, the persons responsible and deadlines;</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the decision on whether to approve the solution for the next stage.</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>A checklist supports the risk management process; it is not an automatic certificate of compliance.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

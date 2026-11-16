@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Moduł 3. Poufność, prywatność i bezpieczeństwo danych – Responsible AI for Official Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ff0631ae66c640f7beec88805fcb678e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Brak wyników",
+    "search-matching-documents-text": "dopasowane dokumenty",
+    "search-copy-link-title": "Kopiuj link do wyszukiwania",
+    "search-hide-matches-text": "Ukryj dodatkowe dopasowania",
+    "search-more-match-text": "więcej dopasowań w tym dokumencie",
+    "search-more-matches-text": "więcej dopasowań w tym dokumencie",
+    "search-clear-button-title": "Wyczyść",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Anuluj",
+    "search-submit-button-title": "Zatwierdź",
+    "search-label": "Szukaj"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Responsible AI for Official Statistics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Szukaj"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Przełącz nawigację" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Strona główna</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/R01-wprowadzenie.html">Materiały szkoleniowe</a></li><li class="breadcrumb-item"><a href="../chapters/R03-rozdzial3.html">Moduł 3. Poufność, prywatność i bezpieczeństwo danych</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Szukaj" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Szukaj"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strona główna</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Materiały szkoleniowe</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R01-wprowadzenie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Moduł 1. Specyfika odpowiedzialnego AI w statystyce publicznej</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R02-zasady_etyczne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Moduł 2. AI i ML – możliwości oraz ograniczenia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/R03-rozdzial3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Moduł 3. Poufność, prywatność i bezpieczeństwo danych</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Na tej stronie</h2>
+   
+  <ul>
+  <li><a href="#wprowadzenie" id="toc-wprowadzenie" class="nav-link active" data-scroll-target="#wprowadzenie"><span class="header-section-number">1</span> Wprowadzenie</a></li>
+  <li><a href="#jakie-informacje-wymagają-ochrony" id="toc-jakie-informacje-wymagają-ochrony" class="nav-link" data-scroll-target="#jakie-informacje-wymagają-ochrony"><span class="header-section-number">2</span> 3.1. Jakie informacje wymagają ochrony?</a></li>
+  <li><a href="#główne-zagrożenia-związane-z-wykorzystaniem-ai" id="toc-główne-zagrożenia-związane-z-wykorzystaniem-ai" class="nav-link" data-scroll-target="#główne-zagrożenia-związane-z-wykorzystaniem-ai"><span class="header-section-number">3</span> 3.2. Główne zagrożenia związane z wykorzystaniem AI</a>
+  <ul class="collapse">
+  <li><a href="#nieuprawnione-przekazanie-danych" id="toc-nieuprawnione-przekazanie-danych" class="nav-link" data-scroll-target="#nieuprawnione-przekazanie-danych"><span class="header-section-number">3.1</span> Nieuprawnione przekazanie danych</a></li>
+  <li><a href="#ujawnienie-przez-prompt-lub-załącznik" id="toc-ujawnienie-przez-prompt-lub-załącznik" class="nav-link" data-scroll-target="#ujawnienie-przez-prompt-lub-załącznik"><span class="header-section-number">3.2</span> Ujawnienie przez prompt lub załącznik</a></li>
+  <li><a href="#nadmierne-uprawnienia" id="toc-nadmierne-uprawnienia" class="nav-link" data-scroll-target="#nadmierne-uprawnienia"><span class="header-section-number">3.3</span> Nadmierne uprawnienia</a></li>
+  <li><a href="#nieuprawnione-ujawnienie-w-odpowiedzi" id="toc-nieuprawnione-ujawnienie-w-odpowiedzi" class="nav-link" data-scroll-target="#nieuprawnione-ujawnienie-w-odpowiedzi"><span class="header-section-number">3.4</span> Nieuprawnione ujawnienie w odpowiedzi</a></li>
+  <li><a href="#utrata-kontroli-nad-dokumentacją-i-wynikami" id="toc-utrata-kontroli-nad-dokumentacją-i-wynikami" class="nav-link" data-scroll-target="#utrata-kontroli-nad-dokumentacją-i-wynikami"><span class="header-section-number">3.5</span> Utrata kontroli nad dokumentacją i wynikami</a></li>
+  </ul></li>
+  <li><a href="#anonimizacja-pseudonimizacja-i-dane-syntetyczne" id="toc-anonimizacja-pseudonimizacja-i-dane-syntetyczne" class="nav-link" data-scroll-target="#anonimizacja-pseudonimizacja-i-dane-syntetyczne"><span class="header-section-number">4</span> 3.3. Anonimizacja, pseudonimizacja i dane syntetyczne</a>
+  <ul class="collapse">
+  <li><a href="#anonimizacja" id="toc-anonimizacja" class="nav-link" data-scroll-target="#anonimizacja"><span class="header-section-number">4.1</span> Anonimizacja</a></li>
+  <li><a href="#pseudonimizacja" id="toc-pseudonimizacja" class="nav-link" data-scroll-target="#pseudonimizacja"><span class="header-section-number">4.2</span> Pseudonimizacja</a></li>
+  <li><a href="#dane-syntetyczne" id="toc-dane-syntetyczne" class="nav-link" data-scroll-target="#dane-syntetyczne"><span class="header-section-number">4.3</span> Dane syntetyczne</a></li>
+  </ul></li>
+  <li><a href="#bezpieczne-korzystanie-z-generatywnej-ai" id="toc-bezpieczne-korzystanie-z-generatywnej-ai" class="nav-link" data-scroll-target="#bezpieczne-korzystanie-z-generatywnej-ai"><span class="header-section-number">5</span> 3.4. Bezpieczne korzystanie z generatywnej AI</a>
+  <ul class="collapse">
+  <li><a href="#przykład-pomoc-w-napisaniu-kodu-r" id="toc-przykład-pomoc-w-napisaniu-kodu-r" class="nav-link" data-scroll-target="#przykład-pomoc-w-napisaniu-kodu-r"><span class="header-section-number">5.1</span> Przykład: pomoc w napisaniu kodu R</a></li>
+  </ul></li>
+  <li><a href="#bezpieczeństwo-modeli-i-integracji" id="toc-bezpieczeństwo-modeli-i-integracji" class="nav-link" data-scroll-target="#bezpieczeństwo-modeli-i-integracji"><span class="header-section-number">6</span> 3.5. Bezpieczeństwo modeli i integracji</a>
+  <ul class="collapse">
+  <li><a href="#prompt-injection" id="toc-prompt-injection" class="nav-link" data-scroll-target="#prompt-injection"><span class="header-section-number">6.1</span> Prompt injection</a></li>
+  <li><a href="#nadmierna-autonomia" id="toc-nadmierna-autonomia" class="nav-link" data-scroll-target="#nadmierna-autonomia"><span class="header-section-number">6.2</span> Nadmierna autonomia</a></li>
+  <li><a href="#integracja-z-dokumentacją" id="toc-integracja-z-dokumentacją" class="nav-link" data-scroll-target="#integracja-z-dokumentacją"><span class="header-section-number">6.3</span> Integracja z dokumentacją</a></li>
+  </ul></li>
+  <li><a href="#minimalizacja-danych-i-zasada-najmniejszych-uprawnień" id="toc-minimalizacja-danych-i-zasada-najmniejszych-uprawnień" class="nav-link" data-scroll-target="#minimalizacja-danych-i-zasada-najmniejszych-uprawnień"><span class="header-section-number">7</span> 3.6. Minimalizacja danych i zasada najmniejszych uprawnień</a></li>
+  <li><a href="#reagowanie-na-incydenty" id="toc-reagowanie-na-incydenty" class="nav-link" data-scroll-target="#reagowanie-na-incydenty"><span class="header-section-number">8</span> 3.7. Reagowanie na incydenty</a></li>
+  <li><a href="#ćwiczenie-czy-można-przekazać-te-dane-do-ai" id="toc-ćwiczenie-czy-można-przekazać-te-dane-do-ai" class="nav-link" data-scroll-target="#ćwiczenie-czy-można-przekazać-te-dane-do-ai"><span class="header-section-number">9</span> 3.8. Ćwiczenie: czy można przekazać te dane do AI?</a>
+  <ul class="collapse">
+  <li><a href="#proponowane-rozwiązanie" id="toc-proponowane-rozwiązanie" class="nav-link" data-scroll-target="#proponowane-rozwiązanie"><span class="header-section-number">9.1</span> Proponowane rozwiązanie</a></li>
+  </ul></li>
+  <li><a href="#lista-kontrolna-bezpieczeństwa" id="toc-lista-kontrolna-bezpieczeństwa" class="nav-link" data-scroll-target="#lista-kontrolna-bezpieczeństwa"><span class="header-section-number">10</span> 3.9. Lista kontrolna bezpieczeństwa</a></li>
+  <li><a href="#najważniejsze-wnioski" id="toc-najważniejsze-wnioski" class="nav-link" data-scroll-target="#najważniejsze-wnioski"><span class="header-section-number">11</span> 3.10. Najważniejsze wnioski</a></li>
+  <li><a href="#bibliografia-i-materiały-źródłowe" id="toc-bibliografia-i-materiały-źródłowe" class="nav-link" data-scroll-target="#bibliografia-i-materiały-źródłowe"><span class="header-section-number">12</span> Bibliografia i materiały źródłowe</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/R01-wprowadzenie.html">Materiały szkoleniowe</a></li><li class="breadcrumb-item"><a href="../chapters/R03-rozdzial3.html">Moduł 3. Poufność, prywatność i bezpieczeństwo danych</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Moduł 3. Poufność, prywatność i bezpieczeństwo danych</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Kod</button></div></div>
+<p class="subtitle lead">Bezpieczne wykorzystanie AI w środowisku statystyki publicznej</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="wprowadzenie" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Wprowadzenie</h1>
+<p>Systemy AI mogą przetwarzać dane lokalnie, w infrastrukturze instytucji lub za pośrednictwem usług zewnętrznych. W zależności od rozwiązania dane wejściowe, prompty, pliki, logi i wyniki mogą podlegać różnym zasadom przechowywania oraz dostępu.</p>
+<p>W statystyce publicznej szczególne znaczenie ma ochrona informacji jednostkowych, w tym danych pozyskanych w ramach badań statystycznych. Niewłaściwe wykorzystanie AI może prowadzić do ujawnienia informacji poufnych, naruszenia zasad dostępu lub utraty kontroli nad sposobem przetwarzania danych.</p>
+<p>Bezpieczeństwo nie zależy wyłącznie od tego, czy narzędzie jest znane lub popularne. Istotne są jego konfiguracja, warunki świadczenia usługi, zakres uprawnień, rodzaj przekazywanych danych oraz zatwierdzone procedury organizacyjne.</p>
+<p>Celem modułu jest przygotowanie uczestników do rozpoznawania ryzyk i wyboru bezpiecznego sposobu wykorzystania AI.</p>
+</section>
+<section id="jakie-informacje-wymagają-ochrony" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 3.1. Jakie informacje wymagają ochrony?</h1>
+<p>W ocenie bezpieczeństwa należy rozróżnić kilka kategorii informacji.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kategoria</th>
+<th>Przykłady</th>
+<th>Najważniejsza kwestia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dane osobowe</td>
+<td>Imię, nazwisko, adres, identyfikator osoby</td>
+<td>Zgodność z zasadami ochrony danych osobowych</td>
+</tr>
+<tr class="even">
+<td>Dane jednostkowe objęte tajemnicą statystyczną</td>
+<td>Dane przedsiębiorstwa lub respondenta pozyskane w badaniu</td>
+<td>Ochrona zgodna z przepisami o statystyce publicznej</td>
+</tr>
+<tr class="odd">
+<td>Informacje poufne organizacyjnie</td>
+<td>Nieopublikowane wyniki, dokumenty wewnętrzne</td>
+<td>Uprawnienia dostępu i zasady obiegu informacji</td>
+</tr>
+<tr class="even">
+<td>Dane zagregowane</td>
+<td>Tabele, wskaźniki, zestawienia</td>
+<td>Ocena, czy agregacja rzeczywiście ogranicza ryzyko ujawnienia</td>
+</tr>
+<tr class="odd">
+<td>Dane syntetyczne</td>
+<td>Dane wygenerowane w sposób sztuczny</td>
+<td>Ocena ryzyka ujawnienia informacji z danych źródłowych</td>
+</tr>
+<tr class="even">
+<td>Informacje publiczne</td>
+<td>Opublikowane raporty, metadane, dokumentacja</td>
+<td>Sprawdzenie warunków ponownego wykorzystania i celu przetwarzania</td>
+</tr>
+</tbody>
+</table>
+<p>Kategorie te mogą się częściowo pokrywać. Dane publiczne mogą zawierać informacje osobowe, a dane zagregowane mogą ujawniać informacje o pojedynczych jednostkach, jeśli komórka tabeli obejmuje bardzo małą liczbę podmiotów.</p>
+<p>Nie należy więc uznawać danych za bezpieczne tylko dlatego, że usunięto z nich nazwiska lub zastąpiono identyfikatory.</p>
+</section>
+<section id="główne-zagrożenia-związane-z-wykorzystaniem-ai" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3.2. Główne zagrożenia związane z wykorzystaniem AI</h1>
+<section id="nieuprawnione-przekazanie-danych" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="nieuprawnione-przekazanie-danych"><span class="header-section-number">3.1</span> Nieuprawnione przekazanie danych</h2>
+<p>Pracownik przekazuje dane do narzędzia, które nie zostało zatwierdzone do ich przetwarzania.</p>
+<p>Ryzyko zależy między innymi od konfiguracji usługi, warunków umownych, lokalizacji przetwarzania, dostępu dostawcy i zasad przechowywania danych.</p>
+</section>
+<section id="ujawnienie-przez-prompt-lub-załącznik" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="ujawnienie-przez-prompt-lub-załącznik"><span class="header-section-number">3.2</span> Ujawnienie przez prompt lub załącznik</h2>
+<p>Dane mogą zostać przekazane nie tylko w głównej treści zapytania, ale również w załączniku, fragmencie kodu, komunikacie błędu, zrzucie ekranu lub opisie problemu.</p>
+<p>Przykład: pracownik prosi model o poprawienie kodu R i dołącza fragment danych zawierający identyfikatory jednostek.</p>
+</section>
+<section id="nadmierne-uprawnienia" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="nadmierne-uprawnienia"><span class="header-section-number">3.3</span> Nadmierne uprawnienia</h2>
+<p>Asystent AI może uzyskać dostęp do dokumentów lub systemów szerszy, niż jest to niezbędne do wykonania zadania.</p>
+<p>Zasada minimalnych uprawnień oznacza, że narzędzie powinno mieć dostęp wyłącznie do zasobów koniecznych do realizacji określonego celu.</p>
+</section>
+<section id="nieuprawnione-ujawnienie-w-odpowiedzi" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="nieuprawnione-ujawnienie-w-odpowiedzi"><span class="header-section-number">3.4</span> Nieuprawnione ujawnienie w odpowiedzi</h2>
+<p>System może umieścić w odpowiedzi fragment poufnego dokumentu, dane z niewłaściwego źródła albo informacje dostępne użytkownikowi tylko w innym kontekście.</p>
+</section>
+<section id="utrata-kontroli-nad-dokumentacją-i-wynikami" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="utrata-kontroli-nad-dokumentacją-i-wynikami"><span class="header-section-number">3.5</span> Utrata kontroli nad dokumentacją i wynikami</h2>
+<p>Nieodpowiednio zarządzane prompty, wyniki i wersje plików mogą utrudnić ustalenie, jakie dane przekazano do narzędzia i w jaki sposób wykorzystano uzyskaną odpowiedź.</p>
+</section>
+</section>
+<section id="anonimizacja-pseudonimizacja-i-dane-syntetyczne" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 3.3. Anonimizacja, pseudonimizacja i dane syntetyczne</h1>
+<section id="anonimizacja" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="anonimizacja"><span class="header-section-number">4.1</span> Anonimizacja</h2>
+<p>Anonimizacja to proces, którego celem jest uniemożliwienie identyfikacji osoby na podstawie danych przy uwzględnieniu środków, które można racjonalnie wykorzystać.</p>
+<p>Samo usunięcie imienia i nazwiska nie gwarantuje anonimizacji. Identyfikacja może być możliwa przez połączenie pozostałych informacji, na przykład lokalizacji, wieku, zawodu i rzadkiej cechy.</p>
+</section>
+<section id="pseudonimizacja" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="pseudonimizacja"><span class="header-section-number">4.2</span> Pseudonimizacja</h2>
+<p>Pseudonimizacja polega na zastąpieniu identyfikatorów innymi wartościami, przy zachowaniu możliwości ponownego powiązania danych z osobą przy użyciu dodatkowych informacji.</p>
+<p>Dane pseudonimizowane nadal mogą być danymi osobowymi. Nie należy traktować pseudonimizacji jako automatycznego zezwolenia na przekazywanie danych do zewnętrznych narzędzi AI.</p>
+</section>
+<section id="dane-syntetyczne" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="dane-syntetyczne"><span class="header-section-number">4.3</span> Dane syntetyczne</h2>
+<p>Dane syntetyczne są generowane sztucznie, na przykład w celu testowania kodu lub prototypowania rozwiązań.</p>
+<p>Mogą ograniczyć konieczność korzystania z danych rzeczywistych, ale nie gwarantują braku ryzyka ujawnienia. Jeśli generator odtwarza charakterystyczne obserwacje ze zbioru źródłowego, konieczna może być dodatkowa ocena ryzyka.</p>
+<p><strong>Dobra praktyka:</strong> prototypowanie kodu na sztucznych danych o podobnej strukturze, a następnie walidacja w zatwierdzonym środowisku.</p>
+<p><strong>Zła praktyka:</strong> uznanie danych za anonimowe wyłącznie dlatego, że identyfikatory zostały usunięte.</p>
+</section>
+</section>
+<section id="bezpieczne-korzystanie-z-generatywnej-ai" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 3.4. Bezpieczne korzystanie z generatywnej AI</h1>
+<p>Przed przekazaniem informacji do modelu należy ustalić, czy narzędzie zostało dopuszczone do danego rodzaju danych i zastosowania.</p>
+<p>W szczególności należy sprawdzić:</p>
+<ul>
+<li>czy usługa została zatwierdzona przez instytucję;</li>
+<li>jakie dane są przekazywane i w jakim celu;</li>
+<li>czy treści są przechowywane lub wykorzystywane do dalszego trenowania;</li>
+<li>jakie zasady dotyczą logów, historii rozmów i załączników;</li>
+<li>kto ma dostęp do danych i wyników;</li>
+<li>czy istnieją ograniczenia dotyczące lokalizacji przetwarzania;</li>
+<li>czy sposób korzystania z narzędzia jest zgodny z wewnętrznymi regulacjami.</li>
+</ul>
+<p>Nie należy zakładać, że ustawienie wyłączające historię rozmów automatycznie rozwiązuje wszystkie problemy bezpieczeństwa. Warunki zależą od konkretnej usługi i konfiguracji.</p>
+<section id="przykład-pomoc-w-napisaniu-kodu-r" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="przykład-pomoc-w-napisaniu-kodu-r"><span class="header-section-number">5.1</span> Przykład: pomoc w napisaniu kodu R</h2>
+<p>Pracownik chce uzyskać pomoc w połączeniu dwóch zbiorów danych.</p>
+<p><strong>Niewłaściwe podejście</strong></p>
+<p>Przesyła pełne pliki zawierające dane jednostkowe, identyfikatory i informacje poufne.</p>
+<p><strong>Bezpieczniejsze podejście</strong></p>
+<ol type="1">
+<li>Przygotowuje mały, syntetyczny przykład pokazujący strukturę kolumn.</li>
+<li>Zastępuje rzeczywiste wartości fikcyjnymi danymi.</li>
+<li>Formułuje problem bez ujawniania informacji chronionych.</li>
+<li>Testuje wygenerowany kod w zatwierdzonym środowisku.</li>
+<li>Weryfikuje poprawność wyników na danych, do których ma uprawniony dostęp.</li>
+</ol>
+<p>Jeżeli problemu nie da się odtworzyć na danych syntetycznych, należy skorzystać z zatwierdzonego środowiska i właściwej procedury konsultacyjnej.</p>
+</section>
+</section>
+<section id="bezpieczeństwo-modeli-i-integracji" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 3.5. Bezpieczeństwo modeli i integracji</h1>
+<p>Ryzyko nie ogranicza się do samego modelu językowego. Może pojawić się również w systemach, które łączą model z dokumentami, bazami danych, API i narzędziami wykonującymi polecenia.</p>
+<section id="prompt-injection" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="prompt-injection"><span class="header-section-number">6.1</span> Prompt injection</h2>
+<p>Prompt injection polega na próbie wpłynięcia na działanie modelu poprzez treść wejściową, na przykład dokument lub stronę zawierającą instrukcje, które mają skłonić system do naruszenia ustalonych zasad.</p>
+<p>Przykład: asystent wyszukuje odpowiedzi w dokumentach, a jeden z nich zawiera polecenie, aby ujawnić inne dostępne pliki.</p>
+<p>Treść dokumentu powinna być traktowana jako materiał do analizy, a nie jako automatycznie zaufana instrukcja systemowa.</p>
+</section>
+<section id="nadmierna-autonomia" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="nadmierna-autonomia"><span class="header-section-number">6.2</span> Nadmierna autonomia</h2>
+<p>Jeśli model może samodzielnie wykonywać działania, takie jak wysyłanie wiadomości, modyfikowanie plików czy uruchamianie zapytań, błędna interpretacja może mieć realne konsekwencje.</p>
+<p>Warto stosować:</p>
+<ul>
+<li>ograniczenie dostępnych narzędzi;</li>
+<li>minimalne uprawnienia;</li>
+<li>rozdzielenie odczytu od modyfikacji danych;</li>
+<li>potwierdzenie człowieka przed działaniami istotnymi;</li>
+<li>rejestrowanie operacji;</li>
+<li>testy bezpieczeństwa.</li>
+</ul>
+</section>
+<section id="integracja-z-dokumentacją" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="integracja-z-dokumentacją"><span class="header-section-number">6.3</span> Integracja z dokumentacją</h2>
+<p>Asystent wykorzystujący RAG powinien mieć ograniczony dostęp do zatwierdzonych dokumentów, respektować uprawnienia użytkownika i wskazywać źródła odpowiedzi.</p>
+<p>Nie wystarczy, że model potrafi wyszukać dokument. Trzeba również sprawdzić, czy nie ujawnia fragmentów dokumentów, do których użytkownik nie powinien mieć dostępu.</p>
+</section>
+</section>
+<section id="minimalizacja-danych-i-zasada-najmniejszych-uprawnień" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 3.6. Minimalizacja danych i zasada najmniejszych uprawnień</h1>
+<p>Dwie praktyczne zasady powinny towarzyszyć każdemu wdrożeniu.</p>
+<p><strong>Minimalizacja danych:</strong> przekazuj tylko te informacje, które są niezbędne do wykonania zadania.</p>
+<p><strong>Minimalizacja uprawnień:</strong> zapewniaj systemowi i użytkownikom dostęp wyłącznie do zasobów niezbędnych do realizacji celu.</p>
+<p>W praktyce oznacza to między innymi:</p>
+<ul>
+<li>unikanie przekazywania całych plików, gdy wystarczy schemat danych;</li>
+<li>ograniczanie liczby pól i zakresu rekordów;</li>
+<li>usuwanie niepotrzebnych identyfikatorów;</li>
+<li>stosowanie danych syntetycznych podczas prototypowania;</li>
+<li>kontrolę dostępu do dokumentów i repozytoriów;</li>
+<li>odrębne środowiska testowe i produkcyjne;</li>
+<li>ograniczanie czasu przechowywania danych zgodnie z przyjętymi zasadami.</li>
+</ul>
+<p>Minimalizacja nie zastępuje formalnej oceny dopuszczalności przetwarzania. Jest dodatkowym środkiem ograniczania ryzyka.</p>
+</section>
+<section id="reagowanie-na-incydenty" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 3.7. Reagowanie na incydenty</h1>
+<p>Incydent może polegać na przekazaniu danych do niezatwierdzonego narzędzia, nieuprawnionym dostępie, ujawnieniu informacji w odpowiedzi lub błędnej konfiguracji integracji.</p>
+<p>W przypadku podejrzenia incydentu pracownik powinien:</p>
+<ol type="1">
+<li>Przerwać działanie, które może pogłębiać problem.</li>
+<li>Zabezpieczyć dostępne informacje o zdarzeniu zgodnie z procedurą.</li>
+<li>Nie podejmować samodzielnie działań, które mogłyby utrudnić ustalenie przebiegu zdarzenia.</li>
+<li>Niezwłocznie powiadomić właściwą osobę lub zespół zgodnie z wewnętrzną procedurą.</li>
+<li>Współpracować przy ocenie skutków i działaniach naprawczych.</li>
+</ol>
+<p>Nie należy zakładać, że usunięcie wiadomości lub pliku z interfejsu oznacza usunięcie wszystkich kopii, logów czy danych przetwarzanych przez usługę.</p>
+<p>Szczegółowe obowiązki i terminy zgłoszeń zależą od rodzaju incydentu oraz obowiązujących przepisów i procedur. W szkoleniu należy odwołać się do instrukcji bezpieczeństwa konkretnej instytucji.</p>
+</section>
+<section id="ćwiczenie-czy-można-przekazać-te-dane-do-ai" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 3.8. Ćwiczenie: czy można przekazać te dane do AI?</h1>
+<p>Rozważ cztery sytuacje:</p>
+<p><strong>A.</strong> Pracownik prosi model o wyjaśnienie działania funkcji <code>left_join()</code> w R, bez przekazywania danych.</p>
+<p><strong>B.</strong> Pracownik przesyła tabelę z danymi jednostkowymi i identyfikatorami do publicznego chatbota.</p>
+<p><strong>C.</strong> Zespół testuje skrypt na fikcyjnych rekordach wygenerowanych na potrzeby ćwiczenia.</p>
+<p><strong>D.</strong> Asystent AI ma dostęp do całego repozytorium dokumentów, mimo że do odpowiedzi potrzebuje tylko jednej instrukcji.</p>
+<p>Dla każdej sytuacji określ:</p>
+<ol type="1">
+<li>Jakie ryzyko występuje?</li>
+<li>Jakie dodatkowe informacje są potrzebne do oceny?</li>
+<li>Jakie zabezpieczenie należy zastosować?</li>
+</ol>
+<section id="proponowane-rozwiązanie" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="proponowane-rozwiązanie"><span class="header-section-number">9.1</span> Proponowane rozwiązanie</h2>
+<ul>
+<li><strong>A:</strong> Zwykle niskie ryzyko ujawnienia danych, ponieważ nie są przekazywane dane jednostkowe. Nadal należy stosować zasady korzystania z zatwierdzonych narzędzi.</li>
+<li><strong>B:</strong> Nie należy przekazywać danych do czasu potwierdzenia, że narzędzie i sposób przetwarzania są dopuszczone. Usunięcie kilku identyfikatorów nie musi rozwiązywać problemu.</li>
+<li><strong>C:</strong> Zwykle dobre podejście do prototypowania, pod warunkiem że dane syntetyczne nie ujawniają informacji ze zbioru rzeczywistego.</li>
+<li><strong>D:</strong> Należy ograniczyć uprawnienia do zasobów niezbędnych do realizacji zadania oraz sprawdzić, czy system respektuje uprawnienia poszczególnych użytkowników.</li>
+</ul>
+</section>
+</section>
+<section id="lista-kontrolna-bezpieczeństwa" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 3.9. Lista kontrolna bezpieczeństwa</h1>
+<p>Przed użyciem AI:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sprawdziłem, czy narzędzie jest zatwierdzone do planowanego zastosowania.</label></li>
+<li><label><input type="checkbox">Określiłem kategorię danych i wymagany poziom ochrony.</label></li>
+<li><label><input type="checkbox">Ograniczyłem przekazywane informacje do niezbędnego minimum.</label></li>
+<li><label><input type="checkbox">Nie przekazuję danych poufnych do niezatwierdzonej usługi.</label></li>
+<li><label><input type="checkbox">Sprawdziłem warunki przechowywania i wykorzystania danych.</label></li>
+<li><label><input type="checkbox">Zweryfikowałem uprawnienia narzędzia do dokumentów i systemów.</label></li>
+<li><label><input type="checkbox">Rozważyłem użycie danych syntetycznych.</label></li>
+<li><label><input type="checkbox">Wiem, jak zgłosić podejrzenie incydentu.</label></li>
+</ul>
+</section>
+<section id="najważniejsze-wnioski" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 3.10. Najważniejsze wnioski</h1>
+<ol type="1">
+<li>Bezpieczeństwo zależy od rodzaju danych, konfiguracji narzędzia i sposobu jego użycia.</li>
+<li>Usunięcie bezpośrednich identyfikatorów nie gwarantuje anonimowości.</li>
+<li>Dane syntetyczne mogą wspierać bezpieczne testowanie, ale również wymagają odpowiedniej oceny.</li>
+<li>Prompty, załączniki, logi i wyniki są elementami przepływu informacji.</li>
+<li>Integracje AI powinny korzystać z minimalnych uprawnień.</li>
+<li>W razie incydentu należy stosować procedury instytucji, a nie polegać na samodzielnym usuwaniu śladów zdarzenia.</li>
+</ol>
+</section>
+<section id="bibliografia-i-materiały-źródłowe" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Bibliografia i materiały źródłowe</h1>
+<ol type="1">
+<li><p>UNECE. (2025). <em>Generative AI for Official Statistics</em>.<br>
+https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report</p></li>
+<li><p>UNECE. (2025). <em>Responsible AI for Official Statistics Framework</em>.<br>
+https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework</p></li>
+<li><p>European Union. <em>General Data Protection Regulation (GDPR), Regulation (EU) 2016/679</em>.<br>
+https://eur-lex.europa.eu/eli/reg/2016/679/oj</p></li>
+<li><p>European Union. <em>Regulation (EU) 2024/1689 – Artificial Intelligence Act</em>.<br>
+https://eur-lex.europa.eu/eli/reg/2024/1689/oj</p></li>
+<li><p>United Nations Statistics Division. <em>The Fundamental Principles of Official Statistics</em>.<br>
+https://unstats.un.org/fpos</p></li>
+</ol>
+<p>Przed wykorzystaniem rozdziału jako formalnej instrukcji należy sprawdzić aktualne przepisy, zasady tajemnicy statystycznej oraz procedury bezpieczeństwa obowiązujące w danej instytucji.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Skopiowano!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Skopiowano!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Kod źródłowy</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Moduł 3. Poufność, prywatność i bezpieczeństwo danych"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Bezpieczne wykorzystanie AI w środowisku statystyki publicznej"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Wprowadzenie</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Systemy AI mogą przetwarzać dane lokalnie, w infrastrukturze instytucji lub za pośrednictwem usług zewnętrznych. W zależności od rozwiązania dane wejściowe, prompty, pliki, logi i wyniki mogą podlegać różnym zasadom przechowywania oraz dostępu.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>W statystyce publicznej szczególne znaczenie ma ochrona informacji jednostkowych, w tym danych pozyskanych w ramach badań statystycznych. Niewłaściwe wykorzystanie AI może prowadzić do ujawnienia informacji poufnych, naruszenia zasad dostępu lub utraty kontroli nad sposobem przetwarzania danych.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Bezpieczeństwo nie zależy wyłącznie od tego, czy narzędzie jest znane lub popularne. Istotne są jego konfiguracja, warunki świadczenia usługi, zakres uprawnień, rodzaj przekazywanych danych oraz zatwierdzone procedury organizacyjne.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Celem modułu jest przygotowanie uczestników do rozpoznawania ryzyk i wyboru bezpiecznego sposobu wykorzystania AI.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.1. Jakie informacje wymagają ochrony?</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>W ocenie bezpieczeństwa należy rozróżnić kilka kategorii informacji.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Kategoria <span class="pp">|</span> Przykłady <span class="pp">|</span> Najważniejsza kwestia <span class="pp">|</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Dane osobowe <span class="pp">|</span> Imię, nazwisko, adres, identyfikator osoby <span class="pp">|</span> Zgodność z zasadami ochrony danych osobowych <span class="pp">|</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Dane jednostkowe objęte tajemnicą statystyczną <span class="pp">|</span> Dane przedsiębiorstwa lub respondenta pozyskane w badaniu <span class="pp">|</span> Ochrona zgodna z przepisami o statystyce publicznej <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Informacje poufne organizacyjnie <span class="pp">|</span> Nieopublikowane wyniki, dokumenty wewnętrzne <span class="pp">|</span> Uprawnienia dostępu i zasady obiegu informacji <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Dane zagregowane <span class="pp">|</span> Tabele, wskaźniki, zestawienia <span class="pp">|</span> Ocena, czy agregacja rzeczywiście ogranicza ryzyko ujawnienia <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Dane syntetyczne <span class="pp">|</span> Dane wygenerowane w sposób sztuczny <span class="pp">|</span> Ocena ryzyka ujawnienia informacji z danych źródłowych <span class="pp">|</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Informacje publiczne <span class="pp">|</span> Opublikowane raporty, metadane, dokumentacja <span class="pp">|</span> Sprawdzenie warunków ponownego wykorzystania i celu przetwarzania <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Kategorie te mogą się częściowo pokrywać. Dane publiczne mogą zawierać informacje osobowe, a dane zagregowane mogą ujawniać informacje o pojedynczych jednostkach, jeśli komórka tabeli obejmuje bardzo małą liczbę podmiotów.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Nie należy więc uznawać danych za bezpieczne tylko dlatego, że usunięto z nich nazwiska lub zastąpiono identyfikatory.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.2. Główne zagrożenia związane z wykorzystaniem AI</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nieuprawnione przekazanie danych</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Pracownik przekazuje dane do narzędzia, które nie zostało zatwierdzone do ich przetwarzania.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Ryzyko zależy między innymi od konfiguracji usługi, warunków umownych, lokalizacji przetwarzania, dostępu dostawcy i zasad przechowywania danych.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ujawnienie przez prompt lub załącznik</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Dane mogą zostać przekazane nie tylko w głównej treści zapytania, ale również w załączniku, fragmencie kodu, komunikacie błędu, zrzucie ekranu lub opisie problemu.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>Przykład: pracownik prosi model o poprawienie kodu R i dołącza fragment danych zawierający identyfikatory jednostek.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nadmierne uprawnienia</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Asystent AI może uzyskać dostęp do dokumentów lub systemów szerszy, niż jest to niezbędne do wykonania zadania.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>Zasada minimalnych uprawnień oznacza, że narzędzie powinno mieć dostęp wyłącznie do zasobów koniecznych do realizacji określonego celu.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nieuprawnione ujawnienie w odpowiedzi</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>System może umieścić w odpowiedzi fragment poufnego dokumentu, dane z niewłaściwego źródła albo informacje dostępne użytkownikowi tylko w innym kontekście.</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Utrata kontroli nad dokumentacją i wynikami</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>Nieodpowiednio zarządzane prompty, wyniki i wersje plików mogą utrudnić ustalenie, jakie dane przekazano do narzędzia i w jaki sposób wykorzystano uzyskaną odpowiedź.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.3. Anonimizacja, pseudonimizacja i dane syntetyczne</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Anonimizacja</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Anonimizacja to proces, którego celem jest uniemożliwienie identyfikacji osoby na podstawie danych przy uwzględnieniu środków, które można racjonalnie wykorzystać.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Samo usunięcie imienia i nazwiska nie gwarantuje anonimizacji. Identyfikacja może być możliwa przez połączenie pozostałych informacji, na przykład lokalizacji, wieku, zawodu i rzadkiej cechy.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pseudonimizacja</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>Pseudonimizacja polega na zastąpieniu identyfikatorów innymi wartościami, przy zachowaniu możliwości ponownego powiązania danych z osobą przy użyciu dodatkowych informacji.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>Dane pseudonimizowane nadal mogą być danymi osobowymi. Nie należy traktować pseudonimizacji jako automatycznego zezwolenia na przekazywanie danych do zewnętrznych narzędzi AI.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dane syntetyczne</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>Dane syntetyczne są generowane sztucznie, na przykład w celu testowania kodu lub prototypowania rozwiązań.</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>Mogą ograniczyć konieczność korzystania z danych rzeczywistych, ale nie gwarantują braku ryzyka ujawnienia. Jeśli generator odtwarza charakterystyczne obserwacje ze zbioru źródłowego, konieczna może być dodatkowa ocena ryzyka.</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>**Dobra praktyka:** prototypowanie kodu na sztucznych danych o podobnej strukturze, a następnie walidacja w zatwierdzonym środowisku.</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>**Zła praktyka:** uznanie danych za anonimowe wyłącznie dlatego, że identyfikatory zostały usunięte.</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.4. Bezpieczne korzystanie z generatywnej AI</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>Przed przekazaniem informacji do modelu należy ustalić, czy narzędzie zostało dopuszczone do danego rodzaju danych i zastosowania.</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>W szczególności należy sprawdzić:</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>czy usługa została zatwierdzona przez instytucję;</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>jakie dane są przekazywane i w jakim celu;</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>czy treści są przechowywane lub wykorzystywane do dalszego trenowania;</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>jakie zasady dotyczą logów, historii rozmów i załączników;</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>kto ma dostęp do danych i wyników;</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>czy istnieją ograniczenia dotyczące lokalizacji przetwarzania;</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>czy sposób korzystania z narzędzia jest zgodny z wewnętrznymi regulacjami.</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>Nie należy zakładać, że ustawienie wyłączające historię rozmów automatycznie rozwiązuje wszystkie problemy bezpieczeństwa. Warunki zależą od konkretnej usługi i konfiguracji.</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Przykład: pomoc w napisaniu kodu R</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>Pracownik chce uzyskać pomoc w połączeniu dwóch zbiorów danych.</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>**Niewłaściwe podejście**</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>Przesyła pełne pliki zawierające dane jednostkowe, identyfikatory i informacje poufne.</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>**Bezpieczniejsze podejście**</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Przygotowuje mały, syntetyczny przykład pokazujący strukturę kolumn.</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Zastępuje rzeczywiste wartości fikcyjnymi danymi.</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Formułuje problem bez ujawniania informacji chronionych.</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Testuje wygenerowany kod w zatwierdzonym środowisku.</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Weryfikuje poprawność wyników na danych, do których ma uprawniony dostęp.</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>Jeżeli problemu nie da się odtworzyć na danych syntetycznych, należy skorzystać z zatwierdzonego środowiska i właściwej procedury konsultacyjnej.</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.5. Bezpieczeństwo modeli i integracji</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>Ryzyko nie ogranicza się do samego modelu językowego. Może pojawić się również w systemach, które łączą model z dokumentami, bazami danych, API i narzędziami wykonującymi polecenia.</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prompt injection</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>Prompt injection polega na próbie wpłynięcia na działanie modelu poprzez treść wejściową, na przykład dokument lub stronę zawierającą instrukcje, które mają skłonić system do naruszenia ustalonych zasad.</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>Przykład: asystent wyszukuje odpowiedzi w dokumentach, a jeden z nich zawiera polecenie, aby ujawnić inne dostępne pliki.</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>Treść dokumentu powinna być traktowana jako materiał do analizy, a nie jako automatycznie zaufana instrukcja systemowa.</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nadmierna autonomia</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>Jeśli model może samodzielnie wykonywać działania, takie jak wysyłanie wiadomości, modyfikowanie plików czy uruchamianie zapytań, błędna interpretacja może mieć realne konsekwencje.</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>Warto stosować:</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ograniczenie dostępnych narzędzi;</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>minimalne uprawnienia;</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>rozdzielenie odczytu od modyfikacji danych;</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>potwierdzenie człowieka przed działaniami istotnymi;</span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>rejestrowanie operacji;</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>testy bezpieczeństwa.</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## Integracja z dokumentacją</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>Asystent wykorzystujący RAG powinien mieć ograniczony dostęp do zatwierdzonych dokumentów, respektować uprawnienia użytkownika i wskazywać źródła odpowiedzi.</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>Nie wystarczy, że model potrafi wyszukać dokument. Trzeba również sprawdzić, czy nie ujawnia fragmentów dokumentów, do których użytkownik nie powinien mieć dostępu.</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.6. Minimalizacja danych i zasada najmniejszych uprawnień</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>Dwie praktyczne zasady powinny towarzyszyć każdemu wdrożeniu.</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>**Minimalizacja danych:** przekazuj tylko te informacje, które są niezbędne do wykonania zadania.</span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>**Minimalizacja uprawnień:** zapewniaj systemowi i użytkownikom dostęp wyłącznie do zasobów niezbędnych do realizacji celu.</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>W praktyce oznacza to między innymi:</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>unikanie przekazywania całych plików, gdy wystarczy schemat danych;</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ograniczanie liczby pól i zakresu rekordów;</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>usuwanie niepotrzebnych identyfikatorów;</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>stosowanie danych syntetycznych podczas prototypowania;</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>kontrolę dostępu do dokumentów i repozytoriów;</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>odrębne środowiska testowe i produkcyjne;</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ograniczanie czasu przechowywania danych zgodnie z przyjętymi zasadami.</span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>Minimalizacja nie zastępuje formalnej oceny dopuszczalności przetwarzania. Jest dodatkowym środkiem ograniczania ryzyka.</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.7. Reagowanie na incydenty</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>Incydent może polegać na przekazaniu danych do niezatwierdzonego narzędzia, nieuprawnionym dostępie, ujawnieniu informacji w odpowiedzi lub błędnej konfiguracji integracji.</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>W przypadku podejrzenia incydentu pracownik powinien:</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Przerwać działanie, które może pogłębiać problem.</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Zabezpieczyć dostępne informacje o zdarzeniu zgodnie z procedurą.</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Nie podejmować samodzielnie działań, które mogłyby utrudnić ustalenie przebiegu zdarzenia.</span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Niezwłocznie powiadomić właściwą osobę lub zespół zgodnie z wewnętrzną procedurą.</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Współpracować przy ocenie skutków i działaniach naprawczych.</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>Nie należy zakładać, że usunięcie wiadomości lub pliku z interfejsu oznacza usunięcie wszystkich kopii, logów czy danych przetwarzanych przez usługę.</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>Szczegółowe obowiązki i terminy zgłoszeń zależą od rodzaju incydentu oraz obowiązujących przepisów i procedur. W szkoleniu należy odwołać się do instrukcji bezpieczeństwa konkretnej instytucji.</span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.8. Ćwiczenie: czy można przekazać te dane do AI?</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>Rozważ cztery sytuacje:</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>**A.** Pracownik prosi model o wyjaśnienie działania funkcji <span class="in">`left_join()`</span> w R, bez przekazywania danych.</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>**B.** Pracownik przesyła tabelę z danymi jednostkowymi i identyfikatorami do publicznego chatbota.</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>**C.** Zespół testuje skrypt na fikcyjnych rekordach wygenerowanych na potrzeby ćwiczenia.</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>**D.** Asystent AI ma dostęp do całego repozytorium dokumentów, mimo że do odpowiedzi potrzebuje tylko jednej instrukcji.</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>Dla każdej sytuacji określ:</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Jakie ryzyko występuje?</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Jakie dodatkowe informacje są potrzebne do oceny?</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Jakie zabezpieczenie należy zastosować?</span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## Proponowane rozwiązanie</span></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**A:** Zwykle niskie ryzyko ujawnienia danych, ponieważ nie są przekazywane dane jednostkowe. Nadal należy stosować zasady korzystania z zatwierdzonych narzędzi.</span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**B:** Nie należy przekazywać danych do czasu potwierdzenia, że narzędzie i sposób przetwarzania są dopuszczone. Usunięcie kilku identyfikatorów nie musi rozwiązywać problemu.</span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**C:** Zwykle dobre podejście do prototypowania, pod warunkiem że dane syntetyczne nie ujawniają informacji ze zbioru rzeczywistego.</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**D:** Należy ograniczyć uprawnienia do zasobów niezbędnych do realizacji zadania oraz sprawdzić, czy system respektuje uprawnienia poszczególnych użytkowników.</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.9. Lista kontrolna bezpieczeństwa</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>Przed użyciem AI:</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Sprawdziłem, czy narzędzie jest zatwierdzone do planowanego zastosowania.</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Określiłem kategorię danych i wymagany poziom ochrony.</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Ograniczyłem przekazywane informacje do niezbędnego minimum.</span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Nie przekazuję danych poufnych do niezatwierdzonej usługi.</span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Sprawdziłem warunki przechowywania i wykorzystania danych.</span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Zweryfikowałem uprawnienia narzędzia do dokumentów i systemów.</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Rozważyłem użycie danych syntetycznych.</span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Wiem, jak zgłosić podejrzenie incydentu.</span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3.10. Najważniejsze wnioski</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Bezpieczeństwo zależy od rodzaju danych, konfiguracji narzędzia i sposobu jego użycia.</span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Usunięcie bezpośrednich identyfikatorów nie gwarantuje anonimowości.</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Dane syntetyczne mogą wspierać bezpieczne testowanie, ale również wymagają odpowiedniej oceny.</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Prompty, załączniki, logi i wyniki są elementami przepływu informacji.</span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Integracje AI powinny korzystać z minimalnych uprawnień.</span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>W razie incydentu należy stosować procedury instytucji, a nie polegać na samodzielnym usuwaniu śladów zdarzenia.</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="fu"># Bibliografia i materiały źródłowe</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>UNECE. (2025). *Generative AI for Official Statistics*.  </span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>   https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report</span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>UNECE. (2025). *Responsible AI for Official Statistics Framework*.  </span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>   https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>European Union. *General Data Protection Regulation (GDPR), Regulation (EU) 2016/679*.  </span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a>   https://eur-lex.europa.eu/eli/reg/2016/679/oj</span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>European Union. *Regulation (EU) 2024/1689 – Artificial Intelligence Act*.  </span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>   https://eur-lex.europa.eu/eli/reg/2024/1689/oj</span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>United Nations Statistics Division. *The Fundamental Principles of Official Statistics*.  </span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>   https://unstats.un.org/fpos</span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>Przed wykorzystaniem rozdziału jako formalnej instrukcji należy sprawdzić aktualne przepisy, zasady tajemnicy statystycznej oraz procedury bezpieczeństwa obowiązujące w danej instytucji.</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

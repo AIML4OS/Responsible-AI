@@ -1,0 +1,124 @@
+---
+title: "Transparency and Documentation of AI Systems"
+subtitle: "Responsible AI for Official Statistics"
+---
+  
+## 1. Why is transparency important?
+  
+The integration of generative and classical artificial intelligence in statistical organizations creates enormous opportunities to increase agility, efficiency, and innovation. At the same time, it brings significant risks and management challenges that—without strong frameworks and clear transparency mechanisms—can undermine public trust, transparency, and accountability.
+
+In official statistics, the outcome of AI-supported processes should be not only useful, but also explainable, verifiable, and reproducible.
+
+If an AI model supports key production stages, such as classification, imputation, quality control, or data analysis, one must be able to answer the questions:
+
+- What problem are we solving?
+- Why was AI chosen instead of a simpler method?
+- What data was the solution developed and tested on?
+- What are the limitations of the model?
+- Who approves the results?
+- How can the analysis be reproduced?
+  
+Transparency does not mean that every user must know the mathematical details of the model. It means they receive information appropriate to their role and decisions made.
+
+## 2. What needs to be documented?
+
+To manage technological and operational risk, the documentation of AI processes must be systematic and comprehensive. The scope of collected information should always be proportional to the level of risk and criticality of a given application.
+
+| Area | Sample information |
+  |----|----|
+  | Objective | Statistical problem and justification for using AI |
+  | Data | Sources, time frame, population, limitations |
+  | Data preparation | Cleaning, transformations, imputations |
+  | Model | Algorithm type, version, parameters |
+  | Training | Data split, validation, tuning method |
+  | Results | Metrics, errors, comparison with baseline |
+  | Limitations | Cases where the model may perform worse |
+  | Supervision | Responsible person, control and approval method |
+  | Operation | Production version, monitoring, withdrawal conditions |
+  | Reproducibility | Code, dependencies, random seed, run date |
+  
+The scope of documentation should be proportional to the risk and importance of the application.
+
+## 3. Model documentation vs. process documentation
+
+**Model documentation** focuses on the technical dimension: it describes the algorithm itself, input data structure, parameters, obtained quality metrics, and identified mathematical limitations.
+**Process documentation** is operational and organizational in nature: it describes the exact place in statistical production where the model's output is used, who checks its correctness and under what rules, and what steps should be taken if an error or anomaly is detected.
+
+Technical documentation alone is not sufficient if it is unknown where in the statistical process the model's result is used.
+
+## 4. Example: imputation of missing values
+
+Suppose a statistical office implements a machine learning model (e.g., Random Forest algorithm) to predict the number of tourist overnight stays in accommodations that failed to submit the mandatory report on time.
+
+A description limited to the sentence "Random Forest was used" is insufficient.
+
+The documentation should indicate, among other things:
+  
+- the imputed variable and observation unit;
+- the reporting period and statistical population covered by the analysis;
+- the set of auxiliary variables used as predictors (e.g., historical data, location, accommodation category);
+- the validation method on observations with an available actual value;
+- overall prediction quality and errors in significant subgroups (e.g., smaller agritourism hotels vs. large city hotels);
+- the method of marking imputed values (flagging estimated data);
+- rules for mandatory expert control and procedures for potential manual correction;
+- clearly defined model limitations, e.g., poorer predictive performance during periods of sudden, atypical economic crises or pandemics.
+
+## 5. Explainability and interpretation
+
+In the processes of implementing AI in statistical offices, three levels of explaining system operation should be clearly distinguished:
+  
+- **global explanation** — describes the general logic of the model's operation in relation to the entire dataset. It answers the question which features (explanatory variables) have the greatest significance for prediction on a macro scale.
+- **local explanation** — focuses on a single observation (e.g., a specific household, enterprise, or region). It explains why the system made a particular decision in that specific case.
+- **operational description** — concerns understanding how the obtained result translates into the final statistical process.
+
+
+High variable importance in the model is not synonymous with a causal relationship – predictive dependence does not constitute proof of causality. In the case of advanced modeling structures, it is worth using explanatory methods such as permutation importance or SHAP, but the results obtained using them also require careful interpretation.
+
+## 6. Example of good and bad practice
+
+**Bad practice**
+  
+"The model works well. AI was used to automatically fill in missing data."
+
+Problem: lack of information on source data, validation methods, actual prediction quality, algorithm limitations, and human supervision procedures.
+
+**Better practice**
+  
+"A verified Random Forest model was used to generate imputation proposals for missing values. The model quality was systematically evaluated on a held-out test sample using historical actual data, and the results were compared with the previous baseline method broken down by key regions. Imputed values are appropriately marked in the system (imputation flag), and their final approval is subject to expert control in accordance with the internal quality procedure of the statistical process."
+
+The above description constitutes a model example of structuring information about the process, rather than a declaration of the results of a specific empirical study.
+
+## 7. Exercise
+
+A team implemented a model for the automatic assignment of economic activity codes based on text descriptions.
+
+Prepare a list of five pieces of information that should be included in the documentation before using the results in the production process.
+
+Then answer:
+  
+  1.  What errors may be difficult to detect?
+  2.  What information should the result user receive?
+  3.  Who should approve model changes?
+  
+  ## 8. Checklist
+  
+- [ ] The purpose of the AI application is unambiguous.
+- [ ] Data sources and preparation are described.
+- [ ] Quality metrics and the baseline method are documented.
+- [ ] Limitations and risks are transparent.
+- [ ] Results can be reproduced in a specified environment.
+- [ ] It is clear who is responsible for control and approval.
+- [ ] Model changes and versions are logged.
+
+## 9. Key Conclusions
+
+- **Documentation as the foundation of quality:** Documentation is an integral part of the quality of the statistical process, not an optional project addition.
+- **Verifiability of results:** Every result generated by the model should be independently verifiable through transparent testing procedures and data access.
+- **Tailoring explainability:** The degree of model explainability must be strictly adapted to the knowledge level and specific needs of the end-user.
+- **Transparency of limitations:** The transparency of the analytical process requires clear communication regarding model limitations and associated uncertainty.
+- **Reliability of validation:** A model should not be assigned a reliability higher than what is unambiguously confirmed by objective and independent validation results.
+
+## 10. Bibliography and Source Materials
+
+- UNECE, [Responsible AI for Official Statistics Framework](https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework).
+- NIST, [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).

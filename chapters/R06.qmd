@@ -1,0 +1,147 @@
+---
+title: "Oversight and Accountability for AI"
+subtitle: "Responsible AI for Official Statistics"
+---
+  
+## 1. Why is Oversight Needed?
+  
+Official statistics are built on the principle of public trust, objectivity, and the highest data quality. Integrating artificial intelligence (AI) and machine learning (ML) into production processes (e.g., in surveys, registers, or macroeconomic statistics) introduces specific risks.
+
+An AI system can generate an erroneous classification, incorrect imputation of missing values, or a convincingly sounding yet factually false explanation (a model "hallucination").
+
+Responsible implementation requires determining:
+
+- who is responsible for the purpose of the application and its socio-economic justification;
+- who approves the input data, representation quality, and the method used;
+- who evaluates the quality and stability of the results;
+- who makes the final decision on using the algorithm's results in published data;
+- who reacts in the event of errors, anomalies, or security incidents;
+- who holds formal authority to immediately stop, withdraw, or suspend the solution.
+
+
+**The use of AI does not transfer responsibility for the statistical process to the algorithm.**
+  
+## 2. Human Oversight
+  
+Human oversight should not be limited to formal approval of results or passive acceptance of system suggestions.
+
+It should include the actual ability to:
+
+- understand the model's role: knowledge of the assumptions underlying the algorithm, its architecture, and the factors driving its predictions;
+- check its limitations: awareness of the conditions and data populations under which the model loses stability;
+- challenge the result: the right and technical ability to reject the algorithm's suggestions without paralyzing the entire production process;
+- refer cases for additional analysis: directing atypical or questionable cases to an additional expert verification path;
+- stop the process when significant risk arises: having a simple mechanism to disconnect automation upon detecting a critical systemic risk.
+
+A necessary condition is ensuring that supervisors have appropriate analytical competencies, access to full technical documentation, and real time for control within the statistical work schedule.
+
+
+## 3. Levels of Automation
+
+| Level | AI Role | Example |
+  |----|----|----|
+  | 1\. Support | AI proposes a solution | Suggesting an activity code |
+  | 2\. Pre-processing | AI prepares the result for review | Detecting suspicious records |
+  | 3\. Conditional automation | The result is accepted upon meeting established criteria | Automatic code assignment for cases of confirmed quality |
+  | 4\. Process automation | Process automation | Automatic classification in an approved process|
+  
+A higher level of automation requires stronger evidence of quality, monitoring, and emergency procedures. This does not mean every observation must be checked manually.
+
+## 4. Example Role Distribution
+
+| Role | Responsibility |
+  |----|----|
+  | Process owner | Purpose, scope of application, and risk acceptance |
+  | Statistical expert | Method, quality, and interpretation of results |
+  | Technical team | Implementation, versioning, and maintenance |
+  | Data responsible person | Permissions, quality, and permissibility of data use |
+  | Security / data protection | Threat assessment and required safeguards |
+  | Result user | Verification according to procedure and reporting problems |
+  | Management | Resources, oversight principles, and significant risk decisions |
+  
+This is an example model. In a specific unit, roles should be adapted to the organizational structure and applicable procedures.
+
+## 5. Responsibility Matrix
+
+For each application, it is worth determining who:
+  
+- **performs** the task;
+- **is accountable for the result**;
+- **consults** the solution;
+- **is informed** about the decision.
+
+The RACI matrix can be used for this purpose. Situations should be avoided where many people participate in the process, but none has a clearly assigned ultimate responsibility for its outcome.
+
+The acronym RACI comes from the English names of four roles assigned to individuals or teams for each task or project stage:
+  
+  - **R (Responsible):** The person or team that actually performs the given task and carries out the assigned work.
+
+- **A (Accountable):** The person bearing ultimate responsibility for the outcome (there should be only one such person per task). They approve the final result and have veto power.
+
+- **C (Consulted):** Experts or stakeholders with whom solutions are consulted and from whom opinions and advice are gathered before key decisions are made (two-way communication).
+
+- **I (Informed):** Individuals who must be kept up to date on progress, decisions made, or work results, but do not take an active part in the process itself (one-way information flow).
+
+## 6. Example: Automatic Imputation
+
+The model imputes missing data on the number of tourists.
+
+Before deployment, responsibilities must be precisely assigned:
+
+1. Who approves the imputation method?
+2. Who analyzes the validation results?
+3. Who controls atypical predictions?
+4. Who can trigger re-processing?
+5. Who decides to suspend model usage?
+6. Who approves the new version?
+  
+If the answers are exclusively "the AI team" or "the system," the division of responsibility is too vague.
+
+## 7. When is Intervention Required?
+
+Example triggers that should initiate an intervention procedure include:
+
+- quality drops below an established threshold: performance metrics (e.g., accuracy, precision, relevance) fall below a pre-agreed acceptance level.
+- new data categories appear: input data begins to contain segments or formats upon which the model was not trained.
+- data collection methods change: sources or information acquisition procedures are modified, which may affect data drift.
+- the model generates atypical or implausible results: the model produces anomalies, hallucinations, or common-sense-defying answers.
+- a security issue is uncovered: vulnerabilities, system manipulation attempts, or privacy breach risks are detected.
+- results differ significantly from independent sources: model-generated results diverge significantly from verified external data or benchmarks.
+- a significant change occurs to the model or its purpose: architectural modifications are made or the business context of the system's application changes.
+
+Alarm thresholds and specific response pathways (who, what, and how quickly must be done) should be precisely established, tested, and documented prior to the official launch of the solution. This helps prevent decision-making chaos in an emergency.
+
+## 8. Exercise
+
+The model classifies business activity descriptions. In 90% of cases, it assigns a code automatically, and the remaining 10% are routed to an expert.
+
+Propose:
+  
+- criteria for routing a case to an expert;
+- a method for documenting corrections;
+- the role of the person approving results;
+- a procedure in the event of a sudden spike in errors.
+
+Is a high level of automatic classification sufficient evidence that the model can be used without additional oversight?
+  
+## 9. ChecklistLista kontrolna
+  
+- [ ] Every application has an owner.
+- [ ] Persons responsible for method and technology are designated.
+- [ ] The scope of human oversight is established.
+- [ ] Thresholds and intervention triggers are defined.
+- [ ] An error and incident reporting procedure exists.
+- [ ] It is clear who can stop or withdraw the model.
+- [ ] Changes are approved and documented.
+
+## 10. Key Takeaways
+
+- responsibility must be assigned to specific roles.
+- oversight should enable real intervention.
+- automation requires defined operating and stopping conditions.
+- responsibility spans the entire lifecycle of the solution, not just the deployment stage.
+
+## 11. Bibliography and Source Materials
+
+- UNECE, [Responsible AI for Official Statistics Framework](https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework).
+- NIST, [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).

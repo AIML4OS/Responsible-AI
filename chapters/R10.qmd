@@ -1,0 +1,301 @@
+---
+title: "AI Governance"
+subtitle: "Responsible AI for Official Statistics"
+---
+
+## 1. What is AI governance?
+
+### 1.1. Definition
+
+AI governance encompasses the rules, roles, procedures, and control mechanisms that determine how an organization selects, deploys, uses, and oversees AI solutions.
+
+The goal is not solely to limit risk. Good governance also helps select valuable use cases, rationally utilize resources, and maintain process quality.
+
+### 1.2. What is important in official statistics?
+
+In official statistics, the following are particularly important:
+
+- trust in results;
+- data confidentiality and security;
+- independence and impartiality;
+- quality of statistical methods;
+- accountability for published information.
+
+### 1.3. What is it based on? The HLG-MOS Framework
+
+The foundation is the **Framework on Responsible AI for Official Statistics** from October 2025. It was developed by a group of experts from statistical offices and international organizations (including Statistics Canada, INSEE, Eurostat, UNECE) operating within the **HLG-MOS**.
+
+Its goal is simple: to help agencies apply AI **responsibly**, i.e., in accordance with the values of official statistics.
+
+### 1.4. Why is this important?
+
+AI helps deliver statistics faster and in greater detail, but it also carries risks: algorithmic bias, privacy breaches, and loss of public trust.
+
+The framework emphasizes three things:
+
+- **people are accountable for AI**, not the system;
+- a balance between automation and human oversight is needed;
+- responsible AI is **more than checking boxes** in a report.
+
+### 1.5. Six principles
+
+| Principle | In short |
+|------------------------------|------------------------------------------|
+| Ethical purpose and public good | AI serves people and the environment, does no harm |
+| Accountability | It is clear who is responsible for the system and its outputs |
+| Transparency and explainability | System operation can be understood and verified |
+| Fairness | The system does not discriminate or perpetuate bias |
+| Privacy and security | Data and models are protected |
+| Validity and robustness | Results are reliable and stable over time |
+
+### 1.6. How to implement these principles?
+
+The framework proposes three tools:
+
+1.  **Guidelines:** concrete actions derived from the principles.
+2.  **Checklist:** project self-assessment by its owner.
+3.  **Review:** evaluation by independent reviewers or a committee.
+
+Together, these tools make up practical **AI governance**, which is the focus of the following sections.
+
+## 2. From a single experiment to an organizational solution
+
+Several stages of maturity in an AI application must be distinguished:
+
+1.  **Experiment:** we check if the solution can be useful.
+2.  **Prototype:** we evaluate performance on specific data and in a limited environment.
+3.  **Pilot:** we test the solution in conditions close to real ones.
+4.  **Deployment:** the solution is approved for a specific use.
+5.  **Maintenance:** we monitor quality, security, and changes.
+6.  **Retirement:** we stop using it when it is no longer justified or safe.
+
+The success of an experiment does not automatically mean readiness for production deployment.
+
+The framework identifies three points at which it is worth pausing:
+
+- **early-stage impact assessment** (when identifying business needs), on which the level of project requirements depends;
+- **transfer of accountability** upon transition from development to deployment and production, according to a pre-established procedure;
+- **formal review upon transition from prototype to production version**, which is exactly when the success of an experiment could be mistakenly considered readiness for deployment.
+
+## 3. Organizational rules
+
+The organization should determine:
+
+- what AI applications are permissible;
+- what tools can be used;
+- what types of data can be processed;
+- when additional risk assessment is required;
+- who approves pilots and deployments;
+- what testing and documentation are required;
+- how to report errors and incidents;
+- how to monitor and retire solutions.
+
+The rules should be practical, understandable, and proportionate to the risk. They must also take into account applicable laws and internal agency procedures.
+
+It is worth supplementing the rules with requirements arising from the framework:
+
+- **justification for AI use**: it must be demonstrated that the problem cannot be solved without AI/ML, and the choice of method must be clearly motivated;
+- **proportionality and preference for interpretable models**, when they do not fall behind black-box models in quality;
+- **disclosure of AI use**: tools available to external audiences should clearly state that they operate using machine learning and contain information about collected data;
+- **augmenting human work** instead of replacing it, and simple ways for affected individuals to request human intervention or challenge a decision;
+- **end-user feedback mechanism** and its regular review.
+
+## 4. AI applications register
+
+A central AI applications register is a useful tool.
+
+Example fields:
+
+| Field | Description |
+|---------------|--------------------------------------------|
+| Identifier | Unique application identifier |
+| Name | System or project name |
+| Purpose | The problem we are solving |
+| Owner | Responsible person or unit |
+| Stage | Experiment, pilot, production, retirement |
+| Data | Types and sources of data |
+| Technology | Model, tool, or provider |
+| Risk | Identified threats |
+| Controls | Validation, oversight, and safeguards |
+| Documentation | Location of documentation and test results |
+| Review | Date or conditions for reassessment |
+
+The register should cover a scope justified by the organization's needs, and the information contained therein must be updated.
+
+As a supplement, additional fields arising from the framework recommendations could be considered:
+
+- **data owner and provenance** (where it comes from, how it was aggregated, who is responsible for it), including information on third-party data;
+- **model and code version** along with a reference to the change audit trail;
+- **impact assessment result and risk level** (including privacy impact assessment, if applicable);
+- **persons responsible for monitoring** and information on the transfer of accountability post-deployment;
+- **environmental impact** (estimated energy and carbon footprint), if the application requires large models.
+
+## 5. Pre-deployment risk assessment
+
+Before starting a project, it is worth answering the following questions:
+
+1.  What problem is AI supposed to solve?
+2.  Is the solution necessary, or is a simpler method sufficient?
+3.  What data will be used?
+4.  What could be the consequences of an erroneous result?
+5.  Could errors affect specific groups or regions?
+6.  Can the result be verified?
+7.  Who will oversee the system's operation?
+8.  What conditions must be met for the deployment to be permissible?
+
+The result of the assessment should lead to a decision: continue, modify, limit the scope, or abandon the solution.
+
+The framework clarifies how to conduct such an assessment:
+
+- it is done **early**, at the stage of understanding needs, and requirements are adjusted to the risk level, distinguishing high-risk systems from low or minimal risk ones;
+- it includes **risk assessment for individuals, groups, organizations, and society** and, when necessary, a **privacy impact assessment**;
+- it requires **identifying stakeholders** (users and those affected by the system), agreeing on goals with them, and indicating groups that may suffer harm;
+- it is worthwhile to gather **relevant regulations** regarding equal treatment;
+- in some jurisdictions, structured tools are used, e.g., the Canadian Algorithmic Impact Assessment (AIA), whose tier indicates whether the project requires an audit or peer review.
+
+## 6. Minimal life cycle for managing an AI application
+
+Example life cycle:
+
+1.  Idea submission and goal definition.
+2.  Preliminary value and risk assessment.
+3.  Verification of data and tool permissibility.
+4.  Design and preparation of the solution.
+5.  Validation and documentation.
+6.  Approval by appropriate roles.
+7.  Deployment and monitoring.
+8.  Periodic reviews and reassessment.
+9.  Update or retirement of the solution.
+
+For a simple auxiliary application, the procedure can be lighter than for a system affecting statistical production. The key, however, is that the differentiation criteria are established and justified.
+
+### Example of proportionate requirements
+
+| Risk level | Example application | Example requirements |
+|------------------------|------------------------|------------------------|
+| Low | Editing draft texts without confidential data | Rules of use, brief register entry, user responsibility for verifying the result |
+| Medium | Auxiliary tool for a team, results checked before use | Risk assessment, documented validation, designated owner, periodic review |
+| High | Model influencing numbers published in official statistics | Full risk assessment, independent review, committee approval, monitoring, and retirement plan |
+
+### Example of pre-approval review (Statistics Canada)
+
+The review is a checkpoint during the transition from prototype to production. The framework describes it in four steps:
+
+1.  **Preparation:** confirming that the project requires a review, obtaining management support, selecting independent reviewers, and checking for potential conflicts of interest.
+2.  **Technical and ethical review:** reviewers analyze the documentation and the system, use a checklist filled out by the team, and prepare a report with justified recommendations.
+3.  **Scientific committee:** the team presents the project together with the review results, and the committee considers the report when deciding on launching the system. For new methods or key statistical programs, approval by an expert committee is recommended.
+4.  **Publication:** the report, or its summary if full disclosure is restricted, is published. The review should be updated after significant changes in functionality or scope.
+
+The checklist is meant to support reviewers but does not limit their assessment. Code review can be an optional step and does not replace methodological review.
+
+## 7. Competences and organizational culture
+
+Responsible AI deployment requires collaboration across different specialists:
+
+- statistical and methodological experts;
+- data analysts;
+- developers and administrators;
+- security personnel;
+- data protection personnel;
+- management and process owners;
+- result users.
+
+Training should cover not only the use of tools but also the interpretation of results, model limitations, data security, and how to report issues.
+
+The organization should encourage reporting errors and doubts. Reporting a problem should not be treated as a project failure, but as a quality control element.
+
+The framework adds several pointers:
+
+- **training and capacity building** encompass understanding the frameworks, policies, and tools needed for regulatory compliance, as well as awareness of environmental issues;
+- the team should **engage stakeholders** at every stage and inform them about changes, risks, and decisions made;
+- reviewers should be **independent**, have the appropriate knowledge, and, when necessary, security clearances, while ethical reviews are conducted by data ethics experts, not just technical personnel;
+- a **culture of accountability** consists of indicating who is responsible for each stage of the ML process and its outcomes (including monitoring and maintenance throughout the life cycle).
+
+## 8. Regulatory compliance
+
+Before deployment, it must be determined what legal and organizational requirements apply to a specific system.
+
+Depending on the application, the following might be relevant:
+
+- personal data protection regulations;
+- regulations on statistical confidentiality and legally protected information;
+- information security requirements;
+- AI system regulations;
+- procurement rules and conditions for using external services;
+- internal agency policies and procedures.
+
+It should not be automatically assumed that every AI application is subject to the same obligations. In particular, the scope of requirements arising from the AI Act depends on the type of system, its purpose, and the context of use. Legal assessment should be conducted on a case-by-case basis.
+
+From the framework, it is worth recalling:
+
+- as examples of emerging regulations, the framework mentions the Canadian Directive on Automated Decision-Making, the US Algorithmic Accountability Act, and the EU AI Act;
+- in the context of explainability, it mentions the GDPR and the so-called right to explanation;
+- in the area of privacy, it indicates that **legal bases** for applications must be established and risk assessment frameworks developed to cover new types of vulnerabilities;
+- in the area of fairness, it recommends identifying regulations concerning equal treatment of persons.
+
+## 9. Example: Request for model deployment approval
+
+A team wants to use a model to automatically classify business activity descriptions.
+
+Before deployment, they should prepare:
+
+- a description of the problem and benefits;
+- justification for choosing AI;
+- information on data and authorization to use it;
+- validation results;
+- error and risk analysis;
+- oversight and monitoring plan;
+- technical documentation;
+- conditions for acceptance, suspension, and retirement;
+- indication of responsible persons.
+
+The committee or approving person should have information enabling a decision, not just a presentation of the model's best results.
+
+The request can be strengthened with elements from the framework:
+
+- **comparison with interpretable models** and justification that the chosen model significantly outperforms them, as well as evidence that the results meet quality requirements (the *fit for purpose* principle);
+- **limitations and cases where the tool should not be used**, along with information about data limitations;
+- **reproducibility documentation**: assumptions, data, training procedure (data split, random seed, software versions), results, and uncertainty measures.
+
+## 10. Exercise
+
+An agency wants to introduce generative AI to prepare draft descriptions of statistical results.
+
+Propose:
+
+1.  Acceptable use rules.
+2.  Information that should be included in the AI applications register.
+3.  Tool selection criteria.
+4.  Method of controlling the generated descriptions.
+5.  Roles responsible for approving and maintaining the solution.
+6.  Procedure to follow after an error is detected.
+
+## 11. Checklist
+
+- [ ] Rules for using AI are in place.
+- [ ] Applications are recorded to an adequate extent.
+- [ ] Process owners and accountable roles are defined.
+- [ ] Risk is assessed before deployment.
+- [ ] Data and tools are approved for the given application.
+- [ ] Requirements for validation and documentation are established.
+- [ ] A plan for monitoring and incident response exists.
+- [ ] Conditions for updating and retiring the solution are specified.
+- [ ] Employees receive appropriate training.
+
+## 12. Key takeaways
+
+- AI governance should cover the entire life cycle of AI.
+- Rules must balance the capacity for innovation with the protection of quality, confidentiality, and trust.
+- The applications register facilitates control and review of deployments.
+- The level of control should be proportionate to the risk.
+- Responsible deployment requires the collaboration of methodology, technology, security, and management.
+- Accountability lies with people and institutions, not the system.
+- Responsible AI is a process, not a formality in documentation.
+- Independent review upon transition to production increases the credibility of deployments.
+
+## 13. Sources
+
+- UNECE, [Responsible AI for Official Statistics Framework](https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework).
+- UNECE, [Generative AI for Official Statistics](https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report).
+- NIST, [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).
+- European Commission, [Regulatory framework for AI](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai).

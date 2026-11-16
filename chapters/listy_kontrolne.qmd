@@ -1,0 +1,150 @@
+---
+title: "Checklists"
+subtitle: "A practical assessment of responsible AI use"
+---
+
+# How to use the checklists
+
+Checklists help verify whether the most important issues have been taken into account in an AI project. They do not replace a formal risk assessment, consultation with the data protection officer, or the procedures in force in the organisation.
+
+The checklists are arranged in an order similar to the successive stages of a project: from defining the objective, through data and the model, to deployment and monitoring. List 8 concerns generative AI tools and should be taken into account whenever such tools are used. The checklists are best completed as a team, with the involvement of those responsible for the project, the data and the methodology. For each “Yes” answer, it is worth noting where the supporting evidence can be found, e.g. in the documentation, a validation report or the outcomes of a meeting.
+
+Answers:
+
+- **Yes** — the requirement has been met and evidence can be provided.
+- **No** — the requirement has not been met.
+- **Not applicable** — the requirement does not apply; it is worth briefly explaining why.
+
+“No” answers should be analysed before moving on to the next stage of the project.
+
+# List 1. Purpose and justification for using AI
+
+This list is used to check whether, at the start of the project, it has been clearly defined what problem the system is meant to solve and why AI is a suitable tool for it. It also helps establish who will use the results, what the success criteria are and who is responsible for the project. It is worth completing first, before work on the data and the model begins.
+
+- [ ] The problem that the system is meant to solve has been defined.
+- [ ] It has been justified why AI is an appropriate solution.
+- [ ] Simpler alternatives have been considered, e.g. rules, classical statistical methods or automation.
+- [ ] The users and the recipients of the results have been identified.
+- [ ] It has been determined how the results will be used.
+- [ ] Success criteria and acceptable error have been defined.
+- [ ] The consequences of an incorrect result have been identified.
+- [ ] The person responsible for the project and the person approving the results have been named.
+
+**Review outcome:** the project's purpose and the justification for using AI are documented.
+
+# List 2. Data, confidentiality and security
+
+This list concerns the data used in the project: its origin, quality, the permissions to use it, and its protection. It pays particular attention to personal and confidential data, including individual-level data covered by statistical confidentiality. It is completed before data processing begins and updated whenever the sources or scope of the data change.
+
+- [ ] The sources, scope and origin of the data have been determined.
+- [ ] The permissions to use the data for the given purpose have been checked.
+- [ ] Personal data, confidential data and other protected information have been identified.
+- [ ] The risk of identifying persons or units has been assessed.
+- [ ] The scope of the processed data has been limited to the necessary minimum.
+- [ ] The quality, completeness and timeliness of the data have been verified.
+- [ ] The representativeness of the data for the intended use has been checked.
+- [ ] Rules for data access, storage and deletion have been established.
+- [ ] It has been verified whether the use of external tools is permitted.
+- [ ] The procedure to follow in the event of an incident has been defined.
+
+**Review outcome:** the manner in which the data is obtained and processed complies with the requirements applicable to the project.
+
+# List 3. Model validation and quality
+
+This list makes it possible to assess whether the model has been properly tested and whether its quality is sufficient for the intended use. It covers the data split, the choice of validation method and quality measures, comparison with a baseline method, and a description of the model's limitations. It also includes additional questions for projects that use time series, e.g. forecasts. It is completed once the model has been built, before a decision is made to use it.
+
+- [ ] A method for splitting the data into training, validation and test sets has been defined.
+- [ ] The risk of information leakage between the sets has been eliminated.
+- [ ] A validation method appropriate to the purpose and the data structure has been applied.
+- [ ] The model has been compared with a baseline method.
+- [ ] Quality measures appropriate to the intended use have been selected.
+- [ ] Errors have been analysed for relevant groups and areas.
+- [ ] The behaviour of the model in atypical situations has been checked.
+- [ ] The stability of the results has been assessed.
+- [ ] Limitations and known weaknesses have been documented.
+- [ ] The conditions for approving the model for use have been defined.
+
+**Additional questions for time series:**
+
+- [ ] Does the model use only information available at the time the forecast is made?
+- [ ] Does the test take into account the actual chronological order?
+- [ ] Have errors been checked in different periods, including atypical ones?
+
+# List 4. Bias and fairness
+
+This list helps check whether the model performs similarly for different groups, e.g. regions, age groups or types of units, and whether it leads to unjustified differences in results. It draws attention to group sizes, data quality and the consequences of errors for individual recipients. It is best completed in parallel with the assessment of model quality.
+
+- [ ] Groups for which the model may perform differently have been identified.
+- [ ] The number of observations in these groups has been checked.
+- [ ] The quality of results has been compared across groups.
+- [ ] The impact of missing data and of the method used to impute it has been analysed.
+- [ ] It has been checked whether input features lead to unjustified differentiation of results.
+- [ ] The consequences of errors for individual users or areas have been assessed.
+- [ ] The limitations identified and the remedial actions have been documented.
+
+Not every difference between groups indicates bias. Such a difference does, however, require analysis in the context of the model's purpose, the quality of the data and the consequences of its use.
+
+# List 5. Transparency and documentation
+
+This list concerns whether the solution is described in a way that allows other people to understand it, reproduce it and use it appropriately. It covers documentation of the purpose, data, method, code and model versions, test results, and information for recipients. It is worth updating on an ongoing basis during the project, rather than only at its end.
+
+- [ ] The purpose, scope and limitations of the model have been documented.
+- [ ] The data sources and their preparation have been described.
+- [ ] The method used and the justification for choosing it have been recorded.
+- [ ] The version of the code, the model and the significant dependencies have been recorded.
+- [ ] The validation method and the test results have been documented.
+- [ ] Known limitations and cases in which the model should not be used have been defined.
+- [ ] Information on how to interpret the results has been prepared.
+- [ ] A way of informing recipients about the use of AI has been established, if required or appropriate.
+
+# List 6. Human oversight
+
+This list is used to check whether the model's results remain under human control and whether it is clear who verifies them, and in what situations. It concerns, among other things, procedures for handling atypical results, the possibility of challenging a result, and the reporting of errors. It is completed before deployment, and revisited whenever the way the model is used changes.
+
+- [ ] A person responsible for oversight has been designated.
+- [ ] It has been determined which results require human verification.
+- [ ] A procedure for handling atypical results has been established.
+- [ ] The people using the model are aware of its limitations.
+- [ ] It is possible to challenge or reject the model's result.
+- [ ] Decisions with significant consequences are not taken without the required review.
+- [ ] A way of reporting errors and incidents has been defined.
+
+# List 7. Deployment and monitoring
+
+This list concerns preparing for the launch of the solution and its subsequent maintenance. It helps establish the conditions for deployment, the way quality will be monitored, the rules for updating and re-validation, and a plan for withdrawing the model if necessary. It is completed before deployment and repeated during periodic reviews.
+
+- [ ] The deployment conditions and acceptance criteria have been defined.
+- [ ] Indicators for monitoring quality have been established.
+- [ ] The frequency of reviews has been determined.
+- [ ] Warning thresholds and the actions to take when they are exceeded have been defined.
+- [ ] Changes in data distributions and in the quality of input data are monitored.
+- [ ] The reproducibility of results has been ensured.
+- [ ] Rules for updating and re-validating the model have been defined.
+- [ ] The possibility of withdrawing the model or reverting to the baseline method has been planned.
+- [ ] Responsibility for maintaining the solution has been assigned.
+
+# List 8. Generative AI
+
+This list concerns the responsible use of generative AI tools, e.g. for creating texts, code or summaries. It draws attention to whether the tool is approved for use, the protection of the data entered into it, and the obligation for a human to check and approve the generated content. It is worth applying whenever such tools are used in work, including outside large projects.
+
+- [ ] The tool is approved for the intended use.
+- [ ] No prohibited data is entered into the tool.
+- [ ] Generated code is reviewed and tested.
+- [ ] Generated content is verified for substantive accuracy.
+- [ ] Figures, sources, quotations and references are checked.
+- [ ] Verified content is distinguished from suggestions generated by the model.
+- [ ] The use of AI is documented where necessary.
+- [ ] Responsibility for approved results is not attributed to the model.
+
+# Review summary
+
+Once the lists have been completed, a short note should be prepared covering:
+
+- the name and purpose of the solution;
+- the date of the review;
+- the persons taking part in the assessment;
+- requirements that have not been met or that need improvement;
+- corrective actions, the persons responsible and deadlines;
+- the decision on whether to approve the solution for the next stage.
+
+A checklist supports the risk management process; it is not an automatic certificate of compliance.

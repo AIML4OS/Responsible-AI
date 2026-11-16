@@ -1,0 +1,347 @@
+---
+title: "Module 2. AI and ML – Opportunities and Limitations"
+subtitle: "From Basic Concepts to Method Selection in Official Statistics"
+---
+
+# Introduction
+
+Artificial intelligence is not a single technology or a single algorithm. It encompasses a variety of methods that can be used, among other things, to predict values, recognize patterns, classify information, generate text, and support work with documents and code.
+
+In official statistics, the appropriate choice of technology should stem from the nature of the problem. A different method will be suitable for forecasting tourist numbers, another for assigning classification codes to activity descriptions, and yet another for searching for information in methodological documentation.
+
+The objective of this module is to organize the most important concepts and show how to evaluate the usefulness of AI and ML without assuming that a more complex model is automatically better.
+
+# 2.1. Basic Concepts
+
+## Artificial Intelligence (AI)
+
+Artificial Intelligence (AI) is a broad category of technologies that enable systems to perform tasks requiring specific cognitive capabilities, such as recognizing patterns, interpreting language, reasoning, or generating content.
+
+The term AI covers various approaches, ranging from rule-based systems to modern models trained on large datasets.
+
+## Machine Learning (ML)
+
+Machine Learning (ML) is a branch of AI in which a model uses data to identify patterns and perform specific tasks.
+
+Instead of manually writing all possible rules, we prepare the data and the training procedure, and the algorithm fits the model to the observed examples.
+
+Examples of applications:
+
+- forecasting tourist numbers;
+- classifying business activity descriptions;
+- detecting unusual observations;
+- imputing missing values;
+- recognizing objects in images.
+
+## Deep Learning
+
+Deep learning utilizes multi-layer neural networks. It is particularly useful for tasks that require processing complex data, such as text, images, audio, or large sets of unstructured information.
+
+However, this does not mean that neural networks are the best choice for every problem. For small tabular datasets, classical statistical methods or decision trees may be easier to validate and equally effective.
+
+## Generative AI
+
+Generative AI (*Generative AI*) creates new content based on patterns learned during training or information provided during operation.
+
+It can generate text, code, images, summaries, and answers to questions.
+
+Examples of applications in official statistics:
+
+- drafting descriptions for statistical tables;
+- supporting R programming;
+- summarizing methodological documentation;
+- searching for information within document collections;
+- supporting text classification.
+
+Important: A generated response is not guaranteed to be true, even if it is formulated fluently and persuasively.
+
+## Large Language Models (LLMs)
+
+Large Language Models (LLMs) are models trained on massive datasets of text and other data, depending on the architecture. They generate text or other outputs based on context and learned relationships.
+
+An LLM can help write R code, but it does not guarantee that the code correctly implements statistical assumptions. It can also create non-existent references to publications or misinterpret results.
+
+Most open-source and commercial LLMs have been trained primarily on English-language texts. When working in Polish, a higher tokenization rate occurs – the same sentence in Polish is split into a larger number of tokens (subwords/word fragments) than in English. This results in:
+
+- higher processing costs;
+- extended response generation times;
+- risk of grammatical errors and the unreflective transfer of concepts from foreign legal and statistical systems.
+
+## Prompt Engineering
+
+Prompt engineering is the art and technique of precisely formulating input instructions for generative models to obtain accurate, consistent, and safe responses.
+
+In official statistics, it is recommended to use the repeatable **Role–Task–Context–Format (RTCF)** framework:
+
+```{mermaid}
+%%| fig-align: center
+flowchart LR
+    R[1. Role] --> T[2. Task ]
+    T --> C[3. Context]
+    C --> E[4. Examples ]
+    E --> F[5. Format]
+    
+    style R fill:#FFFFFF,stroke:#0F172A,stroke-width:1.5px,color:#0F172A,rx:6,ry:6
+    style T fill:#F1F5F9,stroke:#0F172A,stroke-width:1.5px,color:#0F172A,rx:6,ry:6
+    style C fill:#E2E8F0,stroke:#0F172A,stroke-width:1.5px,color:#0F172A,rx:6,ry:6
+    style E fill:#475569,stroke:#0F172A,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+    style F fill:#0F172A,stroke:#0F172A,stroke-width:1.5px,color:#FFFFFF,rx:6,ry:6
+```
+
+1. **Role:** Giving the model the appropriate perspective.
+2. **Task:** Precisely defining the objective.
+3. **Context:** Providing background information, survey description, time period, and constraints.
+4. **Examples (Few-shot):** Including 1–2 benchmark examples of a correctly performed task.
+5. **Format:** Specifying the expected structure.
+
+## RAG – Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation (RAG) combines a generative model with an information retrieval mechanism across specific documents or a knowledge base.
+
+For example, an assistant can search for passages from approved methodological instructions and prepare an answer based on them.
+
+RAG can facilitate citing sources and reduce the reliance of the answer solely on the model's parametric knowledge, but it does not eliminate errors in retrieval, interpretation, or content generation.
+
+# 2.2. Types of Machine Learning
+
+## Supervised Learning
+
+The model learns on data containing examples of inputs and the expected output.
+
+Example: a dataset of business activity descriptions where each description has a correct classification code assigned to it.
+
+The goal is to train the model to assign codes to new descriptions.
+
+Typical tasks:
+
+- **regression** – predicting a numerical value;
+- **classification** – assigning an observation to a category.
+
+## Unsupervised Learning
+
+The model searches for underlying structure in data without using a previously assigned target variable.
+
+Examples:
+
+- grouping entities with similar characteristics;
+- identifying unusual clusters and anomalies in large datasets;
+- exploring and reducing the dimensionality of multivariate datasets.
+
+The result of clustering does not necessarily align with natural or official statistical categories. Interpreting clusters requires domain knowledge.
+
+## Semi-Supervised Learning and Active Learning
+
+In official statistics, obtaining a fully labeled dataset (e.g., manually coded descriptions of occupations or business activities) can be very time-consuming and expensive.
+
+Semi-Supervised Learning: Combines a small number of labeled examples with a very large unlabeled dataset. The model leverages the structure of unlabeled data to improve classification precision.
+
+Active Learning: The algorithm identifies records for which it has the lowest prediction confidence and routes only those difficult edge cases for manual coding by a human expert. As a result, the expert verifies only a fraction of the data while the model continuously improves its performance.
+
+## Reinforcement Learning
+
+The model learns an action strategy based on feedback regarding the outcomes of its actions.
+
+It is not the first-choice method for typical tasks in official statistics, such as classification, imputation, or forecasting. However, it may appear in more complex optimization and interactive systems.
+
+## Ensemble Learning
+
+Ensemble learning involves combining predictions from multiple distinct machine learning models (e.g., decision trees in Random Forest or Gradient Boosting methods) to obtain a single, more stable, and accurate result.
+
+**Application:** This is a standard and highly effective practice in official statistics for data imputation tasks as well as automatic detection of errors and anomalies.
+
+## Generative Models
+
+Generative models learn to produce new examples, content, or data representations.
+
+In official statistics, a clear distinction must be made between text generation by LLMs and synthetic data generation. These are different applications requiring distinct evaluation criteria.
+
+# 2.3. Prediction, Estimation, and Explanation of Phenomena
+
+One of the most crucial distinctions is the objective of the analysis.
+
+| Objective | Question | Example |
+|---|---|---|
+| Prediction | What value might occur for a new observation? | Tourist count forecast |
+| Estimation | How to estimate an unknown population quantity? | Estimating the number of enterprises |
+| Explanation | What relationships describe the observed phenomenon? | Analyzing the relationship between wages and sales |
+| Classification | Which category does an observation belong to? | Coding business activity |
+| Generation | How to create text or other content? | Draft commentary for a table |
+
+Although these objectives often overlap, they represent fundamentally different goals. The fact that an algorithm can accurately predict an outcome does not mean it understands the true underlying causes, as it merely detects statistical patterns in data.
+
+Similarly, high accuracy for individual cases does not guarantee that the model will correctly estimate the result for the entire population if the sample was non-representative. Therefore, in a statistical agency, we must immediately define the role of AI: whether the tool functions merely as an analyst's assistant or if its calculations feed directly into official reports. This determines how thoroughly and rigorously we must validate its performance prior to deployment.
+
+# 2.4. Classical Statistical Methods vs. ML
+
+Machine learning and classical statistics should not be viewed as competing, mutually exclusive worlds. Both fields provide tools that can complement each other.
+
+| Criterion | Classical Statistical Methods | ML Methods |
+|---|---|---|
+| Main Focus | Inference, estimation, modeling relationships | Prediction, pattern recognition, automation |
+| Assumptions | Often explicit and interpretable | Algorithm-dependent; some are harder to describe |
+| Interpretation | Often direct | From simple to requiring specialized XAI methods |
+| Complexity | From simple to highly complex | From simple to highly complex |
+| Evaluation | Diagnostics, uncertainty, testing, and validation | Validation, predictive metrics, error and stability analysis |
+
+The comparison above serves merely as a general guide, as the boundaries between these methods often blur in practice.
+
+Traditional regression also performs well in forecasting, and machine learning algorithms can assist in understanding causal mechanisms.
+
+Therefore, the most important aspect is flexibly selecting the right tool for the specific objective and available data. The best method is one that yields a reliable result with the minimum necessary complexity.
+
+# 2.5. How to Choose a Method for a Statistical Problem?
+
+Before starting work, it is worth answering several key questions:
+
+1. **What do we want to achieve?** A numerical value, category, groups, text, or a population estimate?
+2. **What data do we have?** Tabular data, text, images, time series, or spatial data?
+3. **How much data is available?** Does the dataset allow for reliable model training and evaluation?
+4. **What are the constraints?** Is easy interpretability, high execution speed, or strict control over outputs required?
+5. **How will we compare methods?** Which evaluation criterion aligns with the application goal?
+6. **Is AI actually needed?** Does a simpler method provide similar quality at lower cost and risk?
+
+## Example: Forecasting Tourist Numbers
+
+Suppose the goal is to estimate the number of domestic tourists in accommodation establishments during a reference month.
+
+Possible approaches include:
+
+- using values from the previous month or the corresponding month of the previous year;
+- a regression model with calendar and historical features;
+- a time series model;
+- Random Forest;
+- other ML models.
+
+The appropriate method depends on data structure, forecast horizon, feature availability, and how the output will be used.
+
+A sound procedure does not consist in choosing the most advanced algorithm, but in comparing well-justified alternatives.
+
+# 2.6. Why Might a Model Perform Well in Testing but Poorly in Practice?
+
+## Overfitting
+
+The model fits too closely to the nuances of the training set, including random noise that will not recur in new data.
+
+As a result, it achieves excellent performance on training data but significantly worse results on out-of-sample observations.
+
+## Data Leakage
+
+Information that would not be available at the actual time of prediction, or that indirectly reveals the target variable, enters the training or feature engineering process.
+
+Example: A model predicting March outcomes uses a feature calculated from April data, which would not yet be available at the time of forecasting. Consequently, testing artificially inflates the model's perceived accuracy.
+
+## Data Distribution Shift (Concept / Data Drift)
+
+Relationships that existed in the past can change over time. Economic, regulatory, technological changes, as well as shifts in respondent behavior, influence this.
+
+A model trained on historical periods may require re-evaluation when the data generation or collection process changes. Therefore, deployed models require continuous monitoring and periodic retraining to maintain forecast accuracy under new conditions.
+
+## Limitations of Generative Models
+
+An LLM can:
+
+- create responses not supported by sources (hallucinations);
+- generate code using non-existent functions;
+- omit essential boundary conditions;
+- present uncertain information as fact;
+- give inconsistent answers to similar prompts.
+
+Therefore, fluency of language must not be used as a measure of truthfulness. In practice, this means that every output or script generated by AI must be rigorously verified by an analyst before being used in official statistics.
+
+# 2.7. How to Evaluate Results?
+
+The evaluation metric should align with the application objective.
+
+| Task | Example Metrics |
+|---|---|
+| Regression | MAE, RMSE, relative error |
+| Classification | Precision, recall, F1-score, confusion matrix |
+| Forecasting | MAE, RMSE, comparison with baseline |
+| Clustering | Cluster quality measures and domain evaluation |
+| Text Generation | Factual accuracy, alignment with sources, completeness, and expert review |
+
+There is no single universal metric that allows comparison across all models and applications.
+
+For instance, RMSE reacts more strongly to large errors than MAE does. The choice between them should depend on the real-world consequences of errors in a given process.
+
+In the case of statistical estimation, additional criteria regarding bias, variance, uncertainty, and impact on aggregates may be necessary. Predictive metrics alone are insufficient.
+
+# 2.8. Good and Bad Practices
+
+## Practice 1: Model Selection
+
+**Bad:** Selecting a model solely based on algorithm popularity or a single, coincidental result.
+
+**Good:** Comparing several well-justified methods on the same properly prepared and representative test set.
+
+## Practice 2: Using LLMs for Coding
+
+**Bad:** Uncritically accepting AI-generated code simply because it executes without errors.
+
+**Good:** Reviewing underlying logic, testing on known test cases, checking edge conditions, and comparing results against expectations.
+
+## Practice 3: Interpreting Results
+
+**Bad:** Assuming that a variable with high importance in a predictive model automatically explains the actual root cause of a phenomenon.
+
+**Good:** Clearly distinguishing predictive importance (correlation) from statistical interpretation and rigorous causal inference.
+
+## Practice 4: Choosing Complexity Level
+
+**Bad:** Deploying a complex neural network when a significantly simpler model delivers similar result quality.
+
+**Good:** Considering quality, maintenance cost, interpretability, infrastructure requirements, and validation capabilities.
+
+# 2.9. Exercise
+
+A team needs to classify business activity descriptions into statistical classification categories. They have 20,000 previously coded descriptions and new incoming records requiring classification.
+
+Three solutions are being considered:
+
+- A: Dictionary-based rules;
+- B: Classical ML model trained on coded examples;
+- C: Generative model that assigns both a code and a rationale.
+
+Answer the following questions:
+
+1. **What are the strengths and weaknesses of each solution?**
+2. **How should the test set be prepared?**
+3. **Which metrics should be used to evaluate classification?**
+4. **Should all assigned codes be accepted automatically?**
+5. **How can automation be combined with expert oversight?**
+
+## Proposed Solution
+
+Dictionary rules can be transparent and effective for unambiguous descriptions, but handle ambiguity and linguistic diversity poorly.
+
+An ML model can learn more complex patterns, but requires quality control of labels, sample representativeness, and performance verification on new data.
+
+A generative model can additionally provide rationales, but these should not be treated as independent proof of code correctness.
+
+The test set should be strictly separated from data used for training and tuning. Evaluation should be conducted using appropriate classification metrics and error analysis. Unambiguous cases and low-confidence predictions should be routed to human experts for verification.
+
+The final choice should result from comparing quality, costs, and process requirements.
+
+# 2.10. Key Takeaways
+
+1. AI encompasses many different technologies that should not be equated with one another.
+2. ML, classical statistical methods, and generative models solve different types of problems.
+3. Method selection should be driven by the analytical goal and data characteristics.
+4. A more complex model is not necessarily better than a simpler solution.
+5. Test results do not guarantee performance in real-world conditions.
+6. Metrics must be tailored to the specific application.
+7. Generative AI can assist work, but its answers and code strictly require human verification.
+
+# References and Source Materials
+
+1. UNECE. (2022). *Machine Learning for Official Statistics*.  
+   https://unece.org/statistics/publications/machine-learning-official-statistics
+
+2. UNECE. (2025). *Generative AI for Official Statistics*.  
+   https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report
+
+3. UNECE. (2025). *Responsible AI for Official Statistics Framework*.  
+   https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework
+
+4. OECD. *OECD AI Principles*.  
+   https://oecd.ai/en/ai-principles

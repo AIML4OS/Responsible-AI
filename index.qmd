@@ -1,103 +1,80 @@
 ---
-title: "Template for WP6 training material" # See below for multilingual resource
-include-before-body:
-  - text: <img src="resources/cover/main2.png" style="max-width:900px;width:100%">
-author:
-  - name: Public Statistician 1
-    url: https://github.com/publicstatistician1
-    email: Public.Statistician1@statistics.org
-  - name: Public Statistician 2
-    url: https://github.com/publicstatistician2
-    email: Public.Statistician2@statistics.org
-date: "2025-05-16"
-doi: "10.1000/182"  # Optional
-license: "CC-BY 4.0"  # Optional
-
-# If resources is multilingual, adopt that structure
-# (need to have both title and title-* fields)
-# title: "Hello SSPCloud"
-# title-en: "Hello SSPCloud"
-# title-fr: "Bonjour SSPCloud"
-
-description: |
-    This template is a fast starting pack for AIML4OS projects that use `R`. For `Python` projects, see [this `Github` repository](https://github.com/InseeFrLab/AIML4OS-template-quarto-python).
-
-# If resources is multilingual, adopt that structure
-# (need to have both description and description-* fields)
-
-# description: |
-  # Resource summaries are embedded as metadata for use in training portals and for sharing on social media.
-# description-multilingual:
-  # en: |
-  #   Resource summaries are embedded as metadata for use in training portals and for sharing on social media.
-  # fr: |
-  #   Les résumés des ressources sont intégrés sous forme de métadonnées, utiles pour les portails de formation ou le partage sur les réseaux sociaux.
-
-tags:
-  - Starter Pack
-  - SSPCloud Documentation
-
-image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY-OenRMvFyZUfDm_snUCxpV4SyaHvUeqObA&s"
-
-# You can also add any valid Quarto option:
-# HTML: https://quarto.org/docs/reference/formats/html.html
-# PDF: https://quarto.org/docs/reference/formats/pdf.html
-# ...
-
-# Custom metadata for training portals -------------------------------------
-
-duration: "90"  # Duration in minutes
-
-skills:
-  - Git Basics
-  - Quarto Authoring
-  - Reproducible Research
-  - Using SSPCloud
-
-courseMaterial:
-  - R Scripts
-  # - Videos
-  # - Jupyter Notebooks
-
-publicLevel:
-  - Beginner
-  - Intermediate
-  # - Expert
-
-resourceLanguage:
-  - R
-  # - Python
-
-suggestedBefore:
-  - https://quarto.org/
-  - https://juba.github.io/tidyverse/
-
-deploymentURL:
-  - rstudio:
-      - "https://datalab.sspcloud.fr/launcher/ide/rstudio-sparkr?autoLaunch=true&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation-bceao%2Fmain%2Ftp%2Finit-tp.sh%C2%BB&resources.limits.memory=%C2%AB100Gi%C2%BB&persistence.size=%C2%AB40Gi%C2%BB&init.personalInitArgs=%C2%ABen%C2%BB"
-  - jupyter:
-      - "https://datalab.sspcloud.fr/launcher/ide/jupyter-python?name=jupyter-python&shared=false&version=1.13.44&autoLaunch=true&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmaster%2Fsspcloud%2Finit-jupyter.sh%C2%BB&init.personalInitArgs=%C2%ABen%2Fmanipulation%2001_numpy%C2%BB"
-  - vscode:
-      - en: "https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&onyxia.friendlyName=%C2%AB03_geopandas_intro%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmaster%2Fsspcloud%2Finit-vscode.sh%C2%BB&init.personalInitArgs=%C2%ABen/manipulation%2003_geopandas_intro%C2%BB&security.allowlist.enabled=false"
-      - fr: "https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&onyxia.friendlyName=%C2%AB03_geopandas_intro%C2%BB&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmaster%2Fsspcloud%2Finit-vscode.sh%C2%BB&init.personalInitArgs=%C2%ABen/manipulation%2003_geopandas_intro%C2%BB&security.allowlist.enabled=false"
-
-suggestedRequirements:
-  - "https://quarto.org/"
-  - "https://scikit-learn.org/stable/"
-
-# Optional: Statistical process classification
-gsbpm: "5.1" # See complete taxonomy: https://www.unescap.org/sites/default/d8files/event-documents/GSBPM_v5.1_R_for_SBP_8-18Apr2024.pdf
+title: "Responsible AI for Official Statistics"
+subtitle: "The Responsible Use of Artificial Intelligence in Official Statistics"
 ---
 
+## About the Training
 
-# What is this template?
+The aim of this training is to present the principles of responsible use of artificial intelligence (AI) in official statistics.
 
-This template is a Quarto Website customized for the AIML4OS project, designed to be used with {{< fa brands r-project >}}.
+The materials cover ethical, methodological, technological and organisational aspects of using AI at different stages of the statistical process.
 
-# How to use it?
+The training demonstrates how to make use of the opportunities offered by artificial intelligence while taking into account the limitations of AI models, data protection, the quality of results and accountability for decisions made.
 
-See [this tutorial](https://aiml4os.github.io/training-material-starting-pack/).
+## Training Programme
 
+### 1. Introduction to the Responsible Use of AI
 
+An introduction to the concept of responsible artificial intelligence, its importance in official statistics, and the fundamental principles of safe and reliable use of AI.
 
+[Go to chapter](chapters/R01.qmd)
 
+### 2. Fundamentals of AI and Machine Learning
+
+Key concepts related to artificial intelligence, machine learning and generative models. An overview of common applications of AI in statistical data analysis and the limitations of different methods.
+
+[Go to chapter](chapters/R02.qmd)
+
+### 3. Data Confidentiality and Security
+
+Principles of safe data use in AI systems, protection of confidential information, data minimisation, and risks associated with using external tools.
+
+[Go to chapter](chapters/R03.qmd)
+
+### 4. Algorithmic Bias and Fairness
+
+Sources of bias in data and models, the risk of unequal performance across different groups, and methods for assessing and mitigating undesirable differences in AI model performance.
+
+[Go to chapter](chapters/R04.qmd)
+
+### 5. Transparency and Documentation
+
+Documentation of data, methods, models, validation results and limitations. Explainability of AI outputs and ensuring that the solutions used can be reproduced and verified.
+
+[Go to chapter](chapters/R05.qmd)
+
+### 6. Oversight and Accountability
+
+Roles and responsibilities in AI projects, human oversight of model outputs, and principles for intervention, approval and withdrawal of AI solutions.
+
+[Go to chapter](chapters/R06.qmd)
+
+### 7. AI in the GSBPM Statistical Process
+
+Opportunities for using AI at different stages of the statistical process — from identifying needs and designing surveys to data processing, analysis, dissemination of results and evaluation.
+
+[Go to chapter](chapters/R07.qmd)
+
+### 8. Generative AI in Official Statistics
+
+Practical applications of generative models and large language models (LLMs), prompt engineering, the use of Retrieval-Augmented Generation (RAG), and verification of AI-generated content and code.
+
+[Go to chapter](chapters/R08.qmd)
+
+### 9. Validation and Monitoring of AI Systems
+
+Assessment of model quality before and after deployment, selection of evaluation metrics, comparison with baseline methods, detection of changes in data, and principles of revalidation.
+
+[Go to chapter](chapters/R09.qmd)
+
+### 10. AI Governance in Organisations
+
+Principles for managing AI applications within an organisation, AI system registers, risk assessment, procedures for deploying and withdrawing systems, and developing employees' skills and competencies.
+
+[Go to chapter](chapters/R10.qmd)
+
+## Summary
+
+The responsible use of AI in official statistics requires combining statistical and technological expertise with appropriate oversight, data protection, transparency and systematic quality assessment.
+
+The goal is not simply to implement new technologies, but to use them consciously wherever they can improve the quality, efficiency and reliability of the statistical process.

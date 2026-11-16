@@ -1,0 +1,300 @@
+---
+title: "Validation and monitoring of AI systems"
+subtitle: "Responsible AI for Official Statistics"
+---
+
+## 1. What is validation?
+
+### 1.1. Definition
+
+**Validation** is checking whether a model provides reliable results **in the application for which it is to be used**, which also means on data it did not see during training.
+
+It is not enough for a model to perform well on the data it was built on. In official statistics, it is about *valid inference*: the results must be reliable, and their accuracy known, as they form the basis for public decisions and policies.
+
+In the context of machine learning, validation means evaluating whether:
+
+- the model **generalizes** well to new, previously unseen observations;
+- the quality from the training and evaluation stage **is maintained in the inference phase**, i.e., in practical use;
+- the model performs well for observations from the same population, but over a **longer period**.
+
+### 1.2. Examples of validation
+
+| Application | Example validation question | Example method |
+|------------------------|------------------------|------------------------|
+| Activity classification | Does the model also recognize rare or new types of activity well? | Test on data outside the training set, error analysis in subgroups |
+| Missing value imputation | Are the imputed values close to the true ones? | Hiding known values and comparing with the model's output |
+| Forecasting | Does the model work well in the period following the training data? | Chronological validation and comparison with a naive forecast |
+| Text coding | Is the quality similar for different sources and types of descriptions? | Comparison with manual coding on a control sample |
+
+### 1.3. A brief example
+
+A model assigns activity descriptions to categories. On the test set, it achieves 94% correct classifications, so it looks good.
+
+However, validation asks further questions:
+
+- Is the result equally good for small and rare categories?
+- Is it better only because the test data was too similar to the training data?
+- Does the simpler, existing method yield similar results?
+- Will the quality drop when descriptions in new submissions change?
+
+### 1.4. What validation is not
+
+- **It is not a one-time test** before launch. It is a process that continues throughout the model's life cycle.
+- **It does not boil down to a single metric.** High overall accuracy can hide poor results in important subgroups.
+- **It does not solely concern the model.** It encompasses the entire process: data collection, processing, feature engineering, training, and prediction.
+
+## 2. Why is validation necessary?
+
+A model that achieved good results during development may not perform equally well on new data.
+
+In official statistics, erroneous results can affect the quality of publications, data comparability over time, and the reliability of information.
+
+Validation should answer three questions:
+
+- Does the model work well enough?
+- Does it work well for different periods and groups?
+- Does its quality remain acceptable after deployment?
+
+This is of particular importance when model predictions feed into a process leading to **population-level estimators**. Then the model must not only be accurate but also reliable, and the data user should know how reliable the published numbers are.
+
+## 3. Three stages of evaluation
+
+| Stage | When | Main question |
+|------------------------|------------------------|------------------------|
+| Pre-deployment validation | During model development | Is the model good enough and correctly implemented? |
+| Pre-use validation | Before each use of outputs | Do the conditions of use correspond to those for which the model was approved? |
+| Post-deployment monitoring | While the model is running | Do quality and data remain stable? |
+
+### 3.1. Pre-deployment validation
+
+Goal: make sure the model is correct and fit for purpose before it goes into production.
+
+Includes:
+
+- checking data quality;
+- evaluating assumptions and implementation correctness;
+- testing on data not used for training;
+- comparison with a baseline method;
+- error and edge case analysis.
+
+Validation covers the **entire workflow**: data collection, preprocessing, feature engineering, training, and prediction. You need to check the representativeness and quality of training data, limit biases and confounding factors, and maintain consistency across all stages.
+
+The transition from a prototype to a production version is a good time for a formal review (see Section 13).
+
+### 3.2. Pre-use validation
+
+Goal: confirm that the model is used under the conditions for which it was approved.
+
+Includes checking whether the input data and operating conditions correspond to those for which the model was approved.
+
+### 3.3. Post-deployment monitoring
+
+Goal: detect quality degradation and changing conditions before they affect published results.
+
+Includes observing:
+
+- output quality;
+- changes in input data;
+- result stability;
+- the occurrence of unexpected situations.
+
+## 4. Data splitting and data leakage
+
+### 4.1. Data splitting
+
+Test data should reflect how the model will be used in practice.
+
+In the case of time-series data, a random split of observations can lead to an overly optimistic assessment. Depending on the application, chronological validation or a rolling-origin scheme should be considered.
+
+Additionally, it is worth remembering that:
+
+- the evaluation set should be **representative of the true data distribution**; otherwise, the evaluation is biased;
+- cross-validation and a *hold-out* set are used to confirm that predictions generalize to independent data;
+- the split, random seed, software versions, and training procedure must be **documented** so that the evaluation can be reproduced;
+- special attention must be paid to data aggregated spatially, temporally, or at the sample level (*aggregation bias*).
+
+### 4.2. Data leakage
+
+**Data leakage** occurs when, during training or evaluation, the model gains access to information that would not be available at the time of actual use.
+
+Examples:
+
+- using future values to predict the past;
+- computing transformations on the entire dataset before splitting it;
+- using a variable that indirectly contains information about the outcome.
+
+## 5. Choice of metrics
+
+| Task | Example metrics |
+|------------------------------|------------------------------------------|
+| Regression | MAE, RMSE, MASE |
+| Classification | Precision, Recall, F1, confusion matrix |
+| Imbalanced classes | Precision, Recall, PR-AUC |
+| Forecasting | MAE, RMSE, MASE and comparison with a baseline forecast |
+| Imputation | Imputation error on known values and subgroup evaluation |
+
+A model should not be chosen solely based on a single metric.
+
+For instance, RMSE penalizes large errors more heavily than MAE. When evaluating imputation, it is also worth checking if the errors are systematic and if their distribution differs between groups.
+
+**ML metrics are not everything.** Measures calculated on a test or validation set may not reflect reliability in production. Therefore, when model outputs feed official statistics, they should be supplemented with **statistical quality indicators** (e.g., coefficient of variation, uncertainty measures), which inform users about the reliability of estimators.
+
+**Metrics in subgroups.** If a model affects population groups or different types of entities, measures must also be calculated in subgroups and an acceptable level of difference defined. The limitations of the chosen measures must be clearly described, as it is impossible to satisfy all fairness criteria simultaneously.
+
+## 6. Comparison with a baseline method
+
+A more complex model should be compared to a simpler solution.
+
+Examples of baseline methods:
+
+- linear regression as a benchmark;
+- imputation by median or previous period value;
+- naive forecast;
+- classification rule based on the existing method.
+
+If the AI model does not significantly improve quality from the point of view of the application, the added complexity may not be justified.
+
+The framework formulates this as a principle:
+
+- **compare interpretable models with black-box models** as early as the development stage;
+- if you choose a black-box model, **document the justification** and show that it significantly outperforms simpler alternatives;
+- when the gain from a complex model is negligible, **an interpretable model remains the default choice**;
+- also assess **costs and resources** (time, computing power, scalability), because this is an element of the solution's efficiency.
+
+## 7. Does the model work for the right reasons?
+
+A good metric does not yet prove that the model relies on sound premises. Even well-performing models can give correct results for the wrong reasons.
+
+When validating black-box models, it is worth:
+
+- applying **global interpretability methods** (e.g., feature importance, partial dependence plots) and, if the methods are random, averaging the results from several runs;
+- performing **local checks** on a sample of cases (e.g., near the decision boundary) and justifying the sampling method;
+- keeping in mind that these methods **do not provide causal explanations** and can be unreliable for over- or underfitted models and with highly correlated features.
+
+## 8. Drift and changing conditions
+
+Various types of changes can occur after deployment.
+
+- **Data drift:** the distribution of input data changes.
+- **Concept drift:** the relationship between input data and the target changes.
+- **Process change:** forms, definitions, IT systems, or data collection rules change.
+- **Source quality change:** the number of missing, delayed, or erroneous records increases.
+
+A change in data distribution does not automatically mean model degradation, but it should trigger an analysis if it is relevant to the given application.
+
+## 9. Technical robustness
+
+Beyond statistical validity, technical reliability matters. A model developed in a research environment may fail in production, for example, when new data turns out to be too large and memory runs out.
+
+Good practices:
+
+- design the model so that failures are **clearly signaled and handled**;
+- ensure **scalability**: horizontal (more instances) or vertical (stronger machines);
+- introduce **input data validation** and error handling mechanisms;
+- check the model's behavior on **different data distributions**.
+
+## 10. Monitoring in practice
+
+Example indicators:
+
+- share of missing values;
+- distribution of key variables;
+- number of observations outside the training data range;
+- share of cases routed for review;
+- model quality on available ground truth values;
+- quality differences between groups;
+- number of manual corrections;
+- number of errors and incidents.
+
+Not all metrics can be calculated immediately. If actual values are available with a delay, monitoring should be designed with this limitation in mind.
+
+## 11. Alarm thresholds and responses
+
+Example scheme:
+
+| Signal | Possible response |
+|------------------------------|------------------------------------------|
+| Increase in missing input data | Source check and suspension of processing if needed |
+| Quality drop below threshold | Error analysis and evaluation of further use possibilities |
+| Major distribution change | Assessment of whether operating conditions have changed |
+| Increase in expert corrections | Analysis of causes and erroneous cases |
+| Significant data or model change | Re-validation before approval |
+| Detection of biased results | Model correction, and if necessary, its deactivation |
+
+Thresholds must be defined for a specific application. There is no single universal error level appropriate for all statistical processes.
+
+## 12. Example: Tourist imputation model
+
+A model predicts the number of tourists in accommodation establishments.
+
+- **Situation:** it achieves good quality in a stable period.
+- **Problem:** after a change in market conditions, it systematically overestimates the results.
+
+The team should take the following steps:
+
+1.  **Check the input data.** Has its distribution or quality changed?
+2.  **Compare errors with previous periods.** Is the degradation significant and systematic?
+3.  **Break down the results.** By season, region, and type of facility.
+4.  **Evaluate the possibility of further use.** Can the model still be used?
+5.  **Consider corrective action.** Retraining or changing the method.
+6.  **Perform validation before approving the new version.**
+
+Automatic retraining should not in itself mean automatic release of the model to production.
+
+If a change is significant (e.g., system functionality or scope changes), the review should be **updated**, and the new version should undergo re-approval.
+
+## 13. Accountability, documentation, and review
+
+Validation and monitoring require clearly defined roles and a decision trail.
+
+- **Accountability:** assign persons to monitor and maintain the model throughout its life cycle and agree on rules for transferring responsibility from development to production.
+- **Documentation:** record assumptions, data, data splits, hyperparameters, random seed, software versions, results, and uncertainty measures.
+- **Audit trail:** record changes to the model, data, and configuration.
+- **Fitness for purpose check:** continuously compare quality with previously established success criteria and periodically review the project scope.
+
+Example review process (Statistics Canada):
+
+1.  **Self-assessment** by the team using a checklist.
+2.  **Peer review**: ethical and methodological, by independent experts, and optionally also a code review.
+3.  **Scientific committee**: approval and recommendations, especially for new methods or key statistical programs.
+4.  **Publication** of the review report or its summary.
+
+## 14. Exercise
+
+A classification model achieves 94% correct classifications. After deployment, the number of corrections made by experts increases, especially for new types of business activity.
+
+Answer the following questions:
+
+- Why might the overall accuracy not reveal the problem?
+- What metrics and breakdowns should be analyzed?
+- How can a data change be distinguished from model degradation?
+- When should re-validation be performed?
+- Who should decide on the further use of the model and based on what criteria?
+
+## 15. Checklist
+
+- [ ] An appropriate data split was used.
+- [ ] Data leakage was ruled out.
+- [ ] Results were compared with a baseline method.
+- [ ] Errors were evaluated in relevant subgroups.
+- [ ] Metrics and alarm thresholds were defined.
+- [ ] The method of monitoring post-deployment quality was established.
+- [ ] Conditions for re-validation were determined.
+- [ ] The procedure for stopping or retiring the model was defined.
+
+## 16. Key takeaways
+
+- Validation is a process, not a one-time test.
+- The evaluation method must correspond to the actual application of the model.
+- Monitoring should cover both data and output quality.
+- Changes in operating conditions may require re-validation.
+- Every new model version should be subject to control proportionate to the risk.
+- Test metrics do not replace statistical quality indicators for data users.
+- Validation covers the entire process and technical reliability, not just the model.
+- Accountability, documentation, and independent review are prerequisites for reliability.
+
+## 17. Sources
+
+- NIST, [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).
+- NIST, [AI Risk Management Framework Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook).
+- UNECE, [Responsible AI for Official Statistics Framework](https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework).

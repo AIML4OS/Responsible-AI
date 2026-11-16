@@ -1,0 +1,329 @@
+---
+title: "Module 3. Data Confidentiality, Privacy, and Security"
+subtitle: "Safe Use of AI in Public Statistics"
+---
+
+# Introduction
+
+AI systems can process data locally, within an institution's infrastructure, or through external services. Depending on the solution, input data, prompts, files, logs, and outputs may be subject to different retention and access rules.
+
+In public statistics, protecting individual data, including data obtained through statistical surveys, is of paramount importance. The improper use of AI can lead to the disclosure of confidential information, violation of access rules, or loss of control over how data is processed.
+
+Security does not depend solely on whether a tool is well-known or popular. Its configuration, terms of service, scope of permissions, the type of data transferred, and approved organizational procedures are essential.
+
+The objective of this module is to prepare participants to identify risks and choose a safe method for using AI.
+
+# 3.1. What Information Requires Protection?
+
+When assessing security, several categories of information should be distinguished.
+
+| Category | Examples | Key Issue |
+|----|----|----|
+| Personal data | First name, last name, address, personal identifier | Compliance with personal data protection principles |
+| Individual data covered by statistical confidentiality | Enterprise or respondent data obtained in a survey | Protection in accordance with public statistics regulations |
+| Organizationally confidential information | Unpublished results, internal documents | Access permissions and information flow rules |
+| Aggregated data | Tables, indicators, summaries | Assessment of whether aggregation actually reduces disclosure risk |
+| Synthetic data | Artificially generated data | Assessment of the risk of disclosing information from source data |
+| Public information | Published reports, metadata, documentation | Verification of conditions for reuse and processing purpose |
+
+These categories may partially overlap. Public data may contain personal information, and aggregated data may disclose information about individual units if a table cell covers a very small number of entities.
+
+Therefore, data should not be considered safe merely because names were removed or identifiers were replaced.
+
+# 3.2. Main Threats Associated with the Use of AI
+
+The implementation of Large Language Models (LLMs) and machine learning algorithms entails a wide catalog of organizational, technical, and legal threats. The scope of these risks ranges from human error and unintentional data leakage in a query, through intentional attacks on algorithms themselves, to a loss of control over the quality and consistency of statistical results.
+
+## Unauthorized Data Transfer
+
+An employee transfers data to a tool that has not been formally approved for processing it by the institution. In public statistics, public interactive AI tools should be treated as an external cloud, where a strict prohibition on entering confidential and individual data applies.
+
+The level of risk depends on the following factors:
+
+- contractual terms;
+- processing location;
+- provider access;
+- data retention policies;
+- service configuration.
+
+## Disclosure via Prompt or Attachment
+
+Confidential data can be passed to an AI model not only in the main query content, but also in an attachment, code snippet, error message, screenshot, or problem description.
+
+Example: an employee asks the model to fix R code and attaches a data snippet containing unit identifiers.
+
+The most common channels for unintentional leaks include:
+
+* **Source code snippets**: Pasting scripts containing real variable names, paths to internal statistical office databases, or unit identifiers.
+* **Error messages and logs**: Copying messages from a developer console that contain table names and specific records on which the error occurred.
+* **Screenshots and images**: Uploading photos or screenshots, as multimodal models process all visible text in the image, including confidential background data.
+* **Attached files**: Attaching documents containing hidden sheets, metadata, or raw microdata cached in pivot tables.
+
+## Prompt Attacks (Prompt Injection, Hijacking, and Jailbreaking)
+- **Prompt Injection**: Injecting malicious instructions into an analyzed file (e.g., in a respondent survey), enticing the model to break procedures.
+- **Prompt Leaking**: Forcing the disclosure of system instructions or confidential metadata contained in the context.
+- **Jailbreaking**: Bypassing built-in safety filters using complex storytelling or logical prompts.
+
+## Excessive Permissions
+
+An AI assistant or agent may gain access to documents, databases, or systems far broader than necessary to accomplish the task. The principle of least privilege requires that the tool and user possess access solely to the resources essential for achieving a specific goal.
+
+To secure access, it is advisable to implement permission inheritance, a default read-only mode, and execution of AI-generated scripts in isolated environments.
+
+## Unauthorized Disclosure in Responses
+
+The system may place a fragment of a confidential document, data from an incorrect source, or information accessible to the user only in a different context into its response.
+
+The main risks stem primarily from bypassing permissions, when AI responds based on files inaccessible to a given user. Furthermore, a threat arises from context mixing and hallucinations, during which the model may weave fragments from unpublished reports or internal documents into a public response.
+
+To effectively prevent leaks in responses, output filters should be implemented to automatically scan responses for data, enforce permission checks so the search engine searches only files accessible to the given user, and verify AI-generated responses prior to further dissemination.
+
+## Loss of Control over Documentation and Results
+
+Inadequately managed prompts, outputs, and file versions can make it difficult to determine what data was sent to the tool and how the resulting answer was used.
+
+### Best Practices for AI Documentation Management:
+- Central logging of queries, generated responses, model versions, and user IDs;
+- Storing and auditing AI instructions in code repositories;
+- Attaching metadata about AI usage to documents and using clear annotations regarding human oversight.
+
+## Adversarial Attacks and Data Poisoning
+Deliberate, human-imperceptible modification of input data in order to mislead the ML model.
+
+Inserting manipulated records into a training dataset to secretly bias statistical results.
+
+The risk of malicious code present in downloaded open-source models.
+
+## Data Extraction from Training Sets
+- **Membership Inference Attacks**: Techniques allowing an attacker to determine whether specific subject data was used in the training process.
+- **Model Inversion & Reconstruction Attacks**: Analysis of model responses allowing partial reconstruction of unique source records.
+
+## Algorithmic Monoculture
+Dependency of all public statistics on a few global foundation models (e.g., GPT, Claude, Llama) and similar training datasets. Deploying the same solutions across multiple institutions creates a risk of systematically replicating the same errors, cultural biases, and hallucinations on a global scale.
+
+### Best Practices:
+- Applying a multi-model approach;
+- Collaborating within the global statistical community (e.g., UNECE) on building shared, open-source analytical tools;
+- Preserving traditional, directly controlled statistical algorithms as a benchmark for AI-generated results.
+
+# 3.3. Anonymization, Pseudonymization, and Synthetic Data
+
+The main objective of using anonymization, pseudonymization, and synthetic data is to protect statistical confidentiality and personal data while preserving information utility. They allow statistical institutions to safely analyze data, share datasets with researchers, and prototype and test AI tools without the risk of disclosing sensitive information about specific individuals or companies.
+
+## Anonymization
+
+Anonymization is a process aimed at irreversibly preventing the identification of a person or entity from data, taking into account all means that can reasonably be used.
+
+Simply removing direct identifiers (such as first name, last name, or personal identification number) does not guarantee full anonymization. Identification may still be possible by combining remaining information, for example, location, age, occupation, and a rare characteristic.
+
+## Pseudonymization
+
+Pseudonymization consists of processing personal or individual data in such a way that it can no longer be attributed to a specific person or entity without the use of an additional linkage key. This key must be stored separately and secured organizationally and technically.
+
+Pseudonymized data can still constitute personal data. Pseudonymization should not be treated as automatic authorization to transfer data to external AI tools.
+
+## Synthetic Data
+
+Synthetic data is artificially generated, for example, for code testing or solution prototyping.
+
+It can reduce the need to use real data, but does not guarantee the absence of disclosure risk. If the generator reproduces distinctive observations from the source dataset, an additional risk assessment may be necessary.
+
+**Good practice:** Prototyping code on artificial data with a similar structure, followed by validation in an approved environment. 
+
+**Bad practice:** Considering data anonymous solely because identifiers have been removed.
+
+# 3.4. Safe Use of Generative AI
+
+Generative AI can significantly facilitate daily work in public statistics, from writing scripts to summarizing documents. However, without proper guidelines, using it entails the risk of data leaks or generating inaccurate information.
+
+Before using AI programs, check:
+
+- whether the service has been approved by the institution;
+- what data is being transferred and for what purpose;
+- whether content is stored or used for further training;
+- what rules apply to logs, chat history, and attachments;
+- who has access to the data and results;
+- whether there are restrictions regarding processing location;
+- whether the way the tool is used complies with internal regulations.
+
+Do not assume that turning off chat history automatically resolves all security issues. Terms depend on the specific service and configuration, in particular contractual clauses with the provider, the retention period for temporary technical logs on provider servers, and formal guarantees that submitted content will not be used for further model training.
+
+## Example: Assistance in Writing R Code
+
+An employee wants assistance with joining two datasets.
+
+**Inappropriate approach:**
+
+Sending complete files containing individual data, identifiers, and confidential information.
+
+**Safer approach:**
+
+1.  Prepares a small, synthetic example showing column structure.
+2.  Replaces real values with dummy data.
+3.  Formulates the problem without revealing protected information.
+4.  Tests the generated code in an approved environment.
+5.  Verifies the correctness of results on data to which authorized access is granted.
+
+If the problem cannot be reproduced on synthetic data, an approved environment and proper consultation procedure should be used.
+
+# 3.5. Security of Models and Integration
+
+The language model (LLM) itself is only one component of the whole AI system. In practice, the model is connected to external databases, document search engines, user interfaces, and automated tools (APIs) executing specific commands. Weak points and security risks often arise not in the model itself, but at its integration points with the rest of the agency's infrastructure.
+
+
+## Prompt Injection
+
+Prompt injection involves attempting to influence the model's behavior through input content, for example, a document or webpage containing instructions intended to induce the system to violate established rules.
+
+Example: an assistant searches for answers in documents, and one of them contains an instruction to reveal other accessible files.
+
+Document content should be treated as material for analysis, not as automatically trusted system instructions.
+
+## Excessive Autonomy
+
+If a model can perform actions independently, such as sending messages, modifying files, or executing queries, misinterpretation can have real-world consequences.
+
+It is advisable to apply:
+
+- restriction of available tools;
+- minimal permissions;
+- separation of data reading from data modification;
+- human confirmation prior to significant actions;
+- logging of operations;
+- security testing.
+
+## Integration with Documentation
+
+An assistant utilizing RAG should have restricted access to approved documents, respect user permissions, and cite answer sources.
+
+It is not enough that the model can find a document. It is also necessary to check whether it discloses fragments of documents to which the user should not have access.
+
+## Guardrails 
+
+Special protective layers are applied to secure model integration with external systems. They act as input and output filters for the AI system.
+
+### The Role of Input and Output Filters
+
+- **Input filter**: Checks the user's query or analyzed document before passing it to the model. Blocks *Prompt Injection* attack attempts, detects personal data, and rejects unauthorized queries.
+- **Output filter**: Verifies the response generated by the model before displaying it to a human. Checks whether the response complies with the schema (e.g., valid JSON format), contains no hallucinations, and has not disseminated confidential data.
+
+# 3.6. Data Minimization and the Principle of Least Privilege
+
+In the public statistics environment, protecting statistical confidentiality rests on two fundamental security and ethics principles: **Data Minimization** and the **Principle of Least Privilege**. 
+
+These principles stem directly from GDPR regulations, UN Fundamental Principles of Official Statistics (UN FPOS), and the UNECE *Responsible AI Framework*. In short, they mean not collecting or transferring more data than necessary and not granting people or AI systems greater access to resources than is absolutely essential.
+
+## Data Minimization
+
+The data minimization principle requires applying the Necessity and Proportionality test.
+
+In practice, this means:
+
+* **Sending schema instead of data:** If you need help writing a script, do not send a file with real records. Providing column names and variable types is sufficient.
+* **Filtering and trimming scope:** If the model must analyze a text snippet or table, remove all columns, rows, and metadata from the file that are not directly related to the task.
+* **Aggregation instead of microdata:** If the problem concerns trend analysis at the voivodeship (regional) level, do not send records concerning specific companies or households; send exclusively aggregated data (sums, averages).
+* **Prototyping on synthetic data:** Perform all testing, prompt engineering practice, and code development on dummy data. Attach real data only within a secured environment.
+
+## Principle of Least Privilege
+
+This principle applies both to employees and to AI tools and systems themselves. An AI assistant or agent should see and do only as much as a specific task requires of it.
+
+In practice, this means:
+
+* **Restricting model rights:** An AI system analyzing documents should not have the capability to modify databases, send emails, or delete files. By default, it should hold read-only permissions.
+* **Environment isolation:** Conducting experiments, writing scripts, and testing AI models should occur in isolated environments using test data. The production environment containing sensitive data must be strictly separated.
+* **Reflecting user permissions in RAG:** If an AI assistant searches an internal agency knowledge base, it must not display a response from a document to which the employee does not have direct access rights in official agency systems.
+
+
+## Data Retention and Storage Duration
+
+Minimization also applies to the length of time data remains within an AI system:
+
+* **Limiting log retention duration:** Prompts, attachments, and outputs should not be stored in external AI service memory longer than necessary to generate the response.
+* **Automated temporary file cleanup:** Databases and models should not accumulate redundant query copies. Upon ending a working session, temporary files should be removed.
+
+# 3.7. Incident Response
+
+An AI security incident may involve transferring confidential data to an unapproved tool, unauthorized access, disclosure of information in a response, incorrect integration configuration, or uncontrolled operation of an autonomous agent.
+
+In the event of a suspected incident, an employee should:
+
+1.  Stop working with the tool or disconnect the AI agent that might compound the problem.
+2.  Secure available information regarding the event in accordance with procedure.
+3.  Refrain from taking independent actions that could hinder establishing the course of events.
+4.  Immediately notify the designated person or team in accordance with internal procedure.
+5.  Cooperate in assessing consequences and remediation efforts by explaining the incident to the team analyzing the leak or breach.
+
+Do not assume that deleting a message or file from the interface deletes all copies, logs, or processed data across the service.
+
+Detailed responsibilities and reporting deadlines depend on the type of incident and applicable regulations and procedures.
+
+If an incident involves a breach of personal data protection or statistical confidentiality, strict legal deadlines apply, including a statutory obligation to report the breach to the supervisory authority (UODO / Personal Data Protection Office) within 72 hours of detection.
+
+Following incident containment, a root cause analysis should be conducted. Based on this, corrective actions should be implemented, e.g., tightening filters, restricting model permissions, or updating checklists and training procedures.
+
+# 3.8. Exercise: Can This Data Be Transferred to AI?
+
+Consider four situations:
+
+**A.** An employee asks the model to explain how the `left_join()` function works in R, without transferring any data.
+
+**B.** An employee sends a table containing individual data and identifiers to a public chatbot.
+
+**C.** A team tests a script on dummy records generated for the exercise.
+
+**D.** An AI assistant has access to an entire document repository, even though it only needs a single instruction for its response.
+
+For each situation, determine:
+
+1.  What risk exists?
+2.  What additional information is needed for assessment?
+3.  What safeguard should be applied?
+
+## Proposed Solution
+
+- **A:** Typically low risk of data disclosure, as no individual data is transferred. Approved tool usage guidelines should still be followed.
+- **B:** Data should not be transferred until confirming that the tool and processing method are permitted. Removing a few identifiers does not necessarily resolve the issue.
+- **C:** Typically a good approach for prototyping, provided that synthetic data does not disclose information from the actual dataset.
+- **D:** Permissions should be restricted to resources essential for task execution, and verification should confirm whether the system respects individual user permissions.
+
+# 3.9. Security Checklist
+
+Before using AI:
+
+- [ ] Verified whether the tool is approved for the planned application.
+- [ ] Determined data category and required level of protection.
+- [ ] Restricted transferred information to the essential minimum.
+- [ ] Refrained from transferring confidential data to an unapproved service.
+- [ ] Checked data storage and usage terms.
+- [ ] Verified tool permissions for documents and systems.
+- [ ] Considered the use of synthetic data.
+- [ ] Aware of how to report a suspected incident.
+
+# 3.10. Key Takeaways
+
+1.  Security depends on the type of data, tool configuration, and manner of use.
+2.  Removing direct identifiers does not guarantee anonymity.
+3.  Synthetic data can support safe testing, but also requires appropriate evaluation.
+4.  Prompts, attachments, logs, and outputs are elements of the information flow.
+5.  AI integrations should utilize minimal permissions.
+6.  In the event of an incident, follow institutional procedures rather than relying on independent deletion of event traces.
+
+# Bibliography and Source Materials
+
+1.  UNECE. (2025). *Generative AI for Official Statistics*.\
+    https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report
+
+2.  UNECE. (2025). *Responsible AI for Official Statistics Framework*.\
+    https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework
+
+3.  European Union. *General Data Protection Regulation (GDPR), Regulation (EU) 2016/679*.\
+    https://eur-lex.europa.eu/eli/reg/2016/679/oj
+
+4.  European Union. *Regulation (EU) 2024/1689 – Artificial Intelligence Act*.\
+    https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+
+5.  United Nations Statistics Division. *The Fundamental Principles of Official Statistics*.\
+    https://unstats.un.org/fpos
+
+Before using this chapter as a formal instruction, current regulations, statistical confidentiality rules, and security procedures applicable in the given institution should be verified.

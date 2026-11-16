@@ -1,0 +1,188 @@
+---
+title: "Studia przypadków"
+subtitle: "Odpowiedzialne wykorzystanie AI w statystyce publicznej"
+---
+
+# Cel i sposób pracy
+
+Studia przypadków przedstawiają przykładowe sytuacje, które mogą wystąpić podczas projektowania, testowania i wykorzystywania systemów sztucznej inteligencji w statystyce publicznej.
+
+Każdy przypadek zawiera opis problemu, pytania do dyskusji oraz rekomendowane działania. Przypadki mają charakter edukacyjny i nie stanowią opisu rzeczywistych zdarzeń w konkretnym urzędzie.
+
+Podczas analizy warto zwracać uwagę na:
+
+- jakość i reprezentatywność danych;
+- poufność informacji;
+- ryzyko błędów i stronniczości;
+- przejrzystość oraz możliwość wyjaśnienia wyników;
+- odpowiedzialność za decyzje;
+- możliwość odtworzenia procesu analitycznego.
+
+# Przypadek 1. Wczesne szacunki na podstawie modelu ML
+
+## Sytuacja
+
+Zespół statystyczny opracowuje model uczenia maszynowego, który ma służyć do przygotowywania wstępnych szacunków liczby turystów korzystających z obiektów noclegowych. Dane za ostatni miesiąc są niekompletne, ponieważ nie wszystkie jednostki przekazały sprawozdania.
+
+Model wykorzystuje historyczne dane o turystyce, informacje o sezonowości, lokalizacji obiektów oraz wcześniejszych wartościach badanego zjawiska.
+
+Wyniki modelu są obiecujące w okresach stabilnych, ale w czasie nagłych zmian popytu model ma tendencję do zawyżania lub zaniżania szacunków.
+
+## Główne ryzyka
+
+- Nadmierne zaufanie do wyników modelu.
+- Niewystarczające uwzględnienie nietypowych zdarzeń.
+- Wykorzystanie danych, które nie byłyby dostępne w momencie sporządzania rzeczywistego szacunku.
+- Brak informacji o niepewności wyniku.
+- Trudność w wyjaśnieniu różnic między szacunkiem a późniejszym wynikiem badania.
+
+## Pytania do dyskusji
+
+1.  Jakie dane powinny być dostępne w chwili generowania szacunku?
+2.  Jak sprawdzić, czy model nie korzysta pośrednio z informacji o przyszłości?
+3.  Jakie wyniki należy porównać z modelem: poprzedni miesiąc, analogiczny miesiąc poprzedniego roku czy prosty model sezonowy?
+4.  Czy użytkownik końcowy powinien otrzymać jeden szacunek, czy również informację o jego niepewności?
+5.  Kiedy wynik powinien zostać przekazany do dodatkowej weryfikacji?
+
+## Rekomendowane działania
+
+- Zastosować walidację kroczącą w czasie (*rolling-origin validation*).
+- Porównać model z prostymi metodami referencyjnymi.
+- Ocenić błędy dla różnych okresów, regionów i typów obiektów.
+- Przeanalizować zachowanie modelu podczas nietypowych zdarzeń.
+- Dokumentować ograniczenia oraz zasady akceptacji wyników.
+- Pozostawić odpowiedzialność za zatwierdzenie szacunku po stronie upoważnionych pracowników.
+
+**Wniosek:** model może wspierać przygotowanie wstępnych szacunków, ale jego przydatność należy oceniać w warunkach zbliżonych do rzeczywistego procesu produkcyjnego.
+
+# Przypadek 2. Poufność danych a generatywna AI
+
+## Sytuacja
+
+Pracownik chce wykorzystać publicznie dostępne narzędzie generatywnej AI do przygotowania kodu analizującego dane jednostkowe. Wkleja do rozmowy fragment zbioru zawierający identyfikatory jednostek, lokalizacje oraz wybrane cechy opisowe.
+
+Narzędzie generuje poprawny kod, ale pracownik nie sprawdził zasad przetwarzania danych przez usługę.
+
+## Główne ryzyka
+
+- Ujawnienie informacji chronionych.
+- Przekazanie danych do zewnętrznego dostawcy bez odpowiedniej podstawy i upoważnienia.
+- Naruszenie zasad bezpieczeństwa organizacji.
+- Brak kontroli nad przechowywaniem i dalszym wykorzystaniem przesłanych informacji.
+
+## Pytania do dyskusji
+
+1.  Czy dane można przekazać do narzędzia AI tylko dlatego, że są potrzebne do rozwiązania zadania?
+2.  Czy usunięcie nazw i identyfikatorów zawsze zapewnia anonimowość?
+3.  Jak można uzyskać pomoc w napisaniu kodu bez przekazywania danych?
+4.  Kto powinien zatwierdzać wykorzystanie zewnętrznych narzędzi AI?
+
+## Rekomendowane działania
+
+- Korzystać wyłącznie z narzędzi dopuszczonych przez organizację do danego rodzaju informacji.
+- Nie przekazywać danych poufnych bez odpowiedniej podstawy, oceny bezpieczeństwa i upoważnienia.
+- Zastępować rzeczywiste rekordy danymi syntetycznymi lub minimalnymi przykładami, gdy jest to wystarczające.
+- Sprawdzać warunki przetwarzania danych i ustawienia usługi.
+- W razie podejrzenia ujawnienia informacji postępować zgodnie z procedurą incydentową.
+
+**Wniosek:** użyteczność narzędzia nie znosi obowiązku ochrony danych. Przed użyciem AI należy ocenić zarówno charakter danych, jak i środowisko przetwarzania.
+
+# Przypadek 3. Stronniczość modelu
+
+## Sytuacja
+
+Model przewidujący wartość badanego zjawiska osiąga dobre wyniki w skali całego kraju. Po analizie szczegółowej okazuje się jednak, że błędy są znacznie większe w małych gminach i regionach o niestandardowej strukturze gospodarczej.
+
+W zbiorze treningowym dominowały obserwacje z dużych jednostek.
+
+## Główne ryzyka
+
+- Nierównomierna jakość wyników dla różnych grup i obszarów.
+- Niedostateczna reprezentacja rzadkich przypadków.
+- Ukrywanie lokalnych błędów przez dobre wyniki zagregowane.
+- Podejmowanie decyzji na podstawie wyników, które nie są równie wiarygodne we wszystkich obszarach.
+
+## Pytania do dyskusji
+
+1.  Czy dobry wynik ogólny wystarcza do uznania modelu za odpowiedni?
+2.  Jakie grupy i obszary powinny zostać uwzględnione w ocenie?
+3.  Czy większy błąd w małych jednostkach jest akceptowalny?
+4.  Jakie rozwiązania można zastosować bez sztucznego wyrównywania danych?
+
+## Rekomendowane działania
+
+- Obliczać miary błędu dla istotnych grup i poziomów agregacji.
+- Sprawdzić liczebności obserwacji w poszczególnych grupach.
+- Zidentyfikować obszary, dla których model działa słabiej.
+- Rozważyć dodatkowe cechy, odpowiednią metodę modelowania lub odrębne podejście dla wybranych grup.
+- Opisać ograniczenia modelu i monitorować je po wdrożeniu.
+
+**Wniosek:** jakość modelu należy oceniać nie tylko globalnie, ale również z uwzględnieniem zastosowania i grup, dla których wyniki będą wykorzystywane.
+
+# Przypadek 4. Generatywna AI przygotowuje opis wyników
+
+## Sytuacja
+
+Pracownik wykorzystuje model językowy do przygotowania opisu wyników badania statystycznego. Tekst jest płynny i przekonujący, ale zawiera błędną interpretację jednego wskaźnika oraz przyczynowe wyjaśnienie zmiany, którego nie potwierdzają dane.
+
+## Główne ryzyka
+
+- Wygenerowanie nieprawdziwych informacji.
+- Pomylenie korelacji z zależnością przyczynową.
+- Zmiana znaczenia wskaźnika podczas upraszczania tekstu.
+- Przekazanie błędnego komunikatu odbiorcom statystyki publicznej.
+
+## Pytania do dyskusji
+
+1.  Które elementy opisu można sprawdzić automatycznie?
+2.  Jak zweryfikować interpretację wskaźników?
+3.  Czy płynność tekstu świadczy o jego poprawności?
+4.  Kto odpowiada za ostateczną wersję publikowanego opisu?
+
+## Rekomendowane działania
+
+- Przekazywać modelowi definicje wskaźników i zatwierdzone wyniki, o ile zasady bezpieczeństwa na to pozwalają.
+- Weryfikować każdą wartość liczbową, jednostkę, okres i porównanie.
+- Oddzielać opis obserwowanych zmian od hipotez dotyczących ich przyczyn.
+- Wymagać przeglądu merytorycznego przed publikacją.
+- Nie traktować tekstu wygenerowanego przez AI jako źródła dowodów.
+
+**Wniosek:** generatywna AI może wspierać redakcję, ale nie zastępuje weryfikacji statystycznej i odpowiedzialności autora.
+
+# Przypadek 5. Model zmienia jakość po wdrożeniu
+
+## Sytuacja
+
+Model działa poprawnie w testach, ale po kilku miesiącach jego błędy rosną. Zmieniła się struktura badanej populacji, a część cech wejściowych jest zbierana według zmodyfikowanej procedury.
+
+Nie ustanowiono formalnego procesu monitorowania jakości modelu.
+
+## Główne ryzyka
+
+- Pogorszenie jakości danych wejściowych.
+- Zmiana rozkładów cech lub relacji między cechami a wynikiem.
+- Wykorzystywanie modelu poza zakresem, w którym został zwalidowany.
+- Brak jednoznacznych kryteriów wycofania modelu.
+
+## Pytania do dyskusji
+
+1.  Jakie miary i wskaźniki należy monitorować?
+2.  Jak odróżnić naturalną zmienność od trwałego pogorszenia jakości?
+3.  Kiedy należy ponownie wytrenować model?
+4.  Kto powinien zatwierdzić nową wersję?
+
+## Rekomendowane działania
+
+- Monitorować jakość danych wejściowych i dostępne miary błędu.
+- Ustalić progi ostrzegawcze i kryteria interwencji.
+- Rejestrować wersje danych, kodu, modelu i konfiguracji.
+- Ponownie walidować model po istotnych zmianach.
+- Zapewnić możliwość powrotu do poprzedniej wersji lub metody referencyjnej.
+
+**Wniosek:** walidacja przed wdrożeniem nie wystarcza. Odpowiedzialne wykorzystanie AI wymaga monitorowania i zarządzania zmianą przez cały okres działania systemu.
+
+# Podsumowanie
+
+We wszystkich przypadkach kluczowe jest połączenie kompetencji statystycznych, wiedzy dziedzinowej, bezpieczeństwa informacji oraz odpowiedzialności organizacyjnej.
+
+AI należy traktować jako element procesu statystycznego, który wymaga określenia celu, oceny ryzyka, walidacji, dokumentacji i nadzoru człowieka.

@@ -1,39 +1,80 @@
 project:
   type: website
-  execute-dir: project
-  render: # Add HERE new chapters (but not the interactive qmd files)
-    - index.qmd
-    - chapters/chapter1.qmd
 
 website:
-  page-navigation: true
-  title: "Introduction to `ggplot2`"
-  # In the two URLs below:
-  # - replace AIML4OS by the Github account/organization your repository is hosted by;
-  # - replace AIML4OS-template-quarto-r by the name of your repository.
-  # If your repo is on the AIML4OS organization, change only the name of the repo.  
-  site-url: "https://AIML4OS.github.io/AIML4OS-template-quarto-r"
-  repo-url: "https://github.com/AIML4OS/AIML4OS-template-quarto-r"
-  repo-actions: [edit, source, issue]
-  # favicon: images/Template2.png
+  title: "Responsible AI for Official Statistics"
+  description: "Training materials"
+
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+
   sidebar:
-    logo: resources/profile/main3.png
     style: "docked"
     search: true
-    contents: # Add HERE new chapters (but not the interactive qmd files)
-      - href: index.qmd
-        text: Introduction
-      - href: chapters/chapter1.qmd
-        text: Plot with ggplot2
+    contents:
+      - text: "Home"
+        href: index.qmd
+
+      - section: "Training Materials"
+        contents:
+          - text: "01. Introduction"
+            href: chapters/R01.qmd
+
+          - text: "02. Fundamentals of AI and Machine Learning"
+            href: chapters/R02.qmd
+
+          - text: "03. Data Confidentiality and Security"
+            href: chapters/R03.qmd
+
+          - text: "04. Bias and Fairness"
+            href: chapters/R04.qmd
+
+          - text: "05. Transparency and Documentation"
+            href: chapters/R05.qmd
+
+          - text: "06. Oversight and Accountability"
+            href: chapters/R06.qmd
+
+          - text: "07. AI in the GSBPM Model"
+            href: chapters/R07.qmd
+
+          - text: "08. Generative AI"
+            href: chapters/R08.qmd
+
+          - text: "09. Validation and Monitoring"
+            href: chapters/R09.qmd
+
+          - text: "10. Organisational Governance"
+            href: chapters/R10.qmd
+
+      - section: "Additional Resources"
+        contents:
+          - text: "Case Studies"
+            href: chapters/studia-przypadkow.qmd
+
+          - text: "Checklists"
+            href: chapters/listy-kontrolne.qmd
+
+          - text: "Glossary"
+            href: chapters/slownik.qmd
+
+          - text: "References"
+            href: chapters/bibliografia.qmd
+
+  page-navigation: true
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    theme: cosmo
     toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    code-tools: true
+    smooth-scroll: true
 
-filters:
-  - export-metadata.lua
+lang: en
 
+editor: visual

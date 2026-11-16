@@ -1,0 +1,206 @@
+---
+title: "Glossary"
+subtitle: "AI, machine learning and official statistics"
+---
+
+# How to use the glossary
+
+The glossary explains terms used in the training materials. The definitions are practical in nature and adapted to the context of official statistics.
+
+# A
+
+**AI system**\
+A machine-based system that, from the input data it receives, generates outputs such as predictions, recommendations, content or decisions that may influence physical or virtual environments.
+
+**Algorithm**\
+A set of rules or operations used to solve a specific computational problem.
+
+**Anonymisation**\
+The process of transforming personal data so that the person to whom the data relate can no longer be identified by means reasonably likely to be used. The effectiveness of anonymisation requires an assessment of the risk of re-identification.
+
+**Automation**\
+The performance of tasks by a system without the need to carry out each step manually. Automation does not have to use AI.
+
+# B
+
+**Bias**\
+A systematic tendency that leads to particular errors or unjustified differences in results. It may stem from, among other things, the data, the design of the model, the way of measurement or the application.
+
+**Big data**\
+Datasets whose scale, variety or velocity of arrival creates particular requirements for storage and analysis.
+
+**Black box**\
+A term for a system whose internal workings, or the way it arrives at a result, are difficult for the user to understand.
+
+# C
+
+**Concept drift**\
+A change in the relationship between the input features and the predicted outcome. It can cause a deterioration in model quality even when there are no obvious changes in the input data itself.
+
+**Cross-validation**\
+A model evaluation method that involves repeatedly training and testing the model on different subsets of the data. It must be adapted to the structure of the data; in time series analysis, an ordinary random split can lead to an incorrect assessment.
+
+# D
+
+**Data drift**\
+A change in the distribution of input data over time or between environments. It may, but does not have to, lead to a deterioration in model quality.
+
+**Data leakage**\
+A situation in which, during model training or evaluation, information is used that would not be available at the time the model is actually applied, or information from a part of the data that should remain independent.
+
+# E
+
+**Explainability**\
+The ability to provide understandable information about how a model arrives at its results or which factors influence its behaviour.
+
+**Explainable AI (XAI)**\
+Methods and tools that support explaining how AI models work and interpreting their results.
+
+# F
+
+**Feature**\
+A variable used by the model as input information, e.g. region, month, type of facility or a value from the previous period.
+
+**Feature engineering**\
+The process of creating, transforming and selecting the features used in modelling.
+
+# G
+
+**Generative AI**\
+AI systems capable of creating new content, e.g. text, code, images or sound, on the basis of data and input instructions.
+
+**GSBPM (Generic Statistical Business Process Model)**\
+A generic model that describes the stages of the statistical production process. It can be used to identify the points at which AI supports particular activities.
+
+# H
+
+**Human oversight**\
+Organisational and technical arrangements ensuring appropriate human control over an AI system and its results.
+
+**Hyperparameters**\
+Parameters set before training or during model configuration, e.g. the number of trees in a random forest or the depth of a tree.
+
+# I
+
+**Imputation**\
+Filling in missing values in a dataset using a specific method. It may use simple rules, statistical methods or machine learning models.
+
+**Individual-level data**\
+Data relating to individual observation units, e.g. enterprises, households or accommodation establishments.
+
+**Interpretability**\
+The degree to which a human can understand the relationships between the input data and the model's results. In practice the term is sometimes used interchangeably with explainability, although the two concepts may be distinguished.
+
+# L
+
+**Large Language Model (LLM)**\
+A large-scale language model trained on extensive text datasets and, depending on the architecture, other data. It can generate text, answer questions and support work with code.
+
+**Leakage**\
+See *data leakage*.
+
+**Learning algorithm**\
+The procedure by which a model fits its parameters to the training data.
+
+# M
+
+**Machine learning (ML)**\
+A field of AI comprising methods that learn patterns from data and use them for prediction, classification or other tasks.
+
+**MAE (Mean Absolute Error)**\
+The average of the absolute differences between actual and predicted values. A lower value usually indicates a smaller error.
+
+**Model**\
+A mathematical or computational representation of relationships, used to predict, classify, estimate or generate results.
+
+**Model governance**\
+A set of activities including monitoring, documenting, approving changes and responding to problems related to the model's performance.
+
+**Model monitoring**\
+Regular assessment of the quality of the model's performance after deployment, including analysis of errors, changes in the data and fitness for purpose.
+
+# O
+
+**Official statistics**\
+The system of collecting, compiling, analysing and disseminating statistical data in order to inform society and institutions about social, economic, demographic and environmental phenomena.
+
+**Outlier**\
+An observation that differs markedly from the others. It is not necessarily erroneous; it may reflect a real, rare phenomenon.
+
+**Overfitting**\
+A situation in which a model fits the training data too closely but generalises poorly to new observations.
+
+# P
+
+**Precision**\
+A term with different meanings depending on the context. In statistical estimation it may refer to the exactness of an estimate, and in classification — to the share of correct positive predictions among all positive predictions.
+
+**Privacy**\
+The area concerned with protecting individuals and information about them. In work with data it includes, among other things, restricting access and minimising the risk of identification.
+
+**Prompt**\
+An instruction or a set of information given to a generative model in order to obtain a specific result.
+
+# R
+
+**Recall (sensitivity)**\
+In classification, the share of correctly detected positive cases among all actual positive cases.
+
+**Reproducibility**\
+The ability to reproduce results on the basis of documented data, code, parameters, software versions and analytical procedure, taking into account possible sources of non-determinism.
+
+**RMSE (Root Mean Squared Error)**\
+The square root of the mean squared error. It penalises large errors more heavily than MAE. Its value is expressed in the unit of the forecast variable.
+
+# S
+
+**Sensitivity analysis**\
+An examination of how results change when assumptions, parameters or input data are changed.
+
+**Synthetic data**\
+Artificially generated data that is intended to reproduce selected properties of real data. It does not automatically guarantee the absence of disclosure risk.
+
+# T
+
+**Test data**\
+Data used for an independent assessment of model quality after training has been completed and the configuration has been chosen.
+
+**Test set**\
+Data used for the final assessment of model quality on observations not used during fitting and selection.
+
+**Training data**\
+Data used to fit the model's parameters.
+
+**Training set**\
+Data used to train the model.
+
+**Transparency**\
+Availability of information about the purpose, operation, limitations and manner of use of the system.
+
+# U
+
+**Uncertainty**\
+Lack of full knowledge about a value, outcome or process. In statistical analysis it may be described by, among other things, standard errors, confidence intervals or predictive distributions.
+
+**Underfitting**\
+A situation in which a model is too simple to capture the significant relationships present in the data.
+
+# V
+
+**Validation**\
+The process of assessing whether a model meets specified requirements and is suitable for the intended use.
+
+**Validation set**\
+Data used for model selection, hyperparameter tuning or comparison of variants during the development of a solution.
+
+**Versioning**\
+Recording changes to data, code, models, configuration and documentation, enabling a specific version of the solution to be identified.
+
+# W
+
+**Workflow**\
+An ordered sequence of activities leading to the completion of a task, e.g. preparing and publishing statistical results.
+
+# Important note on terminology
+
+The meaning of some terms depends on the field and the application. In project documentation it is worth specifying how the terms that are key to the assessment of quality, risk and responsibility are understood.

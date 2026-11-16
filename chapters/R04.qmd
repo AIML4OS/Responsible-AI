@@ -1,0 +1,357 @@
+---
+title: "Module 4. Bias, Fairness and Representativeness"
+subtitle: "Evaluating AI Quality across Different Groups and Statistical Contexts"
+---
+  
+# Introduction
+  
+AI models learn from data that reflect specific conditions, measurement methods, and decisions made during dataset preparation. If the data do not cover all relevant situations or contain systematic errors, the model may replicate or amplify these problems.
+
+In official statistics, it is particularly important that model quality may vary across regions, time periods, types of units, or other cross-sections relevant to the survey.
+
+A low average error for the entire dataset does not mean the model is equally good for every part of the population. It may perform very well for numerous, typical units while making large errors for rare, seasonal, or atypical units.
+
+The goal of this module is to teach participants how to identify sources of bias and select control methods suited to a specific application.
+
+# 4.1. What is Model Bias?
+
+Bias can mean a systematic deviation of results from the values that the model should reproduce or predict. In the context of responsible AI, this concept also encompasses problems arising from data, model design, the decision-making process, and the way results are used.
+
+Several meanings should be distinguished:
+  
+- **statistical bias** – the systematic difference between the expected value of an estimator and the quantity it is meant to estimate;
+- **prediction error** – the difference between a prediction and the observed value;
+- **data bias** – systematic gaps, distortions, or limitations in the data;
+- **unequal model quality** – differences in errors between groups or contexts;
+- **social bias** – the reproduction or reinforcement of undesirable inequalities in a given application.
+
+These concepts are related, but not interchangeable. In particular, unequal model errors do not automatically imply discrimination. Their significance depends on the purpose, context, and consequences of using the results.
+
+# 4.2. Where Does Bias Come From?
+
+## 1. Data Do Not Cover All Relevant Cases
+
+The model learns from available observations. If specific types of units are rare or poorly represented, the model may not learn their characteristic patterns.
+
+In analytical practice, this phenomenon leads to so-called algorithmic blind spots. Statistical and machine learning models show a strong tendency to favor majority classes, relegating rare cases to the role of informational noise. As a result, the system may generate extremely inaccurate forecasts or make erroneous decisions in atypical, crisis, or innovative situations that lacked numerous representations in the training history.
+
+Example: a tourist volume forecasting model learns mainly from large, year-round facilities and has few examples from small, seasonal facilities. As a result, forecasts for agritourism or summer cottages will be subject to huge errors because the model does not account for the specifics of sudden demand spikes caused by weather factors or short holiday weekends.
+
+## 2. Measurement Errors
+
+Input data may contain errors, outdated information, or values obtained using different measurement procedures.
+
+Sources of disturbance:
+  
+- Human errors: respondent mistakes, interviewer errors, typos, or omitted digits during data entry and initial editing.
+
+- System failures: faults in ICT infrastructure, databases, or telemetry systems collecting information in real time.
+
+- Evolution of standards: changes in indicator definitions, classifications, and data acquisition methods, leading to a natural break in the continuity of time series.
+
+If these inaccuracies are systematic, the machine learning model will not only adopt them but actually reinforce them, treating the distorted signal as a business or physical rule. As a result, the algorithm may learn dependencies reflecting the specifics of data collection rather than the actual phenomenon.
+
+For example, if the survey method was changed during a certain period and telephone interviews were conducted more frequently instead of in-person ones, the change in results may merely reflect the specifics of the new communication medium rather than a real shift in consumer attitudes, completely misleading an algorithm searching for deeper market correlations.
+
+## 3. Incomplete or Ambiguous Labels
+
+In supervised learning, the model reproduces patterns present in the training data. If the labels are incorrect or inconsistently assigned, the result may be inconsistent.
+
+Model quality is directly limited by the quality of the so-called "ground truth." If the data labeling process relies on subjective expert assessments where interpretations of criteria differ among experts, the algorithm falls into the trap of conflicting signals, trying to find a common denominator where none de facto exists.
+
+Example: similar business activity descriptions receive different codes depending on the coder or the time period. Such discrepancies confuse text classifiers, which, instead of learning the actual company profile, begin picking up random stylistic preferences of individual administrative staff.
+
+## 4. Improper Sample Selection
+
+The training set may differ from the population or from the data on which the model will be used.
+
+This problem is closely related to selection bias. If the dataset was collected under specific conditions (e.g., exclusively in large urban agglomerations or during a strong economic boom), the sample becomes unrepresentative. Deploying such a model in an environment with a different demographic or macroeconomic structure leads to a drastic drop in its effectiveness.
+
+Not only sizes are important, but also the range of variability, the structure of units, and the conditions under which observations are generated.
+
+This means that even a giant dataset with low structural diversity will prove less valuable than a smaller, yet perfectly balanced sample reflecting the full spectrum of extreme market scenarios in which the system will have to operate.
+
+## 5. Inappropriate Objective Function
+
+The model may optimize the average error even though specific types of mistakes are particularly important in a given application.
+
+Standard loss functions (such as mean squared error) treat every error symmetrically. In business or medical reality, the costs of false positive and false negative errors differ drastically (e.g., the cost of missing a cancer diagnosis is incomparably higher than the cost of an additional examination for a healthy patient). An improper choice of the optimization criterion will make the model mathematically perfect, but business-wise useless or even harmful.
+
+Example: minimizing overall error may favor fitting large units if their values dominate the evaluation criterion. In such a situation, the algorithm will ignore niche yet strategically crucial small entities, focusing all its computing power on perfectly forecasting the behavior of market giants, which distorts the overall portfolio picture.
+
+## 6. Changing Conditions Over Time
+
+Relationships present in historical data may cease to hold after changes in the economic situation, survey methodology, respondent behavior, or data collection methods.
+
+This phenomenon, known as model aging or concept drift, affects almost every system deployed in a dynamic environment. The market, legal, and technical environment evolves continuously, causing historical patterns to lose their predictive power in favor of new, hitherto unknown cause-and-effect mechanisms.
+
+A model that was appropriate in previous years does not necessarily retain the same quality in subsequent periods.
+
+This requires the implementation of permanent prediction quality monitoring, cyclical system retraining on fresh data, and readiness to quickly rebuild the feature architecture whenever macroeconomic environmental parameters undergo a fundamental breakthrough.
+
+# 4.3. Representativeness in Official Statistics
+
+Representativeness is of particular importance in statistics, but its interpretation depends on the application.
+
+In sample surveys, representativeness is linked to the survey design, the sample selection mechanism, inclusion probabilities, and the estimation method.
+
+In machine learning, on the other hand, what matters is whether the training data allow the model to learn the dependencies needed under actual conditions of use.
+
+A large dataset does not have to be representative. For example, a million observations originating mainly from large cities may contain less information about small towns than a much smaller, better-designed dataset.
+
+## Alternative Data
+
+Data originating from the internet, mobile devices, digital platforms, or other alternative sources can increase the range of available information.
+
+The process of collecting such data can generate selection bias. For example, data from online platforms concern solely their users, not the entire population. Drawing conclusions about a broader scale based on them requires evaluating coverage, the source of selection, and the application of corrections. A large sample size does not automatically guarantee its representativeness.
+
+# 4.4. Why Average Error Is Not Enough?
+
+Consider a model predicting the monthly number of tourists in accommodation establishments.
+
+Suppose the following test results were obtained:
+  
+  | Group of units             |  MAE | Number of observations |
+  |-----------------------------|-----:|------------------:|
+  | Large year-round facilities     |   20 |             1 000 |
+  | Small seasonal facilities      |   90 |               120 |
+  | All units combined | 27,6 |             1 120 |
+  
+For simplicity, we assume that the MAE across the entire dataset is the group-size weighted average.
+
+The model achieves a low average error primarily thanks to good quality for the large group of large facilities. At the same time, the error for small seasonal facilities is over four times larger.
+
+This does not automatically mean the model should be rejected. However, it indicates that the global metric alone does not adequately describe its usefulness.
+
+It should be checked:
+  
+- whether the larger error stems from greater value variability;
+- whether the differences remain visible after applying appropriate relative measures;
+- whether the model systematically overestimates or underestimates results;
+- whether the group has a sufficient number of test observations;
+- what consequences errors have for statistical aggregates.
+
+# 4.5. How to Detect Unequal Model Quality?
+
+## Group-Based Analysis
+
+Results should be evaluated not only globally, but also across cross-sections relevant to a specific application.
+
+These can include:
+  
+- regions and territorial units: this analysis allows the detection of local specificities, cultural, legal, or market differences that may affect model effectiveness in various locations;
+- enterprise or facility size: division into small, medium, and large entities helps ensure the model operates fairly and effectively regardless of operational scale;
+- type of activity: incorporating industry specificities (e.g., trade, manufacturing, services), as data patterns and behaviors can vary drastically depending on the sector;
+- periods and seasons: examining result stability over time, taking into account cyclicality, seasons (e.g., holiday periods, quarters) and long-term market trends;
+- groups with varying numbers of observations: quality control of the model in segments with both high and low data representation to avoid situations where overall success masks poor results in smaller groups;
+-categories for which misclassification is particularly important: focusing on critical areas where a mistake carries high financial, legal, operational, or reputational costs (so-called high-risk areas).
+
+The selection of cross-sections should stem from domain knowledge and the model's purpose. One should not automatically create numerous small groups without considering sample sizes and the uncertainty of results.
+
+## Systematic Error Analysis
+
+To reliably evaluate model fit quality and detect any tendencies toward systematic overestimation or underestimation of results for regression, one should calculate, among others:
+  
+- MAE – Mean Absolute Error;
+- RMSE – Root Mean Squared Error;
+- ME or Mean Error with sign – to assess the direction of deviations;
+- relative error measures, if appropriate for the data.
+
+A positive or negative mean error may indicate systematic overstatement or understatement of results, depending on the adopted convention.
+
+It is also worth analyzing the distribution of errors, not just their average.
+
+## Classification Analysis
+
+Evaluating classification models requires a detailed analysis of the confusion matrix and metrics such as precision, recall, and the F1-score.
+
+If the categories have different sizes, overall accuracy alone can be misleading. A model may classify the most frequent category well while poorly recognizing rare classes.
+
+The selection of evaluation metrics should take into account the specifics of the problem and the business or practical consequences of individual types of errors.
+
+# 4.6. Algorithmic Fairness
+
+Algorithmic fairness concerns whether the way a model operates leads to unjustified inequalities or undesirable consequences for specific groups.
+
+There is no single measure of fairness suitable for all applications. Different criteria can lead to different conclusions, especially when groups differ in their feature distribution, event frequency, or data quality.
+
+In official statistics, it is worth considering fairness in relation to the objective of the process.
+
+For example:
+  
+  - Does the classifier perform comparably for different types of activities?
+  - Does the imputation model not degrade the quality of aggregates for small regions?
+  - Are forecasting errors not concentrated in selected seasons?
+  - Does automation not lead to the omission of specific types of units?
+  
+Not every difference in quality is evidence of unfairness. It may result from small sample size, different variance, or data limitations. However, the difference should be investigated and justified.
+
+# 4.7. How to Mitigate Bias?
+
+## 1. Understand the Data Generation Mechanism
+
+Before training a model, it must be determined how the data were collected, what they measure, what limitations they have, and which units may be underrepresented.
+
+- **Historical and social context:** Data often reflect past decision-making processes that may have been subject to human biases or exclusions.
+
+- **Sample analysis:** It is worth thoroughly examining whether the data collection process favored specific groups (e.g., due to access to technology, geographical location, or socio-economic status), which could lead to distorted prediction results.
+
+## 2. Improve Label Quality
+
+In classification tasks, it is worth defining consistent coding rules, analyzing ambiguous cases, and controlling the consistency of labels.
+
+- **Standardization and guidelines:** Developing precise class definitions and clear instructions for data labelers minimizes subjectivity in interpretation.
+
+- **Consistency verification:** Introducing independent quality control (e.g., through multi-stage labeling of the same samples by different experts and measuring agreement coefficients, such as Cohen's Kappa) allows errors to be detected and corrected at an early stage.
+
+## 3. Ensure Proper Data Splitting
+
+Test data should reflect the conditions of future model use.
+
+In time series analysis, the split must respect chronology. Random splitting of observations can lead to an overly optimistic evaluation if future information indirectly leaks into the training process.
+
+- **Avoiding data leakage:** In classic datasets, care must be taken to ensure that the features of the training and testing sets are completely disjointed (e.g., avoiding situations where data for the same person are in both sets).
+
+- **Representativeness of the production environment:** The validation set should simulate real operational scenarios, including rarer events and atypical market or usage conditions.
+
+## 4. Evaluate Results Across Relevant Slices
+
+In addition to global metrics, errors should be analyzed for methodologically important groups.
+
+- **Algorithmic fairness:** The global accuracy of a model can mask serious errors committed against smaller population subgroups (e.g., demographic minorities or specific customer segments).
+
+- **Detailed indicators:** It is worth calculating quality metrics (such as recall, specificity, or precision) separately for each important slice to ensure that the model operates fairly and stably across all analyzed segments.
+
+## 5. Consider Alternative Methods
+
+If a model performs poorly in a specific area, additional features, a different method, a separate model, expert rules, or referring some cases to manual verification should be considered.
+
+- **Hybrid decision-making approach** In high-risk situations or where data are scarce, combining machine learning models with hard business rules can significantly increase the safety and correctness of decisions.
+
+- **Hybrid decision-making approach** For cases with a high degree of algorithmic uncertainty, a mechanism for automatically routing cases for verification by qualified specialists should be implemented.
+
+## 6. Document Limitations
+
+Documentation should indicate under what conditions the model was evaluated, where its quality is lower, and what limitations should be taken into account when interpreting the results.
+
+- **Model Cards:** Creating transparent reports containing the training data profile, optimal operating ranges, and known risks facilitates responsible use of the technology by business and technical stakeholders.
+
+- **Transparency of assumptions:** Transparent presentation of technological limitations prevents over-reliance on results (so-called automation bias) and facilitates the auditing of artificial intelligence systems.
+
+## 7. Monitor Quality Post-Deployment
+
+Data distribution and model quality can change over time. Therefore, analysis should not end at the pre-production validation stage.
+
+- **Detecting shifts in distribution (Data Drift & Concept Drift):** Regularly tracking statistics of incoming data allows deviations from the conditions under which the model was trained to be noticed in time.
+
+- **Cyclic retraining:** Maintaining high predictive quality requires continuous supervision, periodic re-evaluation of system effectiveness, and adapting it to changing business and social environments.
+
+# 4.8. Good and Bad Practices
+
+## Case A. Forecasting for Regions
+
+**Bad practice**
+  
+The model achieves low error nationwide. The team does not analyze regional results and considers the model good enough.
+
+**Good practice**
+  
+The team compares errors between regions, analyzes the direction of deviations, sample sizes, and the specifics of local data. They also check the impact of errors on national and regional aggregates.
+
+**Conclusion:** global quality does not replace quality analysis across relevant slices.
+
+## Case B. Classification of Rare Categories
+
+**Bad practice**
+
+The model achieves high overall accuracy because it correctly classifies the most frequent categories. Rare categories are almost always assigned to the dominant class.
+
+**Good practice**
+  
+The team analyzes precision, recall, and the confusion matrix for individual classes. They introduce expert control for rare and ambiguous categories.
+
+**Conclusion:** a global metric can mask a model's lack of utility for rare categories.
+
+## Case C. Alternative Data
+
+**Bad practice**
+  
+The team treats a large number of internet observations as sufficient proof of population representativeness.
+
+**Good practice**
+  
+The team analyzes coverage, selection mechanisms, differences from available reference sources, and the possibility of correcting results.
+
+**Conclusion:** dataset size does not eliminate the selection problem.
+
+# 4.9. Exercise
+
+A team is developing a model for the automatic coding of economic activity. The overall accuracy of the model is 94%.
+
+After analyzing the results, it was found that:
+  
+- for the most frequent categories, accuracy exceeds 97%;
+- for several rare categories, recall is lower than 60%;
+- some descriptions are ambiguous even for experts;
+- the model is used to prepare data for further analysis.
+
+Answer the questions:
+  
+  1.  Is an accuracy of 94% sufficient to approve the model?
+  2.  What additional metrics should be calculated?
+  3.  Should all categories be evaluated according to the exact same criterion?
+  4.  How can model confidence assessment be utilized?
+  5.  How should an expert control procedure be designed?
+  
+## Proposed solution
+  
+Overall accuracy alone is not sufficient. Results for individual categories must be analyzed, especially recall, precision, and types of errors.
+
+It is worth separating unambiguous cases from difficult ones and assessing whether rare categories have a sufficient number of examples for reliable validation.
+
+A hybrid solution can be adopted: automatically accept cases meeting established criteria, and route the rest to an expert. Criteria should be established based on validation results rather than solely on an arbitrary confidence value returned by the model.
+
+It should also be monitored whether the procedure causes systematic omission of specific categories.
+
+# 4.10. Checklist
+
+- [ ] I know the source and origin of the training data.
+- [ ] I have checked the quality of labels and category definitions.
+- [ ] I have evaluated the compliance of training data with conditions of use.
+- [ ] I have selected slices relevant to the specific statistical process.
+- [ ] I have calculated appropriate metrics for individual groups or categories.
+- [ ] I have checked whether systematic overestimation or underestimation occurs.
+- [ ] I have taken into account group sizes and evaluation uncertainty.
+- [ ] I have defined a procedure for difficult or ambiguous cases.
+- [ ] I have documented the model's limitations.
+- [ ] I have planned post-deployment quality monitoring.
+
+# 4.11. Key Conclusions
+
+1. Bias can stem from data, the measurement process, labels, model design, and the way results are used.
+2. A large dataset does not guarantee representativeness.
+3. A low average error does not mean equal quality for all groups.
+4. The choice of metrics should correspond to the objective and the consequences of errors.
+5. Differences between groups should be analyzed, but not automatically interpreted as evidence of discrimination.
+6. Mitigating bias requires a combination of data quality, proper validation, domain knowledge, and monitoring.
+7. In official statistics, it is particularly important to examine the impact of the model on results across slices that matter to statistics users.
+
+# Bibliography and Source Materials
+
+1.  UNECE. (2025). *Responsible AI for Official Statistics Framework*.\
+https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework
+
+2.  UNECE. (2025). *Companion Paper on Fairness in Machine Learning*.\
+Dostęp przez stronę ram odpowiedzialnego AI:\
+https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework
+
+3.  UNECE. (2022). *Machine Learning for Official Statistics*.\
+https://unece.org/statistics/publications/machine-learning-official-statistics
+
+4.  European Union. *Regulation (EU) 2024/1689 – Artificial Intelligence Act*, w szczególności art. 10 w zakresie danych i zarządzania danymi dla systemów wysokiego ryzyka.\
+https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+
+5.  NIST. *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*.\
+https://www.nist.gov/itl/ai-risk-management-framework
+
+Legal requirements concerning data and AI systems depend on the specific application. Assessing bias risk does not replace formal legal or methodological analysis.

@@ -1,0 +1,254 @@
+---
+title: "Generative AI in official statistics"
+subtitle: "Responsible AI for Official Statistics"
+---
+
+## 1. What is generative AI?
+
+**Generative Artificial Intelligence** (*GenAI*) creates new content based on patterns learned during training and information provided in a given task.
+
+Large Language Models (LLMs) can *generate and transform text*, *explain code*, *summarize documents*, and *support information retrieval*.
+
+However, this does not mean that every answer is true, up-to-date, or based on a reliable source.
+
+From a transparency perspective, an LLM is a typical **black-box** model: it processes data through many layers of transformations that are difficult to trace. In contrast, **white-box** models (e.g., linear regression, decision trees) are inherently interpretable. In practice, this means that a tester has full access to the documentation, source code, and configuration.
+
+## 2. Why does responsibility matter in official statistics?
+
+Official statistics are based on *trust*. Users must be confident that the data is *reliable*, *impartial*, and *protected*. Irresponsible use of AI can compromise privacy, perpetuate existing biases, and degrade the quality of outputs, ultimately undermining trust in institutions.
+
+**Responsible AI** is not a feature of the system itself. It is about how people create systems, how they use them, and how many decisions they delegate to them. Nor is it the same as "AI ethics": ethics describes values, whereas responsibility requires concrete actions, including legal and organizational ones.
+
+The principles of responsible AI are consistent with the UN Fundamental Principles of Official Statistics:
+
+- **impartiality and reliability** – outputs free from bias, accessible to all;
+- **professional standards and ethics** – transparent, scientific methods;
+- **accountability, transparency, prevention of misuse** – the user understands how the model affects data quality;
+- **confidentiality** – protection of individual data, including during AI use;
+- **legal compliance and cooperation** – clear rules for AI governance.
+
+## 3. Six principles of responsible AI
+
+The HLG-MOS framework (UNECE, 2025) organizes the responsible use of AI into six principles.
+
+| Principle | What it means in practice |
+|------------------------|------------------------------------------------|
+| Ethical purpose, public good, sustainability | AI serves the common good; its use is justified and proportionate |
+| Accountability | It is clear who is responsible for the system and its outputs |
+| Transparency and explainability | Methods are documented and understandable to the audience |
+| Fairness and non-discrimination | The system does not worsen the situation of any group |
+| Privacy and security | Data and models are protected |
+| Validity and robustness | Results are reliable even outside the test set |
+
+## 4. Potential applications
+
+In statistical work, GenAI can support:
+
+- preparation of draft documentation;
+- explaining code snippets;
+- creating tests and examples;
+- summarizing publicly available documents;
+- drafting descriptions for charts;
+- searching for information within approved documentation;
+- translation and editing of texts.
+
+These applications should be evaluated in terms of data confidentiality, the correctness of results, verifiability, and the terms of use of the tool.
+
+Before implementation, it is worth asking two questions:
+
+1.  **Is AI needed here?** If a problem can be solved with a simpler method, that method should be preferred (the principle of proportionality of means to ends).
+2.  **Is the tool fit for purpose?** You must justify the choice and demonstrate that the results meet quality requirements.
+
+## 5. Hallucinations and false confidence
+
+A language model can generate:
+
+- a non-existent source;
+- an incorrect definition;
+- code that looks correct but does not work;
+- an interpretation inconsistent with a table;
+- unverified information presented as fact.
+
+Linguistic fluency is not a measure of correctness.
+
+**Good practice:** verify claims, refer to primary sources, and run generated code in a controlled environment.
+
+**Beware of model "explanations".** Methods like LIME or SHAP show which features affect the prediction, but they do not prove causation. They are easy to overinterpret, and their results depend on context. Similarly, high metrics on a test set do not guarantee quality in production, which is why uncertainty measures (e.g., coefficient of variation) and data drift monitoring are also needed.
+
+## 6. How to prepare a good prompt?
+
+A useful prompt specifies:
+
+1.  **Goal** — what needs to be done?
+2.  **Context** — which process does the task relate to?
+3.  **Scope** — what should the model not do?
+4.  **Output format** — table, list, code, or description.
+5.  **Quality criteria** — what constitutes a correct result?
+6.  **Verification** — how to indicate uncertainty and lack of information?
+
+Example:
+
+> Prepare a draft description for the statistical table. Use only the values provided below. Do not infer the causes of the observed changes. Separate the description of facts from interpretation. If there is not enough data to formulate a conclusion, explicitly state this.
+
+Only information whose use is permitted in a given tool should be passed in the prompt.
+
+## 7. RAG — Retrieval-Augmented Generation
+
+**RAG** (*Retrieval-Augmented Generation*) combines a generative model with information retrieval from a specific set of documents.
+
+Typical workflow:
+
+1.  The user asks a question.
+2.  The system searches for relevant document fragments.
+3.  The selected fragments are passed to the model.
+4.  The model prepares an answer based on them.
+5.  The user can check the cited sources.
+
+**RAG** can mitigate some problems arising from a lack of context, but it does not guarantee the truthfulness of the answer. The system may retrieve wrong fragments, misinterpret them, or omit important information.
+
+The quality of the index, the currency of the documents, access rights, and the verifiability of cited sources are important.
+
+In a RAG system, it is also worth taking care of **data provenance** (where the document comes from, who is responsible for it, how it is updated) and the **audit trail**: a record of which fragments were used for the answer.
+
+## 8. Safe use of GenAI
+
+Before using a tool, check:
+
+- whether it is approved for a given type of task;
+- whether data used in the task can be passed to it;
+- whether the prompt is free of confidential information;
+- whether the output does not reveal protected data or information;
+- whether the answer has been verified before use;
+- whether restrictions on saving and retaining data apply.
+
+A public AI interface should not automatically be treated as a safe place to process official business data.
+
+### Common threats to ML models
+
+| Threat | What it entails |
+|------------------------|------------------------------------------------|
+| Adversarial attack | Intentional manipulation of input data to make the model fail |
+| Data poisoning | Injecting flawed data into the training set |
+| Model inversion | Reconstructing fragments of training data from model outputs |
+| Membership inference | Determining whether a given entity was in the training set |
+| Insider threats | Abuse of access rights by employees |
+| Transfer learning risk | Transfer of residual information or "backdoors" from another model |
+
+Countermeasures include data validation and sanitization, restricting model access, anomaly monitoring, regular updates, and privacy-enhancing technologies (e.g., differential privacy, federated learning). Data minimization, privacy impact assessments, and employee training are also crucial.
+
+## 9. Prompt injection and untrusted content
+
+A document, webpage, or other material processed by a model may contain instructions that attempt to change the system's behavior.
+
+For example, a document might contain text ordering the disclosure of confidential information or the ignoring of previous rules.
+
+Content retrieved from a document should be treated as material for analysis, not as authorization to change how the system operates.
+
+In systems that use tools, files, or automated actions, permissions should be restricted, sources verified, and confirmation required for actions with significant consequences.
+
+This is an example of a broader rule: an AI system should not act autonomously where its actions have real-world consequences, and a human must retain effective oversight.
+
+## 10. GenAI and statistical analysis
+
+A language model can help write R code or explain results, but it does not replace statistical control.
+
+Example workflow:
+
+1.  Describe the problem and data structure without revealing unauthorized information.
+2.  Ask for a code or method proposal.
+3.  Check the code and assumptions.
+4.  Run the code on appropriate data in a controlled environment.
+5.  Compare the results with independent calculations.
+6.  Document the changes made.
+
+A result generated by AI should not automatically be treated as an approved statistical method.
+
+### What to document
+
+Documentation is the foundation of reproducibility and transparency. In a project using AI, it is worth recording:
+
+- purpose, scope, and assumptions;
+- data used (scope, period, versions, processing);
+- the model or tool, its version, and justification for the choice;
+- prompt and parameters used to obtain the result;
+- code, its author, and modification dates (with version control);
+- verification results and uncertainty measures;
+- the person responsible for approving the result.
+
+## 11. Bias and fairness
+
+In statistics, "bias" means the deviation of an estimator from the true value and is not always a flaw. However, in AI systems used in critical areas, it cannot be treated as neutral, as it can lead to unequal treatment of groups.
+
+Most common types of bias:
+
+- **historical** – data reflects past discrimination or has become outdated;
+- **representation** – training data does not represent the population;
+- **algorithmic** – stems from design choices;
+- **deployment** – system used without considering the environment;
+- **feedback loop** – model outputs affect the data the model trains on.
+
+In practice: check data representativeness, compare output quality for different groups, choose and justify fairness metrics (it is impossible to satisfy all of them at once), monitor the system after deployment, and maintain the ability to shut it down.
+
+## 12. Accountability, oversight, and review
+
+"Algorithms are not accountable, someone is accountable for the algorithms." In practice, this means:
+
+- **assigning roles** – who is responsible for development, deployment, and monitoring;
+- **impact and risk assessment** at an early stage, with higher requirements for higher-risk applications;
+- **auditability** – decision trail, versioning, possibility of review by independent persons;
+- **appeal mechanism** for individuals affected by the results.
+
+Example review process (based on Statistics Canada):
+
+1.  **Self-assessment** by the team using a checklist.
+2.  **Peer review** – ethical and methodological, by independent experts.
+3.  **Scientific committee** – approval and recommendations, especially for new methods or key statistical programs.
+4.  **Publication** of a review report (or its summary if full disclosure is impossible).
+
+## 13. Environmental impact
+
+Large models consume significant amounts of energy, water, and raw materials, from hardware production to disposal. Therefore, the principle of responsibility also encompasses the environment:
+
+- justify the use of AI and choose the simplest possible models;
+- estimate the carbon footprint (e.g., CodeCarbon, Carbontracker tools);
+- prefer infrastructure powered by renewable energy;
+- avoid unnecessary training and running of large models.
+
+## 14. Exercise
+
+A generative model was instructed to prepare a commentary for a table. In response, it provided three reasons for the increase in the indicator's value, although the table only contains values for consecutive years.
+
+Answer the following questions:
+
+1.  Which elements of the answer can be verified based on the table?
+2.  What information is missing to determine the causes?
+3.  How should the prompt be modified?
+4.  How should the verification of the generated text be documented?
+5.  Who should approve the commentary before publication and on what basis?
+
+*Hint:* distinguish the description of changes from the explanation of their causes. Data on values alone does not prove causality.
+
+## 15. Checklist
+
+- [ ] The tool is approved for the given application.
+- [ ] Data passed to the model has been appropriately selected.
+- [ ] The prompt clearly defines the goal and limitations.
+- [ ] The answer is verified against sources.
+- [ ] The generated code is tested.
+- [ ] Uncertainty and limitations are communicated.
+- [ ] Access to tools and data is restricted to the necessary minimum.
+
+## 16. Key takeaways
+
+- GenAI can speed up work but does not guarantee the truthfulness of the content.
+- RAG facilitates the use of documentation but does not eliminate errors.
+- A prompt does not replace quality control.
+- Responsible use requires data security, verification, and human oversight.
+- People and institutions bear responsibility, not the model.
+- Documentation and review are prerequisites for transparency and reproducibility.
+
+## 17. Sources
+
+- UNECE, [Generative AI for Official Statistics](https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report).
+- UNECE, [Responsible AI for Official Statistics Framework](https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework).
+- NIST, [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).

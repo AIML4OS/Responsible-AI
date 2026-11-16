@@ -1,0 +1,135 @@
+---
+title: "The Application of AI in the GSBPM Statistical Process"
+subtitle: "Responsible AI for Official Statistics"
+---
+  
+## 1. Why relate AI to GSBPM?
+  
+GSBPM (Generic Statistical Business Process Model) organizes the activities leading from the identification of information needs to the evaluation of a statistical process.
+
+The model helps identify where AI can support statistical production, as well as the risks and controls that must be considered at each stage.
+
+Version 5.2 of the GSBPM was introduced in 2025 and serves as the current reference point for this module.
+
+## 2. Potential AI Applications
+
+| GSBPM Phase | Example of AI Application | Example Risk |
+  |----|----|----|
+  | 1\. Needs Identification | Analysis of user requests and feedback | Omitting the needs of smaller groups |
+  | 2\. Design | Supporting the selection of variables and methods | Unjustified recommendations |
+  | 3\. Build | Code generation and testing | Bugs in code or dependencies |
+  | 4\. Data Collection | Form reading, response classification | Misrecognition of content |
+  | 5\. Processing | WError detection, classification, imputation | Erroneous correction or imputation |
+  | 6\. Analysis | Supporting analysis and pattern detection| Confusing correlation with causation |
+  | 7\. Dissemination | Supporting descriptions, tables, and infographics | Incorrect interpretations |
+  | 8\. Evaluation | Analysis of requests, errors, and process flow | Omitting non-obvious issues |
+  
+These are examples of potential applications, not a recommendation to automate every phase.
+
+## 3. AI in the Needs Identification Phase
+
+Artificial intelligence plays a key role in diagnosing and aggregating user needs. Thanks to its ability to instantly process huge volumes of qualitative and quantitative data, AI effectively supports the analysis of feedback, queries, and requests.
+
+Example tasks:
+
+- topic clustering — categorizing collected feedback or questions to organize the main areas of discussion.
+- identification of recurring issues — catching the most frequently reported difficulties or challenges that require urgent attention.
+- preparation of a working consultation summary — creating an initial report with key conclusions and findings from the meeting.
+
+The results require control because the frequency of a topic does not necessarily reflect its importance. A smaller group of users may report needs of high significance.
+
+## 4. AI in the Design and Build Phases
+
+In the design and coding phases, artificial intelligence acts as an active assistant supporting the technical team. Its application covers key areas of the software lifecycle:
+
+- code prototyping: fast generation of application skeletons, UI components, SQL queries, or class structures, which shortens the time needed to write code from scratch and facilitates experimentation with different architectural approaches.
+- unit testing generation: automatic creation of test cases.
+- comparison of algorithmic methods and approaches: analysis of alternative technological solutions in terms of computational complexity, performance, and suitability for deployment in a given business context.
+- data flow documentation: automatic generation of function descriptions, architecture diagrams, and comments explaining the business logic contained in individual system modules.
+- identification of potential code issues: early detection of anti-patterns, syntax errors, security vulnerabilities, and areas requiring performance optimization.
+
+Code generation should not be equated with correctness. Code requires testing, review, and verification of compliance with methodological requirements
+
+## 5. AI in Data Collection and Processing
+
+The use of artificial intelligence in the collection and analysis of information significantly speeds up routine tasks, reduces errors, and raises the quality of managed resources.
+
+Examples:
+
+- OCR and form field recognition: artificial intelligence analyzes scans or photos of documents (e.g., invoices, contracts, ID cards), extracting text (Optical Character Recognition) and mapping it to appropriate system fields (e.g., NIP, date, gross amount).
+- classification of text descriptions: automatic assignment of categories, tags, or codes to unstructured text data (e.g., customer comments, service requests, emails), facilitating their routine routing and analysis.
+- detection of unusual records (anomalies): algorithms analyze patterns and trends in historical data to indicate transactions, entries, or behaviors that drastically deviate from the norm (e.g., potential system errors or fraud attempts).
+- data editing support: systems supporting the user during data entry (so-called smart autocomplete or contextual hints) that suggest correct values based on previously entered information or reference dictionaries.
+- imputation of missing values: the use of statistical models and machine learning to intelligently fill in gaps in databases based on correlations between other available variables.
+
+In each of these situations, it is necessary to determine whether AI only proposes a result or can automatically change data. It is worth keeping information about the origin of a value and whether it was observed, corrected, or imputed.
+
+## 6. AI in Analysis and Dissemination
+
+AI tools can support the team in particular in the following areas:
+
+- anomaly and trend search: rapid scanning of large datasets for unusual changes, deviations from the norm, or hidden correlations.
+- preliminary interpretation of results: preparation of working hypotheses and draft versions of descriptions that facilitate further analytical work.
+- drafting publications: editing the first versions of text descriptions intended for reports, articles, or press materials.
+- designing visualizations: generating proposals for optimal forms of graphical data presentation (e.g., chart types or infographics).
+- documentation navigation: instant retrieval of definitions, indicators, and guidelines in extensive methodological knowledge bases.
+
+Final conclusions must be consistent with the results and methodology. Text generated by a model is not statistical evidence in itself.
+
+## 7. Cross-Cutting Controls
+
+Not all issues can be assigned to a single GSBPM phase. Some safeguards should cover the entire solution lifecycle:
+
+- data protection and security: ensuring confidentiality, integrity, and security of processed information at every operational stage.
+- documentation and versioning: systematic recording of changes in code, models, datasets, and documentation of design assumptions.
+- validation and monitoring: continuous verification of correct model operation, data drift detection, and ongoing tracking of quality metrics.
+- access management: control of permissions and authorization of users and systems in contact with AI data and models.
+- human oversight: maintaining operational control and the ability for human intervention at key decision-making moments by the system.
+- risk management: identification, mitigation, and ongoing assessment of ethical, legal, and technical risks.
+- training and competencies: raising awareness and qualifications of teams responsible for the development, implementation, and maintenance of the system.
+
+When planning the application of AI, dependencies between phases should also be taken into account. Errors made at early stages (e.g., imprecise problem formulation or imperfections in data collection and cleaning) often remain invisible during the training phase and only become apparent in advanced stages of analysis, testing, or directly after publishing the solution.
+
+## 8. Process Example: Tourism Data Imputation
+
+Suppose an office wants to predict the number of tourists for establishments that failed to submit a report on time.
+
+1.  **Needs Identification:** determining whether a previous result is needed to prepare preliminary statistical information.
+2.  **Design:** selection of variables, predictors, and validation method.
+3.  **Build:** preparation of code, tests, and environment.
+4.  **Collection:** acquisition of reporting data and auxiliary information.
+5.  **Processing:** data control and generating imputation.
+6.  **Analysis:** comparison of results with actual observations and the baseline method.
+7.  **Dissemination:** preparation of results with appropriate status description and limitations.
+8.  **Evaluation:** assessment of the quality and usefulness of the solution and decision on changes.
+
+In practice, processes are rarely purely linear – individual phases can repeat, intertwine, and occur in variable order.
+
+## 9. Exercise
+
+Choose one statistical process, e.g., activity classification, quality control, or imputation.
+
+Complete the table:
+  
+  | Element          | Question                        |
+  |------------------|--------------------------------|
+  | GSBPM Phase       | At which stage does AI operate?    |
+  | Task          | What does the model specifically do?      |
+  | Data             | What data is used?  |
+  | Output            | What goes to the next stage? |
+  | Risk           | What can go wrong?         |
+  | Control         | How do we detect errors?           |
+  | Accountability | Who approves the result?          |
+  
+## 10. Key Conclusions
+  
+- AI can support many GSBPM phases, but its application should stem from a specific need.
+- Risk depends on the role of the result in the process, not just the type of algorithm.
+- Controls should cover the entire solution lifecycle.
+- GSBPM can be used to locate AI applications, document them, and plan quality assessment.
+
+## 11. Bibliography and Source Materials
+
+- UNECE, [GSBPM version 5.2](https://unece.org/statistics/gsbpm-v5.2).
+- UNECE, [Responsible AI for Official Statistics Framework](https://unece.org/statistics/documents/2025/10/reports/responsible-ai-official-statistics-framework).
+- UNECE, [Generative AI for Official Statistics](https://unece.org/statistics/documents/2025/09/reports/generative-ai-official-statistics-hlg-mos-report).

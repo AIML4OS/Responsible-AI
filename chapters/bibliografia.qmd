@@ -1,0 +1,155 @@
+---
+title: "Bibliography and sources"
+subtitle: "Legal acts, standards and reference materials"
+---
+
+# How to use the bibliography?
+
+The sources below can serve as a starting point for deepening your knowledge of responsible AI, data protection, risk management and the use of artificial intelligence in official statistics.
+
+When using legal sources, check the current wording of the provisions, the dates from which they apply, and any amendments.
+
+# 1. European Union law
+
+## Artificial Intelligence Act
+
+**Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act).**
+
+The Act establishes a regulatory framework for AI systems, including a risk-based approach, the obligations of certain entities, and requirements for selected uses of AI.
+
+- [Text of the Regulation in EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=en)
+
+## General Data Protection Regulation (GDPR)
+
+**Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016.**
+
+The GDPR sets out the rules for processing personal data, the rights of data subjects, and the obligations of controllers and processors.
+
+- [Text of the GDPR in EUR-Lex](https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=en)
+
+## European Health Data Space and other sector-specific regulations
+
+In projects that use sector-specific data, it is worth checking whether additional provisions on access to data, its re-use or its exchange apply.
+
+- [EUR-Lex — access to European Union legal acts](https://eur-lex.europa.eu/)
+
+# 2. Ethics and trustworthy AI
+
+## OECD — Principles on artificial intelligence
+
+The Organisation for Economic Co-operation and Development (OECD) has developed principles that promote innovative, trustworthy AI, with respect for human rights and democratic values.
+
+- [OECD AI Principles](https://oecd.ai/en/ai-principles)
+
+## UNESCO — Recommendation on the Ethics of Artificial Intelligence
+
+The UNESCO Recommendation on the ethics of AI addresses, among other things, human rights, transparency, accountability, fairness and risk management.
+
+- [UNESCO — Ethics of Artificial Intelligence](https://www.unesco.org/en/artificial-intelligence/recommendation-ethics)
+
+## European Commission — guidelines and materials on AI
+
+The European Commission provides information on AI policy, regulation, implementation and supporting materials.
+
+- [European Commission — AI policy](https://digital-strategy.ec.europa.eu/en/policies/artificial-intelligence)
+
+# 3. Standards for risk management and AI management systems
+
+## ISO/IEC 42001
+
+**ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system.**
+
+The standard describes the requirements for an AI management system in an organisation. It can support the establishment of responsibilities, procedures and mechanisms for continual improvement.
+
+- [ISO — search for ISO/IEC 42001](https://www.iso.org/search.html?q=ISO%2FIEC%2042001)
+
+## ISO/IEC 23894
+
+**ISO/IEC 23894:2023 — Information technology — Artificial intelligence — Guidance on risk management.**
+
+The document provides guidance on managing risks related to AI.
+
+- [ISO — search for ISO/IEC 23894](https://www.iso.org/search.html?q=ISO%2FIEC%2023894)
+
+## NIST AI Risk Management Framework
+
+An AI risk management framework developed by the US National Institute of Standards and Technology. It covers, among other things, identifying the context, assessing risk, managing risk and monitoring it.
+
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+
+- [NIST AI RMF Playbook](https://airc.nist.gov/AI_RMF_Knowledge_Base/Playbook)
+
+# 4. Official statistics and statistical quality
+
+## Code of Practice
+
+**European Statistics Code of Practice.**
+
+The Code provides a quality framework for European statistics and covers, among other things, professional independence, impartiality, the quality of processes, confidentiality and institutional accountability.
+
+- [Eurostat — European Statistics Code of Practice](https://ec.europa.eu/eurostat/web/quality/european-statistics-code-of-practice)
+
+## Generic Statistical Business Process Model (GSBPM)
+
+**Generic Statistical Business Process Model.**
+
+The model describes the statistical production process and can be used to analyse at which stages AI can support the work and where additional control mechanisms are needed.
+
+- [UNECE — Generic Statistical Business Process Model](https://unece.org/statistics/modernstats/gsbpm)
+
+## UNECE — modernisation of official statistics
+
+UNECE materials cover, among other things, the modernisation of statistical processes, data management, standards and international cooperation.
+
+- [UNECE — Modernisation of Official Statistics](https://unece.org/statistics/modernstats)
+
+# 5. Machine learning and validation
+
+## scikit-learn documentation — model validation
+
+The materials describe data splitting methods, cross-validation, the selection of quality measures and typical problems in model evaluation.
+
+- [scikit-learn — Cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html)
+- [scikit-learn — Model evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
+The documentation concerns a Python library, but the validation principles it describes also apply when designing analyses in R and other environments.
+
+## tidymodels package documentation
+
+Materials on modelling, data splitting, parameter tuning and model quality assessment in the R environment.
+
+- [tidymodels — official website](https://www.tidymodels.org/)
+
+## forecast package documentation
+
+Materials on modelling and forecasting time series, including the assessment of forecast quality.
+
+- [forecast — R package documentation](https://pkg.robjhyndman.com/forecast/)
+
+# 6. Generative AI and language models
+
+## Vendors' technical documentation
+
+The documentation of generative tools can help in understanding their functions, limitations and settings. It does not, however, replace independent validation or a security assessment.
+
+- [OpenAI — documentation](https://platform.openai.com/docs/)
+- [Microsoft — Responsible AI](https://www.microsoft.com/en-us/ai/responsible-ai)
+- [Google — Responsible AI](https://ai.google/responsibility/)
+
+When using these materials, pay attention to the publication date, the scope of the system described, and any changes in functionality.
+
+# 7. How to assess the reliability of a source?
+
+Before using a material in a project or in documentation, it is worth checking:
+
+- **Author and institution** — does the source come from the competent authority, a standardisation body or an academic author?
+- **Date** — is the information up to date?
+- **Document status** — is it a legal act, a standard, a recommendation, a technical document or an opinion piece?
+- **Scope of application** — do the conclusions concern a similar type of system and data?
+- **Verifiability** — is it possible to reproduce the results described or to check the provisions cited?
+
+# 8. A note on currency
+
+The bibliography is a starting point for further work. Before using a source in organisational procedures or in a conformity assessment, check the current edition of the document, its status and its scope of application.
+
+In particular, obligations arising from EU AI legislation may depend on the type of system, the role of the organisation and the timetable for applying specific provisions.
